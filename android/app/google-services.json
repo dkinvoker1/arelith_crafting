@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "706810983721",
+    "project_id": "arelith-crafting",
+    "storage_bucket": "arelith-crafting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706810983721:android:759ad32985531bad6d3338",
+        "android_client_info": {
+          "package_name": "com.example.arelith_crafting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706810983721-j9t9c4mpjgfcnkndt2k2rbeh44768q60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAdaZecrkzKy_XMlkybSCBF0RylLpI0XA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706810983721-j9t9c4mpjgfcnkndt2k2rbeh44768q60.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "706810983721-ub8e68b5vfse511ao56mhks5djo9hp2k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.arelithCrafting"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
