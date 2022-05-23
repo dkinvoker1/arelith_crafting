@@ -1,9 +1,6 @@
 import 'dart:developer';
-import 'dart:html';
-import 'dart:typed_data';
 
 import 'package:injectable/injectable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:firebase_storage/firebase_storage.dart";
 import 'package:file_picker/file_picker.dart';
@@ -42,12 +39,11 @@ class DatabaseService {
     }
   }
 
-  Future<String> getImage() async {
+  Future<String> getImageUrl(String fileName) async {
     final storageRef = FirebaseStorage.instance.ref();
-    final fileRef = storageRef.child("door_heven.jpg");
+    final fileRef = storageRef.child(fileName);
     try {
-      var a = await fileRef.getDownloadURL();
-      return a;
+      return await fileRef.getDownloadURL();
     } on FirebaseException catch (e) {
       log("error: " + e.toString());
       return "";
