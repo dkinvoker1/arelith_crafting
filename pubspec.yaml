@@ -24,6 +24,7 @@ dev_dependencies:
   firebase_core: ^1.16.0
   firebase_storage: ^10.2.15
   flutter_bloc: ^8.0.1
+  flutter_hooks: ^0.18.3
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter

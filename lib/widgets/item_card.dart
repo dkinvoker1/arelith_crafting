@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../models/item.dart';
-import '../services/database_service.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({Key? key, required this.item}) : super(key: key);
@@ -18,16 +17,8 @@ class ItemCard extends StatelessWidget {
         Container(
           width: _baseSize,
           height: _baseSize,
-          child: FutureBuilder(
-            future: DatabaseService().getImageUrl(item.imageUrl),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              return snapshot.hasData
-                  ? Image.network(
-                      snapshot.data,
-                    )
-                  : CircularProgressIndicator();
-            },
-          ),
+          child: 
+          Image.network(item.imageUrl)
         ),
         Column(
           children: [

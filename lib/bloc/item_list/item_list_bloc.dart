@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,10 +15,17 @@ part 'item_list_bloc.freezed.dart';
 
 class ItemListBloc extends Bloc<ItemListEvent, ItemListState> {
   ItemListBloc() : super(_ItemListState()) {
-    on<_Started>((event, emit) {
-      var _itemsStream = DatabaseService().getItemsStream();
-      var c = state.copyWith(aaa: "Your items:", stream: _itemsStream);
-      emit.call(c);
+    on<_Initialse>((event, emit) {
+      var _itemsQuery = DatabaseService().getItemsNameQuery("");
+
+      var newState = state.copyWith(itemsQuery: _itemsQuery);
+      emit.call(newState);
+    });
+
+    on<_Search>((event, emit) {
+      var _itemsQuery = DatabaseService().getItemsNameQuery(event.searhPhrase);
+      var newState = state.copyWith(itemsQuery: _itemsQuery);
+      emit.call(newState);
     });
   }
 }

@@ -10,44 +10,53 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
+import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
 
+import '../pages/add_item.dart' as _i3;
 import '../pages/item_list.dart' as _i2;
-import '../pages/recipe.dart' as _i3;
+import '../pages/recipe.dart' as _i4;
 import 'menu_wrapper.dart' as _i1;
 
-class AppRouter extends _i4.RootStackRouter {
-  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
+class AppRouter extends _i5.RootStackRouter {
+  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, _i5.PageFactory> pagesMap = {
     MenuWrapper.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.MenuWrapper());
     },
     ItemListRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.ItemListPage());
     },
+    AddItemRoute.name: (routeData) {
+      final args = routeData.argsAs<AddItemRouteArgs>(
+          orElse: () => const AddItemRouteArgs());
+      return _i5.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i3.AddItemPage(key: args.key));
+    },
     RecipeRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.RecipePage());
+      return _i5.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i4.RecipePage());
     }
   };
 
   @override
-  List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(MenuWrapper.name, path: '/', children: [
-          _i4.RouteConfig('#redirect',
+  List<_i5.RouteConfig> get routes => [
+        _i5.RouteConfig(MenuWrapper.name, path: '/', children: [
+          _i5.RouteConfig('#redirect',
               path: '',
               parent: MenuWrapper.name,
               redirectTo: 'items',
               fullMatch: true),
-          _i4.RouteConfig(ItemListRoute.name,
+          _i5.RouteConfig(ItemListRoute.name,
               path: 'items', parent: MenuWrapper.name),
-          _i4.RouteConfig(RecipeRoute.name,
+          _i5.RouteConfig(AddItemRoute.name,
+              path: 'addItem', parent: MenuWrapper.name),
+          _i5.RouteConfig(RecipeRoute.name,
               path: 'recipe', parent: MenuWrapper.name)
         ])
       ];
@@ -55,8 +64,8 @@ class AppRouter extends _i4.RootStackRouter {
 
 /// generated route for
 /// [_i1.MenuWrapper]
-class MenuWrapper extends _i4.PageRouteInfo<void> {
-  const MenuWrapper({List<_i4.PageRouteInfo>? children})
+class MenuWrapper extends _i5.PageRouteInfo<void> {
+  const MenuWrapper({List<_i5.PageRouteInfo>? children})
       : super(MenuWrapper.name, path: '/', initialChildren: children);
 
   static const String name = 'MenuWrapper';
@@ -64,15 +73,36 @@ class MenuWrapper extends _i4.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.ItemListPage]
-class ItemListRoute extends _i4.PageRouteInfo<void> {
+class ItemListRoute extends _i5.PageRouteInfo<void> {
   const ItemListRoute() : super(ItemListRoute.name, path: 'items');
 
   static const String name = 'ItemListRoute';
 }
 
 /// generated route for
-/// [_i3.RecipePage]
-class RecipeRoute extends _i4.PageRouteInfo<void> {
+/// [_i3.AddItemPage]
+class AddItemRoute extends _i5.PageRouteInfo<AddItemRouteArgs> {
+  AddItemRoute({_i6.Key? key})
+      : super(AddItemRoute.name,
+            path: 'addItem', args: AddItemRouteArgs(key: key));
+
+  static const String name = 'AddItemRoute';
+}
+
+class AddItemRouteArgs {
+  const AddItemRouteArgs({this.key});
+
+  final _i6.Key? key;
+
+  @override
+  String toString() {
+    return 'AddItemRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i4.RecipePage]
+class RecipeRoute extends _i5.PageRouteInfo<void> {
   const RecipeRoute() : super(RecipeRoute.name, path: 'recipe');
 
   static const String name = 'RecipeRoute';

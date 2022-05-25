@@ -29,10 +29,11 @@ class DatabaseService {
 
       try {
         await fileRef.putData(file.bytes!);
-        await itemsRef.add(Item(
-            imageUrl: file.name,
-            name: "name",
-            description: "filer description"));
+
+        var _imageUrl = await getImageUrl(file.name);
+
+        await itemsRef.add(
+            Item(imageUrl: _imageUrl, name: "name", description: "filer description"));
       } on Exception catch (e) {
         log(e.toString());
       }
@@ -50,15 +51,24 @@ class DatabaseService {
     }
   }
 
+  Query<Item> getItemsNameQuery(String search) {
+    Query<Item> query;
+    if (search.isEmpty) {
+      query =
+          FirebaseFirestore.instance.collection('items').withConverter<Item>(
+                fromFirestore: (snapshot, _) => Item.fromJson(snapshot.data()!),
+                toFirestore: (result, _) => result.toJson(),
+              );
+    } else {
+      query = FirebaseFirestore.instance
+          .collection('items')
+          .where('name', isEqualTo: search)
+          .withConverter<Item>(
+            fromFirestore: (snapshot, _) => Item.fromJson(snapshot.data()!),
+            toFirestore: (result, _) => result.toJson(),
+          );
+    }
 
-  Stream<QuerySnapshot<Item>> getItemsStream() {
-    return FirebaseFirestore.instance
-        .collection('items')
-        .withConverter<Item>(
-          fromFirestore: (snapshot, _) => Item.fromJson(snapshot.data()!),
-          toFirestore: (result, _) => result.toJson(),
-        )
-        .snapshots();
+    return query;
   }
-
 }
