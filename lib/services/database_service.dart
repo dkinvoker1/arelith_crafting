@@ -13,9 +13,8 @@ class DatabaseService {
   //   return FirebaseAuth.instance.currentUser!.uid;
   // }
 
-  Future<void> addImage() async {
-    var picked = await FilePicker.platform.pickFiles(allowMultiple: false);
-
+  Future<Exception?> addImage(
+      {required Item item, required PlatformFile file}) async {
     final storageRef = FirebaseStorage.instance.ref();
     final itemsRef =
         FirebaseFirestore.instance.collection('items').withConverter<Item>(
@@ -23,21 +22,23 @@ class DatabaseService {
               toFirestore: (result, _) => result.toJson(),
             );
 
-    if (picked != null && picked.files.first.bytes != null) {
-      var file = picked.files.first;
+    if (file.bytes != null) {
       final fileRef = storageRef.child(file.name);
 
       try {
         await fileRef.putData(file.bytes!);
 
-        var _imageUrl = await getImageUrl(file.name);
+        var imageUrl = await getImageUrl(file.name);
 
-        await itemsRef.add(
-            Item(imageUrl: _imageUrl, name: "name", description: "filer description"));
+        await itemsRef.add(item.copyWith(imageUrl: imageUrl));
+
+        return null;
       } on Exception catch (e) {
-        log(e.toString());
+        return e;
       }
     }
+
+    return Exception('No image bytes');
   }
 
   Future<String> getImageUrl(String fileName) async {

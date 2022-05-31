@@ -12,21 +12,31 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double _baseSize = 40;
 
-    return Row(
-      children: [
-        Container(
-          width: _baseSize,
-          height: _baseSize,
-          child: 
-          Image.network(item.imageUrl)
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white)
         ),
-        Column(
+        child: Row(
           children: [
-            Text(item.name),
-            Text(item.description),
+            Container(
+              width: _baseSize,
+              height: _baseSize,
+              child: 
+              Image.network(item.imageUrl)
+            ),
+            Column(
+              children: [
+                Text("Name:"),
+                Text(item.name),
+                Text("Description:"),
+                Text(item.description),
+              ],
+            ),
           ],
         ),
-      ],
+      ),
     );
   }
 }
