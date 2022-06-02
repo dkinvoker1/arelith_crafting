@@ -23,6 +23,7 @@ mixin _$Item {
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  List<String> get reference => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,11 @@ mixin _$Item {
 abstract class $ItemCopyWith<$Res> {
   factory $ItemCopyWith(Item value, $Res Function(Item) then) =
       _$ItemCopyWithImpl<$Res>;
-  $Res call({String imageUrl, String name, String description});
+  $Res call(
+      {String imageUrl,
+      String name,
+      String description,
+      List<String> reference});
 }
 
 /// @nodoc
@@ -49,6 +54,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? reference = freezed,
   }) {
     return _then(_value.copyWith(
       imageUrl: imageUrl == freezed
@@ -63,6 +69,10 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      reference: reference == freezed
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -72,7 +82,11 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
   factory _$$_ItemCopyWith(_$_Item value, $Res Function(_$_Item) then) =
       __$$_ItemCopyWithImpl<$Res>;
   @override
-  $Res call({String imageUrl, String name, String description});
+  $Res call(
+      {String imageUrl,
+      String name,
+      String description,
+      List<String> reference});
 }
 
 /// @nodoc
@@ -89,6 +103,7 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? reference = freezed,
   }) {
     return _then(_$_Item(
       imageUrl: imageUrl == freezed
@@ -103,6 +118,10 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      reference: reference == freezed
+          ? _value._reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -111,7 +130,11 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Item implements _Item {
   const _$_Item(
-      {required this.imageUrl, required this.name, required this.description});
+      {required this.imageUrl,
+      required this.name,
+      required this.description,
+      final List<String> reference = const []})
+      : _reference = reference;
 
   factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
 
@@ -121,10 +144,17 @@ class _$_Item implements _Item {
   final String name;
   @override
   final String description;
+  final List<String> _reference;
+  @override
+  @JsonKey()
+  List<String> get reference {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reference);
+  }
 
   @override
   String toString() {
-    return 'Item(imageUrl: $imageUrl, name: $name, description: $description)';
+    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, reference: $reference)';
   }
 
   @override
@@ -135,7 +165,9 @@ class _$_Item implements _Item {
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
-                .equals(other.description, description));
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other._reference, _reference));
   }
 
   @JsonKey(ignore: true)
@@ -144,7 +176,8 @@ class _$_Item implements _Item {
       runtimeType,
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description));
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(_reference));
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +194,8 @@ abstract class _Item implements Item {
   const factory _Item(
       {required final String imageUrl,
       required final String name,
-      required final String description}) = _$_Item;
+      required final String description,
+      final List<String> reference}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
@@ -171,6 +205,8 @@ abstract class _Item implements Item {
   String get name => throw _privateConstructorUsedError;
   @override
   String get description => throw _privateConstructorUsedError;
+  @override
+  List<String> get reference => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ItemCopyWith<_$_Item> get copyWith => throw _privateConstructorUsedError;

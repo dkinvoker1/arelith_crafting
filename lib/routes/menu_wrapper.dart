@@ -17,12 +17,13 @@ class MenuWrapper extends StatelessWidget {
             context.router.push(ItemListRoute());
           },
           child: Text('Items'),
-        ),        TextButton(
-          onPressed: () async {
-            context.router.push(RecipeRoute());
-          },
-          child: Text('Recipe'),
-        ),
+        ),        
+        // TextButton(
+        //   onPressed: () async {
+        //     context.router.push(RecipeRoute());
+        //   },
+        //   child: Text('Recipe'),
+        // ),
       ]),
       body: const AutoRouter(),
     );

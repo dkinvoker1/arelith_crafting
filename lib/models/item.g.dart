@@ -10,10 +10,15 @@ _$_Item _$$_ItemFromJson(Map json) => _$_Item(
       imageUrl: json['imageUrl'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
+      reference: (json['reference'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'imageUrl': instance.imageUrl,
       'name': instance.name,
       'description': instance.description,
+      'reference': instance.reference,
     };

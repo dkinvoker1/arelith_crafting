@@ -30,9 +30,9 @@ class DatabaseService {
 
         var imageUrl = await getImageUrl(file.name);
 
-        await itemsRef.add(item.copyWith(imageUrl: imageUrl));
+        await itemsRef.add(item.copyWith(imageUrl: imageUrl, reference: ['aaa','ccc']));
 
-        return null;
+        return Exception();
       } on Exception catch (e) {
         return e;
       }
@@ -69,6 +69,12 @@ class DatabaseService {
             toFirestore: (result, _) => result.toJson(),
           );
     }
+
+    var q = FirebaseFirestore.instance.collection('items');
+    var a = q.get();
+    a.then((value) {
+      log(value.docs.first.reference.toString());
+    });
 
     return query;
   }
