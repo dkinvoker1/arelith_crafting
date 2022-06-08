@@ -14,16 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Recipe _$RecipeFromJson(Map<String, dynamic> json) {
-  return _Recipe.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Recipe {
-  Item get item => throw _privateConstructorUsedError;
-  List<Item> get components => throw _privateConstructorUsedError;
+  Future<DocumentSnapshot<Item>> get item => throw _privateConstructorUsedError;
+  Future<QuerySnapshot<Item>> get components =>
+      throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RecipeCopyWith<Recipe> get copyWith => throw _privateConstructorUsedError;
 }
@@ -32,9 +28,9 @@ mixin _$Recipe {
 abstract class $RecipeCopyWith<$Res> {
   factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
       _$RecipeCopyWithImpl<$Res>;
-  $Res call({Item item, List<Item> components});
-
-  $ItemCopyWith<$Res> get item;
+  $Res call(
+      {Future<DocumentSnapshot<Item>> item,
+      Future<QuerySnapshot<Item>> components});
 }
 
 /// @nodoc
@@ -54,19 +50,12 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Item,
+              as Future<DocumentSnapshot<Item>>,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
+              as Future<QuerySnapshot<Item>>,
     ));
-  }
-
-  @override
-  $ItemCopyWith<$Res> get item {
-    return $ItemCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -75,10 +64,9 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
       __$$_RecipeCopyWithImpl<$Res>;
   @override
-  $Res call({Item item, List<Item> components});
-
-  @override
-  $ItemCopyWith<$Res> get item;
+  $Res call(
+      {Future<DocumentSnapshot<Item>> item,
+      Future<QuerySnapshot<Item>> components});
 }
 
 /// @nodoc
@@ -99,32 +87,24 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Item,
+              as Future<DocumentSnapshot<Item>>,
       components: components == freezed
-          ? _value._components
+          ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
+              as Future<QuerySnapshot<Item>>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_Recipe implements _Recipe {
-  const _$_Recipe({required this.item, required final List<Item> components})
-      : _components = components;
-
-  factory _$_Recipe.fromJson(Map<String, dynamic> json) =>
-      _$$_RecipeFromJson(json);
+  _$_Recipe({required this.item, required this.components});
 
   @override
-  final Item item;
-  final List<Item> _components;
+  final Future<DocumentSnapshot<Item>> item;
   @override
-  List<Item> get components {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_components);
-  }
+  final Future<QuerySnapshot<Item>> components;
 
   @override
   String toString() {
@@ -138,38 +118,31 @@ class _$_Recipe implements _Recipe {
             other is _$_Recipe &&
             const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality()
-                .equals(other._components, _components));
+                .equals(other.components, components));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(_components));
+      const DeepCollectionEquality().hash(components));
 
   @JsonKey(ignore: true)
   @override
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
       __$$_RecipeCopyWithImpl<_$_Recipe>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_RecipeToJson(this);
-  }
 }
 
 abstract class _Recipe implements Recipe {
-  const factory _Recipe(
-      {required final Item item,
-      required final List<Item> components}) = _$_Recipe;
-
-  factory _Recipe.fromJson(Map<String, dynamic> json) = _$_Recipe.fromJson;
+  factory _Recipe(
+      {required final Future<DocumentSnapshot<Item>> item,
+      required final Future<QuerySnapshot<Item>> components}) = _$_Recipe;
 
   @override
-  Item get item => throw _privateConstructorUsedError;
+  Future<DocumentSnapshot<Item>> get item => throw _privateConstructorUsedError;
   @override
-  List<Item> get components => throw _privateConstructorUsedError;
+  Future<QuerySnapshot<Item>> get components =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>

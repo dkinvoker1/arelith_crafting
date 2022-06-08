@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:auto_route/annotations.dart';
 import 'package:injectable/injectable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:firebase_storage/firebase_storage.dart";
@@ -30,9 +31,9 @@ class DatabaseService {
 
         var imageUrl = await getImageUrl(file.name);
 
-        await itemsRef.add(item.copyWith(imageUrl: imageUrl, reference: ['aaa','ccc']));
+        await itemsRef.add(item.copyWith(imageUrl: imageUrl));
 
-        return Exception();
+        return null;
       } on Exception catch (e) {
         return e;
       }
@@ -47,7 +48,7 @@ class DatabaseService {
     try {
       return await fileRef.getDownloadURL();
     } on FirebaseException catch (e) {
-      log("error: " + e.toString());
+      log("error: $e");
       return "";
     }
   }
@@ -55,27 +56,47 @@ class DatabaseService {
   Query<Item> getItemsNameQuery(String search) {
     Query<Item> query;
     if (search.isEmpty) {
-      query =
-          FirebaseFirestore.instance.collection('items').withConverter<Item>(
-                fromFirestore: (snapshot, _) => Item.fromJson(snapshot.data()!),
-                toFirestore: (result, _) => result.toJson(),
-              );
+      query = FirebaseFirestore.instance
+          .collection('items')
+          .withConverter<Item>(
+            fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
+            toFirestore: (result, _) => result.toJson(),
+          );
     } else {
       query = FirebaseFirestore.instance
           .collection('items')
           .where('name', isEqualTo: search)
           .withConverter<Item>(
-            fromFirestore: (snapshot, _) => Item.fromJson(snapshot.data()!),
+            fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
             toFirestore: (result, _) => result.toJson(),
           );
     }
 
-    var q = FirebaseFirestore.instance.collection('items');
-    var a = q.get();
-    a.then((value) {
-      log(value.docs.first.reference.toString());
-    });
-
     return query;
+  }
+
+  Future<DocumentSnapshot<Item>> getItemById(String itemPath) {
+    var item = FirebaseFirestore.instance
+        .doc(itemPath)
+        .withConverter<Item>(
+          fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
+          toFirestore: (result, _) => result.toJson(),
+        )
+        .get();
+
+    return item;
+  }
+
+  Future<QuerySnapshot<Item>> getComponentsByItemId(String itemPath) async {
+    var item = FirebaseFirestore.instance
+        .collection('items')
+        .where('recipeOfReferencesList', arrayContains: itemPath)
+        .withConverter<Item>(
+          fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
+          toFirestore: (result, _) => result.toJson(),
+        )
+        .get();
+
+    return item;
   }
 }

@@ -23,7 +23,8 @@ mixin _$Item {
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<String> get reference => throw _privateConstructorUsedError;
+  List<String> get recipeOfReferencesList => throw _privateConstructorUsedError;
+  String get documentPath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +39,8 @@ abstract class $ItemCopyWith<$Res> {
       {String imageUrl,
       String name,
       String description,
-      List<String> reference});
+      List<String> recipeOfReferencesList,
+      String documentPath});
 }
 
 /// @nodoc
@@ -54,7 +56,8 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? reference = freezed,
+    Object? recipeOfReferencesList = freezed,
+    Object? documentPath = freezed,
   }) {
     return _then(_value.copyWith(
       imageUrl: imageUrl == freezed
@@ -69,10 +72,14 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      reference: reference == freezed
-          ? _value.reference
-          : reference // ignore: cast_nullable_to_non_nullable
+      recipeOfReferencesList: recipeOfReferencesList == freezed
+          ? _value.recipeOfReferencesList
+          : recipeOfReferencesList // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      documentPath: documentPath == freezed
+          ? _value.documentPath
+          : documentPath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -86,7 +93,8 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       {String imageUrl,
       String name,
       String description,
-      List<String> reference});
+      List<String> recipeOfReferencesList,
+      String documentPath});
 }
 
 /// @nodoc
@@ -103,7 +111,8 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? reference = freezed,
+    Object? recipeOfReferencesList = freezed,
+    Object? documentPath = freezed,
   }) {
     return _then(_$_Item(
       imageUrl: imageUrl == freezed
@@ -118,10 +127,14 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      reference: reference == freezed
-          ? _value._reference
-          : reference // ignore: cast_nullable_to_non_nullable
+      recipeOfReferencesList: recipeOfReferencesList == freezed
+          ? _value._recipeOfReferencesList
+          : recipeOfReferencesList // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      documentPath: documentPath == freezed
+          ? _value.documentPath
+          : documentPath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -133,8 +146,9 @@ class _$_Item implements _Item {
       {required this.imageUrl,
       required this.name,
       required this.description,
-      final List<String> reference = const []})
-      : _reference = reference;
+      final List<String> recipeOfReferencesList = const [],
+      this.documentPath = ''})
+      : _recipeOfReferencesList = recipeOfReferencesList;
 
   factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
 
@@ -144,17 +158,21 @@ class _$_Item implements _Item {
   final String name;
   @override
   final String description;
-  final List<String> _reference;
+  final List<String> _recipeOfReferencesList;
   @override
   @JsonKey()
-  List<String> get reference {
+  List<String> get recipeOfReferencesList {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_reference);
+    return EqualUnmodifiableListView(_recipeOfReferencesList);
   }
 
   @override
+  @JsonKey()
+  final String documentPath;
+
+  @override
   String toString() {
-    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, reference: $reference)';
+    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, recipeOfReferencesList: $recipeOfReferencesList, documentPath: $documentPath)';
   }
 
   @override
@@ -166,8 +184,10 @@ class _$_Item implements _Item {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(
+                other._recipeOfReferencesList, _recipeOfReferencesList) &&
             const DeepCollectionEquality()
-                .equals(other._reference, _reference));
+                .equals(other.documentPath, documentPath));
   }
 
   @JsonKey(ignore: true)
@@ -177,7 +197,8 @@ class _$_Item implements _Item {
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(_reference));
+      const DeepCollectionEquality().hash(_recipeOfReferencesList),
+      const DeepCollectionEquality().hash(documentPath));
 
   @JsonKey(ignore: true)
   @override
@@ -195,7 +216,8 @@ abstract class _Item implements Item {
       {required final String imageUrl,
       required final String name,
       required final String description,
-      final List<String> reference}) = _$_Item;
+      final List<String> recipeOfReferencesList,
+      final String documentPath}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
@@ -206,7 +228,9 @@ abstract class _Item implements Item {
   @override
   String get description => throw _privateConstructorUsedError;
   @override
-  List<String> get reference => throw _privateConstructorUsedError;
+  List<String> get recipeOfReferencesList => throw _privateConstructorUsedError;
+  @override
+  String get documentPath => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ItemCopyWith<_$_Item> get copyWith => throw _privateConstructorUsedError;

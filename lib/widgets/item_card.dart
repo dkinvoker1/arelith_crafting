@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
+import 'package:arelith_crafting/widgets/item_image.dart';
 import 'package:flutter/material.dart';
 
 import '../models/item.dart';
@@ -15,25 +16,11 @@ class ItemCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white)
-        ),
-        child: Row(
+        decoration: BoxDecoration(border: Border.all(color: Colors.white)),
+        child: Column(
           children: [
-            Container(
-              width: _baseSize,
-              height: _baseSize,
-              child: 
-              Image.network(item.imageUrl)
-            ),
-            Column(
-              children: [
-                Text("Name:"),
-                Text(item.name),
-                Text("Description:"),
-                Text(item.description),
-              ],
-            ),
+            Text(item.name),
+            ItemImage(item: item),
           ],
         ),
       ),

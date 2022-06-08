@@ -475,6 +475,7 @@ abstract class _Save implements AddItemEvent {
 
 /// @nodoc
 mixin _$AddItemState {
+  bool get isUploaded => throw _privateConstructorUsedError;
   Exception? get exception => throw _privateConstructorUsedError;
   Item get item => throw _privateConstructorUsedError;
   PlatformFile? get file => throw _privateConstructorUsedError;
@@ -489,7 +490,8 @@ abstract class $AddItemStateCopyWith<$Res> {
   factory $AddItemStateCopyWith(
           AddItemState value, $Res Function(AddItemState) then) =
       _$AddItemStateCopyWithImpl<$Res>;
-  $Res call({Exception? exception, Item item, PlatformFile? file});
+  $Res call(
+      {bool isUploaded, Exception? exception, Item item, PlatformFile? file});
 
   $ItemCopyWith<$Res> get item;
 }
@@ -504,11 +506,16 @@ class _$AddItemStateCopyWithImpl<$Res> implements $AddItemStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? isUploaded = freezed,
     Object? exception = freezed,
     Object? item = freezed,
     Object? file = freezed,
   }) {
     return _then(_value.copyWith(
+      isUploaded: isUploaded == freezed
+          ? _value.isUploaded
+          : isUploaded // ignore: cast_nullable_to_non_nullable
+              as bool,
       exception: exception == freezed
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -539,7 +546,8 @@ abstract class _$$_AddItemStateCopyWith<$Res>
           _$_AddItemState value, $Res Function(_$_AddItemState) then) =
       __$$_AddItemStateCopyWithImpl<$Res>;
   @override
-  $Res call({Exception? exception, Item item, PlatformFile? file});
+  $Res call(
+      {bool isUploaded, Exception? exception, Item item, PlatformFile? file});
 
   @override
   $ItemCopyWith<$Res> get item;
@@ -558,11 +566,16 @@ class __$$_AddItemStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? isUploaded = freezed,
     Object? exception = freezed,
     Object? item = freezed,
     Object? file = freezed,
   }) {
     return _then(_$_AddItemState(
+      isUploaded: isUploaded == freezed
+          ? _value.isUploaded
+          : isUploaded // ignore: cast_nullable_to_non_nullable
+              as bool,
       exception: exception == freezed
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -583,10 +596,14 @@ class __$$_AddItemStateCopyWithImpl<$Res>
 
 class _$_AddItemState implements _AddItemState {
   const _$_AddItemState(
-      {this.exception = null,
+      {this.isUploaded = false,
+      this.exception = null,
       this.item = const Item(imageUrl: "", name: "", description: ""),
       this.file = null});
 
+  @override
+  @JsonKey()
+  final bool isUploaded;
   @override
   @JsonKey()
   final Exception? exception;
@@ -599,7 +616,7 @@ class _$_AddItemState implements _AddItemState {
 
   @override
   String toString() {
-    return 'AddItemState(exception: $exception, item: $item, file: $file)';
+    return 'AddItemState(isUploaded: $isUploaded, exception: $exception, item: $item, file: $file)';
   }
 
   @override
@@ -607,6 +624,8 @@ class _$_AddItemState implements _AddItemState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AddItemState &&
+            const DeepCollectionEquality()
+                .equals(other.isUploaded, isUploaded) &&
             const DeepCollectionEquality().equals(other.exception, exception) &&
             const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality().equals(other.file, file));
@@ -615,6 +634,7 @@ class _$_AddItemState implements _AddItemState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(isUploaded),
       const DeepCollectionEquality().hash(exception),
       const DeepCollectionEquality().hash(item),
       const DeepCollectionEquality().hash(file));
@@ -627,10 +647,13 @@ class _$_AddItemState implements _AddItemState {
 
 abstract class _AddItemState implements AddItemState {
   const factory _AddItemState(
-      {final Exception? exception,
+      {final bool isUploaded,
+      final Exception? exception,
       final Item item,
       final PlatformFile? file}) = _$_AddItemState;
 
+  @override
+  bool get isUploaded => throw _privateConstructorUsedError;
   @override
   Exception? get exception => throw _privateConstructorUsedError;
   @override

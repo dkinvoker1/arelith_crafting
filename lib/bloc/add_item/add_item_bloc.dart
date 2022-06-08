@@ -30,8 +30,10 @@ class AddItemBloc extends Bloc<AddItemEvent, AddItemState> {
       emit.call(newState);
     });
     on<_Save>((event, emit) async {
-      var error = await DatabaseService().addImage(item: state.item, file: state.file!);
-      emit.call(state.copyWith(exception: error));
+      var error =
+          await DatabaseService().addImage(item: state.item, file: state.file!);
+      emit.call(state.copyWith(
+          exception: error, isUploaded: error == null ? true : false));
     });
   }
 }

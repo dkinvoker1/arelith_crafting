@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:arelith_crafting/bloc/add_item/add_item_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +26,14 @@ class _AddItemPageState extends State<AddItemPage> {
         create: (context) => AddItemBloc(),
         child: BlocConsumer<AddItemBloc, AddItemState>(
           listenWhen: (previousState, state) {
-            if (state.exception != null &&
-                previousState.exception != state.exception) {
+            if (previousState.exception != state.exception ||
+                previousState.isUploaded != state.isUploaded) {
               return true;
             }
             return false;
           },
           listener: (context, state) {
-            if (state.exception!.toString().isEmpty) {
+            if (state.isUploaded) {
               context.router.push(ItemListRoute());
             } else {
               showDialog<String>(
