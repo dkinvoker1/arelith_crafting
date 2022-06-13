@@ -16,9 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Recipe {
-  Future<DocumentSnapshot<Item>> get item => throw _privateConstructorUsedError;
-  Future<QuerySnapshot<Item>> get components =>
-      throw _privateConstructorUsedError;
+  Item get item => throw _privateConstructorUsedError;
+  List<Recipe> get components => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeCopyWith<Recipe> get copyWith => throw _privateConstructorUsedError;
@@ -28,9 +27,9 @@ mixin _$Recipe {
 abstract class $RecipeCopyWith<$Res> {
   factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
       _$RecipeCopyWithImpl<$Res>;
-  $Res call(
-      {Future<DocumentSnapshot<Item>> item,
-      Future<QuerySnapshot<Item>> components});
+  $Res call({Item item, List<Recipe> components});
+
+  $ItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -50,12 +49,19 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Future<DocumentSnapshot<Item>>,
+              as Item,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
-              as Future<QuerySnapshot<Item>>,
+              as List<Recipe>,
     ));
+  }
+
+  @override
+  $ItemCopyWith<$Res> get item {
+    return $ItemCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -64,9 +70,10 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
       __$$_RecipeCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {Future<DocumentSnapshot<Item>> item,
-      Future<QuerySnapshot<Item>> components});
+  $Res call({Item item, List<Recipe> components});
+
+  @override
+  $ItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -87,11 +94,11 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Future<DocumentSnapshot<Item>>,
+              as Item,
       components: components == freezed
-          ? _value.components
+          ? _value._components
           : components // ignore: cast_nullable_to_non_nullable
-              as Future<QuerySnapshot<Item>>,
+              as List<Recipe>,
     ));
   }
 }
@@ -99,12 +106,18 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Recipe implements _Recipe {
-  _$_Recipe({required this.item, required this.components});
+  _$_Recipe({required this.item, final List<Recipe> components = const []})
+      : _components = components;
 
   @override
-  final Future<DocumentSnapshot<Item>> item;
+  final Item item;
+  final List<Recipe> _components;
   @override
-  final Future<QuerySnapshot<Item>> components;
+  @JsonKey()
+  List<Recipe> get components {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_components);
+  }
 
   @override
   String toString() {
@@ -118,14 +131,14 @@ class _$_Recipe implements _Recipe {
             other is _$_Recipe &&
             const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality()
-                .equals(other.components, components));
+                .equals(other._components, _components));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(components));
+      const DeepCollectionEquality().hash(_components));
 
   @JsonKey(ignore: true)
   @override
@@ -134,15 +147,13 @@ class _$_Recipe implements _Recipe {
 }
 
 abstract class _Recipe implements Recipe {
-  factory _Recipe(
-      {required final Future<DocumentSnapshot<Item>> item,
-      required final Future<QuerySnapshot<Item>> components}) = _$_Recipe;
+  factory _Recipe({required final Item item, final List<Recipe> components}) =
+      _$_Recipe;
 
   @override
-  Future<DocumentSnapshot<Item>> get item => throw _privateConstructorUsedError;
+  Item get item => throw _privateConstructorUsedError;
   @override
-  Future<QuerySnapshot<Item>> get components =>
-      throw _privateConstructorUsedError;
+  List<Recipe> get components => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>

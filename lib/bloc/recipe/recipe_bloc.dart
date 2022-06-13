@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:arelith_crafting/models/item.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,7 +20,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       emit.call(state.copyWith(recipe: recipe));
     });
 
-    on<_AddPoint>((event, emit) async {
+    on<_AddPoint>((event, emit) {
       List<Offset> list = state.points.toList();
       list.add(event.offset);
       emit.call(state.copyWith(points: list));
@@ -27,12 +28,33 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   }
 
   Future<Recipe> getRecipe(String rootItemPath) async {
-    var itemSnapshot = DatabaseService().getItemById(rootItemPath);
-    var componentsSnapshot =
-        DatabaseService().getComponentsByItemId(rootItemPath);
+    Recipe recipe =
+        Recipe(item: const Item(imageUrl: '', name: '', description: ''));
 
-    Recipe recipe = Recipe(item: itemSnapshot, components: componentsSnapshot);
+    var itemSnapshot = await DatabaseService().getItemById(rootItemPath);
+    if (!itemSnapshot.exists) {
+      return recipe;
+    }
+
+   var item = itemSnapshot.data()!;
+
+    recipe = recipe.copyWith(item: item, components: await getItemComponents(rootItemPath));
 
     return recipe;
+  }
+
+  Future<List<Recipe>> getItemComponents(String rootItemPath) async {
+    var componentsSnapshot =
+        await DatabaseService().getComponentsByItemId(rootItemPath);
+
+    var componentList = <Recipe>[];
+    for (var element in componentsSnapshot.docs) {
+      var item = element.data();
+      var recipe = Recipe(item: item);
+      recipe = recipe.copyWith(components: await getItemComponents(item.documentPath));
+      componentList.add(recipe);
+    }
+
+    return componentList;
   }
 }

@@ -18,7 +18,7 @@ import 'package:auto_route/auto_route.dart';
       ),
       AutoRoute(
         page: RecipePage,
-        path: 'recipe',
+        path: 'recipe/:rootItemDocumentPath',
       ),
     ])
   ],

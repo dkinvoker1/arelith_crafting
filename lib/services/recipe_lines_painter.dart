@@ -5,32 +5,35 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class RecipeLinesPainter extends CustomPainter {
-  List<Offset> _points;
+  Offset _parentOffset;
+  Offset _childOffset;
 
-  RecipeLinesPainter(this._points);
+  RecipeLinesPainter(this._parentOffset, this._childOffset);
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (_points.length > 1) {
-      //Brush properties
-      var paint = Paint()
-        ..color = Colors.white
-        ..strokeWidth = 5
-        ..strokeCap = StrokeCap.round;
+    //Brush properties
+    var paint = Paint()
+      ..color = Colors.white
+      ..strokeWidth = 5
+      ..strokeCap = StrokeCap.round;
 
-      //Draw line
-      canvas.clipRect(Offset.zero & size);
+    //Draw line
+    // canvas.translate(0, -size.height);
+    // canvas.clipRect(Offset.zero & size);
 
-      for (var point in _points) {
-        var halfY = (_points.first.dy + point.dy) / 2;
+    // var halfY = (_parentOffset.dy + _childOffset.dy) / 2;
 
-        canvas.drawLine(_points.first, Offset(_points.first.dx, halfY), paint);
-        
-        canvas.drawLine(Offset(_points.first.dx, halfY), Offset(point.dx, halfY), paint);
+    // canvas.drawLine(_parentOffset, Offset(_childOffset.dx, halfY), paint);
 
-        canvas.drawLine(point, Offset(point.dx, halfY), paint);
-      }
-    }
+    // canvas.drawLine(Offset(_parentOffset.dx, halfY), Offset(_childOffset.dx, halfY), paint);
+
+    // canvas.drawLine(_childOffset, Offset(_childOffset.dx, halfY), paint);
+
+    // canvas.drawLine(_parentOffset, _childOffset, paint);
+
+    canvas.drawLine(Offset.zero, Offset(size.width, size.height), paint);
+    canvas.drawLine(Offset(0,size.height), Offset(size.width, 0), paint);
   }
 
   @override

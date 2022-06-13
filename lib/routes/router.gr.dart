@@ -39,7 +39,11 @@ class AppRouter extends _i5.RootStackRouter {
           routeData: routeData, child: _i3.AddItemPage(key: args.key));
     },
     RecipeRoute.name: (routeData) {
-      final args = routeData.argsAs<RecipeRouteArgs>();
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<RecipeRouteArgs>(
+          orElse: () => RecipeRouteArgs(
+              rootItemDocumentPath:
+                  pathParams.getString('rootItemDocumentPath')));
       return _i5.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i4.RecipePage(
@@ -60,7 +64,7 @@ class AppRouter extends _i5.RootStackRouter {
           _i5.RouteConfig(AddItemRoute.name,
               path: 'addItem', parent: MenuWrapper.name),
           _i5.RouteConfig(RecipeRoute.name,
-              path: 'recipe', parent: MenuWrapper.name)
+              path: 'recipe/:rootItemDocumentPath', parent: MenuWrapper.name)
         ])
       ];
 }
@@ -108,9 +112,10 @@ class AddItemRouteArgs {
 class RecipeRoute extends _i5.PageRouteInfo<RecipeRouteArgs> {
   RecipeRoute({_i6.Key? key, required String rootItemDocumentPath})
       : super(RecipeRoute.name,
-            path: 'recipe',
+            path: 'recipe/:rootItemDocumentPath',
             args: RecipeRouteArgs(
-                key: key, rootItemDocumentPath: rootItemDocumentPath));
+                key: key, rootItemDocumentPath: rootItemDocumentPath),
+            rawPathParams: {'rootItemDocumentPath': rootItemDocumentPath});
 
   static const String name = 'RecipeRoute';
 }

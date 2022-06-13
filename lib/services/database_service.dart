@@ -75,8 +75,8 @@ class DatabaseService {
     return query;
   }
 
-  Future<DocumentSnapshot<Item>> getItemById(String itemPath) {
-    var item = FirebaseFirestore.instance
+  Future<DocumentSnapshot<Item>> getItemById(String itemPath)  async {
+    var item = await FirebaseFirestore.instance
         .doc(itemPath)
         .withConverter<Item>(
           fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
@@ -88,7 +88,7 @@ class DatabaseService {
   }
 
   Future<QuerySnapshot<Item>> getComponentsByItemId(String itemPath) async {
-    var item = FirebaseFirestore.instance
+    var item = await FirebaseFirestore.instance
         .collection('items')
         .where('recipeOfReferencesList', arrayContains: itemPath)
         .withConverter<Item>(

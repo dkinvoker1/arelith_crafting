@@ -7,7 +7,9 @@ part 'recipe.freezed.dart';
 @freezed
 class Recipe with _$Recipe {
    factory Recipe({
-    required Future<DocumentSnapshot<Item>> item,
-    required Future<QuerySnapshot<Item>> components,
+    required Item item,
+    @Default([]) List<Recipe> components,
+    // required Future<DocumentSnapshot<Item>> item,
+    // required Future<QuerySnapshot<Item>> components,
   }) = _Recipe;
 }
