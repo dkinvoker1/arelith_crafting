@@ -1,14 +1,10 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages
 
-import 'dart:developer';
-
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../bloc/recipe/recipe_bloc.dart';
-import '../models/item.dart';
 import '../models/recipe.dart';
 import '../services/recipe_lines_painter.dart';
 import '../widgets/item_image.dart';
@@ -36,8 +32,6 @@ class _RecipePageState extends State<RecipePage> {
             return CircularProgressIndicator();
           }
 
-          var bloc = BlocProvider.of<RecipeBloc>(context);
-
           return RecipeWidget(recipe: state.recipe!);
         },
       ),
@@ -46,16 +40,22 @@ class _RecipePageState extends State<RecipePage> {
 }
 
 class InheritedRecipe extends InheritedWidget {
-  InheritedRecipe(
+  const InheritedRecipe(
       {Key? key,
       required this.offset,
       required this.changeOffset,
+      required this.boxOffset,
+      required this.changeBoxOffset,
       required this.child})
       : super(key: key, child: child);
 
-  final Widget child;
   final Offset offset;
   final Function changeOffset;
+
+  final Offset boxOffset;
+  final Function changeBoxOffset;
+
+  final Widget child;
 
   static InheritedRecipe? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<InheritedRecipe>();
@@ -68,7 +68,7 @@ class InheritedRecipe extends InheritedWidget {
 }
 
 class RecipeWidget extends StatefulWidget {
-  RecipeWidget({Key? key, required this.recipe}) : super(key: key);
+  const RecipeWidget({Key? key, required this.recipe}) : super(key: key);
 
   final Recipe recipe;
 
@@ -80,9 +80,18 @@ class _RecipeWidgetState extends State<RecipeWidget> {
   var key = GlobalKey();
   Offset myOffset = Offset.zero;
 
-  void changeMyOffset(Offset off) {
+  var boxKey = GlobalKey();
+  Offset myBoxOffset = Offset.zero;
+
+  void changeMyOffset(Offset offset) {
     setState(() {
-      myOffset = off;
+      myOffset = offset;
+    });
+  }
+
+  void changeMyBoxOffset(Offset offset) {
+    setState(() {
+      myBoxOffset = offset;
     });
   }
 
@@ -91,12 +100,17 @@ class _RecipeWidgetState extends State<RecipeWidget> {
     super.initState();
     WidgetsBinding.instance.addPersistentFrameCallback((_) {
       if (key.currentContext != null) {
-        var box = key.currentContext!.findRenderObject() as RenderBox;
-        var x = box.localToGlobal(Offset.zero).dx + box.size.width / 2;
-        var y = box.localToGlobal(Offset.zero).dy - box.size.height / 2;
-        //ustawianie wartości ++++++++++++++++++++++++++++++++++++++
+        var itemBox = key.currentContext!.findRenderObject() as RenderBox;
+        var x = itemBox.localToGlobal(Offset.zero).dx + itemBox.size.width / 2;
+        var y = itemBox.localToGlobal(Offset.zero).dy + itemBox.size.height;
+
         changeMyOffset(Offset(x, y));
 
+        var boxBox = boxKey.currentContext!.findRenderObject() as RenderBox;
+        var bx = boxBox.localToGlobal(Offset.zero).dx;
+        var by = boxBox.localToGlobal(Offset.zero).dy;
+
+        changeMyBoxOffset(Offset(bx, by));
       }
     });
   }
@@ -115,19 +129,18 @@ class _RecipeWidgetState extends State<RecipeWidget> {
     }
 
     var recipeWidget = Column(
+      key: boxKey,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // incheritedRecipe == null
-        //     ? Text("nie mam taty")
-        //     : Text(incheritedRecipe.offset.toString()),
-        // Text(myOffset.toString()),
         Flexible(child: ItemImage(key: key, item: widget.recipe.item)),
         Flexible(
           fit: FlexFit.tight,
           child: InheritedRecipe(
               offset: myOffset,
               changeOffset: changeMyOffset,
+              boxOffset: myBoxOffset,
+              changeBoxOffset: changeMyBoxOffset,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: itemWidgetList,
@@ -139,7 +152,10 @@ class _RecipeWidgetState extends State<RecipeWidget> {
     return incheritedRecipe == null
         ? recipeWidget
         : CustomPaint(
-            painter: RecipeLinesPainter(incheritedRecipe.offset, myOffset),
+            painter: RecipeLinesPainter(
+                parentOffset: incheritedRecipe.offset,
+                childOffset: myOffset,
+                boxOffset: myBoxOffset),
             child: recipeWidget,
           );
   }
