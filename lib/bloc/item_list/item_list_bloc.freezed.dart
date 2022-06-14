@@ -19,38 +19,32 @@ mixin _$ItemListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialse,
-    required TResult Function(String searhPhrase) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialse,
-    TResult Function(String searhPhrase)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialse,
-    TResult Function(String searhPhrase)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialse value) initialse,
-    required TResult Function(_Search value) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
-    TResult Function(_Search value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
-    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,7 +108,6 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialse,
-    required TResult Function(String searhPhrase) search,
   }) {
     return initialse();
   }
@@ -123,7 +116,6 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialse,
-    TResult Function(String searhPhrase)? search,
   }) {
     return initialse?.call();
   }
@@ -132,7 +124,6 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialse,
-    TResult Function(String searhPhrase)? search,
     required TResult orElse(),
   }) {
     if (initialse != null) {
@@ -145,7 +136,6 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialse value) initialse,
-    required TResult Function(_Search value) search,
   }) {
     return initialse(this);
   }
@@ -154,7 +144,6 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
-    TResult Function(_Search value)? search,
   }) {
     return initialse?.call(this);
   }
@@ -163,7 +152,6 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
-    TResult Function(_Search value)? search,
     required TResult orElse(),
   }) {
     if (initialse != null) {
@@ -178,140 +166,9 @@ abstract class _Initialse implements ItemListEvent {
 }
 
 /// @nodoc
-abstract class _$$_SearchCopyWith<$Res> {
-  factory _$$_SearchCopyWith(_$_Search value, $Res Function(_$_Search) then) =
-      __$$_SearchCopyWithImpl<$Res>;
-  $Res call({String searhPhrase});
-}
-
-/// @nodoc
-class __$$_SearchCopyWithImpl<$Res> extends _$ItemListEventCopyWithImpl<$Res>
-    implements _$$_SearchCopyWith<$Res> {
-  __$$_SearchCopyWithImpl(_$_Search _value, $Res Function(_$_Search) _then)
-      : super(_value, (v) => _then(v as _$_Search));
-
-  @override
-  _$_Search get _value => super._value as _$_Search;
-
-  @override
-  $Res call({
-    Object? searhPhrase = freezed,
-  }) {
-    return _then(_$_Search(
-      searhPhrase == freezed
-          ? _value.searhPhrase
-          : searhPhrase // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Search implements _Search {
-  const _$_Search(this.searhPhrase);
-
-  @override
-  final String searhPhrase;
-
-  @override
-  String toString() {
-    return 'ItemListEvent.search(searhPhrase: $searhPhrase)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Search &&
-            const DeepCollectionEquality()
-                .equals(other.searhPhrase, searhPhrase));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(searhPhrase));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_SearchCopyWith<_$_Search> get copyWith =>
-      __$$_SearchCopyWithImpl<_$_Search>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialse,
-    required TResult Function(String searhPhrase) search,
-  }) {
-    return search(searhPhrase);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialse,
-    TResult Function(String searhPhrase)? search,
-  }) {
-    return search?.call(searhPhrase);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialse,
-    TResult Function(String searhPhrase)? search,
-    required TResult orElse(),
-  }) {
-    if (search != null) {
-      return search(searhPhrase);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialse value) initialse,
-    required TResult Function(_Search value) search,
-  }) {
-    return search(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialse value)? initialse,
-    TResult Function(_Search value)? search,
-  }) {
-    return search?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialse value)? initialse,
-    TResult Function(_Search value)? search,
-    required TResult orElse(),
-  }) {
-    if (search != null) {
-      return search(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Search implements ItemListEvent {
-  const factory _Search(final String searhPhrase) = _$_Search;
-
-  String get searhPhrase => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_SearchCopyWith<_$_Search> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$ItemListState {
-  Query<Item>? get itemsQuery => throw _privateConstructorUsedError;
+  Stream<QuerySnapshot<Item>>? get itemsStream =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ItemListStateCopyWith<ItemListState> get copyWith =>
@@ -323,7 +180,7 @@ abstract class $ItemListStateCopyWith<$Res> {
   factory $ItemListStateCopyWith(
           ItemListState value, $Res Function(ItemListState) then) =
       _$ItemListStateCopyWithImpl<$Res>;
-  $Res call({Query<Item>? itemsQuery});
+  $Res call({Stream<QuerySnapshot<Item>>? itemsStream});
 }
 
 /// @nodoc
@@ -337,13 +194,13 @@ class _$ItemListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? itemsQuery = freezed,
+    Object? itemsStream = freezed,
   }) {
     return _then(_value.copyWith(
-      itemsQuery: itemsQuery == freezed
-          ? _value.itemsQuery
-          : itemsQuery // ignore: cast_nullable_to_non_nullable
-              as Query<Item>?,
+      itemsStream: itemsStream == freezed
+          ? _value.itemsStream
+          : itemsStream // ignore: cast_nullable_to_non_nullable
+              as Stream<QuerySnapshot<Item>>?,
     ));
   }
 }
@@ -355,7 +212,7 @@ abstract class _$$_ItemListStateCopyWith<$Res>
           _$_ItemListState value, $Res Function(_$_ItemListState) then) =
       __$$_ItemListStateCopyWithImpl<$Res>;
   @override
-  $Res call({Query<Item>? itemsQuery});
+  $Res call({Stream<QuerySnapshot<Item>>? itemsStream});
 }
 
 /// @nodoc
@@ -371,13 +228,13 @@ class __$$_ItemListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? itemsQuery = freezed,
+    Object? itemsStream = freezed,
   }) {
     return _then(_$_ItemListState(
-      itemsQuery: itemsQuery == freezed
-          ? _value.itemsQuery
-          : itemsQuery // ignore: cast_nullable_to_non_nullable
-              as Query<Item>?,
+      itemsStream: itemsStream == freezed
+          ? _value.itemsStream
+          : itemsStream // ignore: cast_nullable_to_non_nullable
+              as Stream<QuerySnapshot<Item>>?,
     ));
   }
 }
@@ -385,15 +242,15 @@ class __$$_ItemListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ItemListState extends _ItemListState {
-  const _$_ItemListState({this.itemsQuery = null}) : super._();
+  const _$_ItemListState({this.itemsStream = null}) : super._();
 
   @override
   @JsonKey()
-  final Query<Item>? itemsQuery;
+  final Stream<QuerySnapshot<Item>>? itemsStream;
 
   @override
   String toString() {
-    return 'ItemListState(itemsQuery: $itemsQuery)';
+    return 'ItemListState(itemsStream: $itemsStream)';
   }
 
   @override
@@ -402,12 +259,12 @@ class _$_ItemListState extends _ItemListState {
         (other.runtimeType == runtimeType &&
             other is _$_ItemListState &&
             const DeepCollectionEquality()
-                .equals(other.itemsQuery, itemsQuery));
+                .equals(other.itemsStream, itemsStream));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(itemsQuery));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(itemsStream));
 
   @JsonKey(ignore: true)
   @override
@@ -416,12 +273,13 @@ class _$_ItemListState extends _ItemListState {
 }
 
 abstract class _ItemListState extends ItemListState {
-  const factory _ItemListState({final Query<Item>? itemsQuery}) =
-      _$_ItemListState;
+  const factory _ItemListState(
+      {final Stream<QuerySnapshot<Item>>? itemsStream}) = _$_ItemListState;
   const _ItemListState._() : super._();
 
   @override
-  Query<Item>? get itemsQuery => throw _privateConstructorUsedError;
+  Stream<QuerySnapshot<Item>>? get itemsStream =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ItemListStateCopyWith<_$_ItemListState> get copyWith =>

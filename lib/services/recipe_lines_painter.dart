@@ -23,13 +23,13 @@ class RecipeLinesPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     canvas.translate(-boxOffset.dx, -boxOffset.dy);
-    // canvas.clipRect(Offset.zero & size);
 
     var halfY = (parentOffset.dy + childOffset.dy) / 2;
 
     canvas.drawLine(parentOffset, Offset(parentOffset.dx, halfY), paint);
 
-    canvas.drawLine(Offset(parentOffset.dx, halfY), Offset(childOffset.dx, halfY), paint);
+    canvas.drawLine(
+        Offset(parentOffset.dx, halfY), Offset(childOffset.dx, halfY), paint);
 
     canvas.drawLine(childOffset, Offset(childOffset.dx, halfY), paint);
   }

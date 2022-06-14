@@ -11,20 +11,17 @@ class MenuWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Crafting"), actions: [
-        TextButton(
-          onPressed: () async {
+      appBar: AppBar(
+        title: TextButton(
+          onPressed: () {
             context.router.push(ItemListRoute());
           },
-          child: Text('Items'),
-        ),        
-        // TextButton(
-        //   onPressed: () async {
-        //     context.router.push(RecipeRoute());
-        //   },
-        //   child: Text('Recipe'),
-        // ),
-      ]),
+          style: TextButton.styleFrom(
+            primary: Colors.white,
+          ),
+          child: Text('Arelith Crafting'),
+        ),
+      ),
       body: const AutoRouter(),
     );
   }

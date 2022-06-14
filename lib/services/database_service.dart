@@ -53,29 +53,19 @@ class DatabaseService {
     }
   }
 
-  Query<Item> getItemsNameQuery(String search) {
-    Query<Item> query;
-    if (search.isEmpty) {
-      query = FirebaseFirestore.instance
-          .collection('items')
-          .withConverter<Item>(
-            fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
-            toFirestore: (result, _) => result.toJson(),
-          );
-    } else {
-      query = FirebaseFirestore.instance
-          .collection('items')
-          .where('name', isEqualTo: search)
-          .withConverter<Item>(
-            fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
-            toFirestore: (result, _) => result.toJson(),
-          );
-    }
+  Stream<QuerySnapshot<Item>> getItems() {
+    Stream<QuerySnapshot<Item>> query = FirebaseFirestore.instance
+        .collection('items')
+        .withConverter<Item>(
+          fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
+          toFirestore: (result, _) => result.toJson(),
+        )
+        .snapshots();
 
     return query;
   }
 
-  Future<DocumentSnapshot<Item>> getItemById(String itemPath)  async {
+  Future<DocumentSnapshot<Item>> getItemById(String itemPath) async {
     var item = await FirebaseFirestore.instance
         .doc(itemPath)
         .withConverter<Item>(

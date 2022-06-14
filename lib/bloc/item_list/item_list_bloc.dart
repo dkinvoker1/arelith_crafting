@@ -16,15 +16,9 @@ part 'item_list_bloc.freezed.dart';
 class ItemListBloc extends Bloc<ItemListEvent, ItemListState> {
   ItemListBloc() : super(_ItemListState()) {
     on<_Initialse>((event, emit) {
-      var _itemsQuery = DatabaseService().getItemsNameQuery("");
+      var itemsStream = DatabaseService().getItems();
 
-      var newState = state.copyWith(itemsQuery: _itemsQuery);
-      emit.call(newState);
-    });
-
-    on<_Search>((event, emit) {
-      var _itemsQuery = DatabaseService().getItemsNameQuery(event.searhPhrase);
-      var newState = state.copyWith(itemsQuery: _itemsQuery);
+      var newState = state.copyWith(itemsStream: itemsStream);
       emit.call(newState);
     });
   }

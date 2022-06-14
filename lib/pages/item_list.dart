@@ -12,8 +12,15 @@ import '../models/item.dart';
 import '../routes/router.gr.dart';
 import '../widgets/item_card.dart';
 
-class ItemListPage extends StatelessWidget {
+class ItemListPage extends StatefulWidget {
   const ItemListPage({Key? key}) : super(key: key);
+
+  @override
+  State<ItemListPage> createState() => _ItemListPageState();
+}
+
+class _ItemListPageState extends State<ItemListPage> {
+  String searchText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +35,18 @@ class ItemListPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Flexible(
-                  child: TextField(
-                    onChanged: (text) {
-                      context
-                          .read<ItemListBloc>()
-                          .add(ItemListEvent.search(text));
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Search',
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      onChanged: (text) {
+                        setState(() {
+                          searchText = text;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Search',
+                      ),
                     ),
                   ),
                 ),
@@ -58,15 +68,20 @@ class ItemListPage extends StatelessWidget {
                     return Text('snapshot.data == null');
                   }
 
-                  return snapshot.connectionState == ConnectionState.waiting
-                      ? Text(snapshot.connectionState.name)
-                      : ListView.builder(
-                          itemCount: snapshot.data!.docs.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ItemCard(
-                                item: snapshot.data!.docs[index].data());
-                          },
-                        );
+                  var itemsWhere = snapshot.data!.docs
+                      .where((element) => element
+                          .data()
+                          .name
+                          .toLowerCase()
+                          .contains(searchText))
+                      .toList();
+
+                  return ListView.builder(
+                    itemCount: itemsWhere.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ItemCard(item: itemsWhere[index].data());
+                    },
+                  );
                 },
               ),
             ),
