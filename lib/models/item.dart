@@ -13,7 +13,7 @@ class Item with _$Item {
     required String name,
     required String description,
     @Default([]) List<String> recipeOfReferencesList,
-    @Default('') String documentPath,
+    @Default('') String documentId,
   }) = _Item;
 
   factory Item.fromJson(Map<String, Object?> json) => _$ItemFromJson(json);
@@ -21,5 +21,5 @@ class Item with _$Item {
   factory Item.fromDocumentSnapshot(
           DocumentSnapshot<Map<String, dynamic>> snapshot) =>
       Item.fromJson(snapshot.data()!)
-          .copyWith(documentPath: snapshot.reference.path);
+          .copyWith(documentId: snapshot.reference.id);
 }

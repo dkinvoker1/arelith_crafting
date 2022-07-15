@@ -21,8 +21,10 @@ class _itemImageState extends State<ItemImage> {
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: () {
+          // context.router
+          //     .push(RecipeRoute(rootItemDocumentId: widget.item.documentId));
           context.router
-              .push(RecipeRoute(rootItemDocumentPath: widget.item.documentPath));
+              .push(AddEditItemRoute(editedItemDocumentId: widget.item.documentId));
         },
         child: Tooltip(
           message: widget.item.name,

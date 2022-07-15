@@ -4,6 +4,5 @@ part of 'recipe_bloc.dart';
 class RecipeState with _$RecipeState {
   factory RecipeState({
     @Default(null) Recipe? recipe,
-    @Default(<Offset>[]) List<Offset> points,
   }) = _RecipeState;
 }

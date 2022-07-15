@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages, overridden_fields
 
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +12,9 @@ import '../widgets/item_image.dart';
 class RecipePage extends StatefulWidget {
   const RecipePage(
       {Key? key,
-      @PathParam('rootItemDocumentPath') required this.rootItemDocumentPath})
+      @PathParam('rootItemDocumentId') required this.rootItemDocumentId})
       : super(key: key);
-  final String rootItemDocumentPath;
+  final String rootItemDocumentId;
 
   @override
   _RecipePageState createState() => _RecipePageState();
@@ -25,11 +25,11 @@ class _RecipePageState extends State<RecipePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          RecipeBloc()..add(RecipeEvent.search(widget.rootItemDocumentPath)),
+          RecipeBloc()..add(RecipeEvent.search(widget.rootItemDocumentId)),
       child: BlocBuilder<RecipeBloc, RecipeState>(
         builder: (context, state) {
           if (state.recipe == null) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
 
           return RecipeWidget(recipe: state.recipe!);
@@ -46,7 +46,8 @@ class InheritedRecipe extends InheritedWidget {
       required this.changeOffset,
       required this.boxOffset,
       required this.changeBoxOffset,
-      required this.child})
+      required this.child
+      })
       : super(key: key, child: child);
 
   final Offset offset;
@@ -55,6 +56,7 @@ class InheritedRecipe extends InheritedWidget {
   final Offset boxOffset;
   final Function changeBoxOffset;
 
+  @override
   final Widget child;
 
   static InheritedRecipe? of(BuildContext context) {

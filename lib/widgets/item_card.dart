@@ -11,8 +11,6 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _baseSize = 40;
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(

@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:arelith_crafting/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

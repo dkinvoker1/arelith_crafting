@@ -1,6 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:developer';
+// ignore_for_file: prefer_const_constructors, depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

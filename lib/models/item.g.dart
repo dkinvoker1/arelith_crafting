@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: non_constant_identifier_names
+
 part of 'item.dart';
 
 // **************************************************************************
@@ -14,7 +16,7 @@ _$_Item _$$_ItemFromJson(Map json) => _$_Item(
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      documentPath: json['documentPath'] as String? ?? '',
+      documentId: json['documentId'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
@@ -22,5 +24,5 @@ Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'recipeOfReferencesList': instance.recipeOfReferencesList,
-      'documentPath': instance.documentPath,
+      'documentId': instance.documentId,
     };

@@ -1,8 +1,7 @@
-import 'dart:developer';
+// ignore_for_file: depend_on_referenced_packages
 
 import 'package:arelith_crafting/models/item.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../models/recipe.dart';
@@ -18,12 +17,6 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       var recipe = await getRecipe(event.rootItemDocumentPath);
 
       emit.call(state.copyWith(recipe: recipe));
-    });
-
-    on<_AddPoint>((event, emit) {
-      List<Offset> list = state.points.toList();
-      list.add(event.offset);
-      emit.call(state.copyWith(points: list));
     });
   }
 
@@ -51,7 +44,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     for (var element in componentsSnapshot.docs) {
       var item = element.data();
       var recipe = Recipe(item: item);
-      recipe = recipe.copyWith(components: await getItemComponents(item.documentPath));
+      recipe = recipe.copyWith(components: await getItemComponents(item.documentId));
       componentList.add(recipe);
     }
 

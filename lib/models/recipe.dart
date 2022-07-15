@@ -1,6 +1,5 @@
 import 'package:arelith_crafting/models/item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 part 'recipe.freezed.dart';
 
@@ -9,7 +8,5 @@ class Recipe with _$Recipe {
    factory Recipe({
     required Item item,
     @Default([]) List<Recipe> components,
-    // required Future<DocumentSnapshot<Item>> item,
-    // required Future<QuerySnapshot<Item>> components,
   }) = _Recipe;
 }
