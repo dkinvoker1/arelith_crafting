@@ -15,10 +15,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$AddItemEvent {
+mixin _$AddEditItemEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemId) load,
+    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function() save,
@@ -27,6 +28,7 @@ mixin _$AddItemEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -35,6 +37,7 @@ mixin _$AddItemEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -44,6 +47,7 @@ mixin _$AddItemEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_Save value) save,
@@ -52,6 +56,7 @@ mixin _$AddItemEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -60,6 +65,7 @@ mixin _$AddItemEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -69,15 +75,16 @@ mixin _$AddItemEvent {
 }
 
 /// @nodoc
-abstract class $AddItemEventCopyWith<$Res> {
-  factory $AddItemEventCopyWith(
+abstract class $AddEditItemEventCopyWith<$Res> {
+  factory $AddEditItemEventCopyWith(
           AddEditItemEvent value, $Res Function(AddEditItemEvent) then) =
-      _$AddItemEventCopyWithImpl<$Res>;
+      _$AddEditItemEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AddItemEventCopyWithImpl<$Res> implements $AddItemEventCopyWith<$Res> {
-  _$AddItemEventCopyWithImpl(this._value, this._then);
+class _$AddEditItemEventCopyWithImpl<$Res>
+    implements $AddEditItemEventCopyWith<$Res> {
+  _$AddEditItemEventCopyWithImpl(this._value, this._then);
 
   final AddEditItemEvent _value;
   // ignore: unused_field
@@ -92,7 +99,7 @@ abstract class _$$_LoadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadCopyWithImpl<$Res> extends _$AddItemEventCopyWithImpl<$Res>
+class __$$_LoadCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
     implements _$$_LoadCopyWith<$Res> {
   __$$_LoadCopyWithImpl(_$_Load _value, $Res Function(_$_Load) _then)
       : super(_value, (v) => _then(v as _$_Load));
@@ -123,7 +130,7 @@ class _$_Load implements _Load {
 
   @override
   String toString() {
-    return 'AddItemEvent.load(itemId: $itemId)';
+    return 'AddEditItemEvent.load(itemId: $itemId)';
   }
 
   @override
@@ -147,6 +154,7 @@ class _$_Load implements _Load {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemId) load,
+    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function() save,
@@ -158,6 +166,7 @@ class _$_Load implements _Load {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -169,6 +178,7 @@ class _$_Load implements _Load {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -184,6 +194,7 @@ class _$_Load implements _Load {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_Save value) save,
@@ -195,6 +206,7 @@ class _$_Load implements _Load {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -206,6 +218,7 @@ class _$_Load implements _Load {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -227,6 +240,126 @@ abstract class _Load implements AddEditItemEvent {
 }
 
 /// @nodoc
+abstract class _$$_LoadedCopyWith<$Res> {
+  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
+      __$$_LoadedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LoadedCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
+    implements _$$_LoadedCopyWith<$Res> {
+  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+      : super(_value, (v) => _then(v as _$_Loaded));
+
+  @override
+  _$_Loaded get _value => super._value as _$_Loaded;
+}
+
+/// @nodoc
+
+class _$_Loaded implements _Loaded {
+  const _$_Loaded();
+
+  @override
+  String toString() {
+    return 'AddEditItemEvent.loaded()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Loaded);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String itemId) load,
+    required TResult Function() loaded,
+    required TResult Function(String key, dynamic value) update,
+    required TResult Function(PlatformFile file) setImage,
+    required TResult Function() save,
+  }) {
+    return loaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String itemId)? load,
+    TResult Function()? loaded,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function()? save,
+  }) {
+    return loaded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String itemId)? load,
+    TResult Function()? loaded,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Update value) update,
+    required TResult Function(_SetImage value) setImage,
+    required TResult Function(_Save value) save,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Update value)? update,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_Save value)? save,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Update value)? update,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_Save value)? save,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loaded implements AddEditItemEvent {
+  const factory _Loaded() = _$_Loaded;
+}
+
+/// @nodoc
 abstract class _$$_UpdateCopyWith<$Res> {
   factory _$$_UpdateCopyWith(_$_Update value, $Res Function(_$_Update) then) =
       __$$_UpdateCopyWithImpl<$Res>;
@@ -234,7 +367,7 @@ abstract class _$$_UpdateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res> extends _$AddItemEventCopyWithImpl<$Res>
+class __$$_UpdateCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
     implements _$$_UpdateCopyWith<$Res> {
   __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
       : super(_value, (v) => _then(v as _$_Update));
@@ -272,7 +405,7 @@ class _$_Update implements _Update {
 
   @override
   String toString() {
-    return 'AddItemEvent.update(key: $key, value: $value)';
+    return 'AddEditItemEvent.update(key: $key, value: $value)';
   }
 
   @override
@@ -299,6 +432,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemId) load,
+    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function() save,
@@ -310,6 +444,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -321,6 +456,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -336,6 +472,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_Save value) save,
@@ -347,6 +484,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -358,6 +496,7 @@ class _$_Update implements _Update {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -389,7 +528,8 @@ abstract class _$$_SetImageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SetImageCopyWithImpl<$Res> extends _$AddItemEventCopyWithImpl<$Res>
+class __$$_SetImageCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res>
     implements _$$_SetImageCopyWith<$Res> {
   __$$_SetImageCopyWithImpl(
       _$_SetImage _value, $Res Function(_$_SetImage) _then)
@@ -421,7 +561,7 @@ class _$_SetImage implements _SetImage {
 
   @override
   String toString() {
-    return 'AddItemEvent.setImage(file: $file)';
+    return 'AddEditItemEvent.setImage(file: $file)';
   }
 
   @override
@@ -445,6 +585,7 @@ class _$_SetImage implements _SetImage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemId) load,
+    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function() save,
@@ -456,6 +597,7 @@ class _$_SetImage implements _SetImage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -467,6 +609,7 @@ class _$_SetImage implements _SetImage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -482,6 +625,7 @@ class _$_SetImage implements _SetImage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_Save value) save,
@@ -493,6 +637,7 @@ class _$_SetImage implements _SetImage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -504,6 +649,7 @@ class _$_SetImage implements _SetImage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -532,7 +678,7 @@ abstract class _$$_SaveCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SaveCopyWithImpl<$Res> extends _$AddItemEventCopyWithImpl<$Res>
+class __$$_SaveCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
     implements _$$_SaveCopyWith<$Res> {
   __$$_SaveCopyWithImpl(_$_Save _value, $Res Function(_$_Save) _then)
       : super(_value, (v) => _then(v as _$_Save));
@@ -548,7 +694,7 @@ class _$_Save implements _Save {
 
   @override
   String toString() {
-    return 'AddItemEvent.save()';
+    return 'AddEditItemEvent.save()';
   }
 
   @override
@@ -564,6 +710,7 @@ class _$_Save implements _Save {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String itemId) load,
+    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function() save,
@@ -575,6 +722,7 @@ class _$_Save implements _Save {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -586,6 +734,7 @@ class _$_Save implements _Save {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String itemId)? load,
+    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
     TResult Function()? save,
@@ -601,6 +750,7 @@ class _$_Save implements _Save {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_Save value) save,
@@ -612,6 +762,7 @@ class _$_Save implements _Save {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -623,6 +774,7 @@ class _$_Save implements _Save {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_Save value)? save,
@@ -640,27 +792,27 @@ abstract class _Save implements AddEditItemEvent {
 }
 
 /// @nodoc
-mixin _$AddItemState {
-// @Default(false) bool isEdit,
+mixin _$AddEditItemState {
   bool get isUploaded => throw _privateConstructorUsedError;
+  bool get loadPrevious => throw _privateConstructorUsedError;
   Exception? get exception => throw _privateConstructorUsedError;
-  Item get item =>
-      throw _privateConstructorUsedError; // @Default(null) PlatformFile? file,
+  Item get item => throw _privateConstructorUsedError;
   String get fileName => throw _privateConstructorUsedError;
   Uint8List? get fileBytes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AddItemStateCopyWith<AddEditItemState> get copyWith =>
+  $AddEditItemStateCopyWith<AddEditItemState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AddItemStateCopyWith<$Res> {
-  factory $AddItemStateCopyWith(
+abstract class $AddEditItemStateCopyWith<$Res> {
+  factory $AddEditItemStateCopyWith(
           AddEditItemState value, $Res Function(AddEditItemState) then) =
-      _$AddItemStateCopyWithImpl<$Res>;
+      _$AddEditItemStateCopyWithImpl<$Res>;
   $Res call(
       {bool isUploaded,
+      bool loadPrevious,
       Exception? exception,
       Item item,
       String fileName,
@@ -670,8 +822,9 @@ abstract class $AddItemStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddItemStateCopyWithImpl<$Res> implements $AddItemStateCopyWith<$Res> {
-  _$AddItemStateCopyWithImpl(this._value, this._then);
+class _$AddEditItemStateCopyWithImpl<$Res>
+    implements $AddEditItemStateCopyWith<$Res> {
+  _$AddEditItemStateCopyWithImpl(this._value, this._then);
 
   final AddEditItemState _value;
   // ignore: unused_field
@@ -680,6 +833,7 @@ class _$AddItemStateCopyWithImpl<$Res> implements $AddItemStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isUploaded = freezed,
+    Object? loadPrevious = freezed,
     Object? exception = freezed,
     Object? item = freezed,
     Object? fileName = freezed,
@@ -689,6 +843,10 @@ class _$AddItemStateCopyWithImpl<$Res> implements $AddItemStateCopyWith<$Res> {
       isUploaded: isUploaded == freezed
           ? _value.isUploaded
           : isUploaded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadPrevious: loadPrevious == freezed
+          ? _value.loadPrevious
+          : loadPrevious // ignore: cast_nullable_to_non_nullable
               as bool,
       exception: exception == freezed
           ? _value.exception
@@ -719,13 +877,14 @@ class _$AddItemStateCopyWithImpl<$Res> implements $AddItemStateCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$$_AddItemStateCopyWith<$Res>
-    implements $AddItemStateCopyWith<$Res> {
+    implements $AddEditItemStateCopyWith<$Res> {
   factory _$$_AddItemStateCopyWith(
           _$_AddItemState value, $Res Function(_$_AddItemState) then) =
       __$$_AddItemStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isUploaded,
+      bool loadPrevious,
       Exception? exception,
       Item item,
       String fileName,
@@ -737,7 +896,7 @@ abstract class _$$_AddItemStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_AddItemStateCopyWithImpl<$Res>
-    extends _$AddItemStateCopyWithImpl<$Res>
+    extends _$AddEditItemStateCopyWithImpl<$Res>
     implements _$$_AddItemStateCopyWith<$Res> {
   __$$_AddItemStateCopyWithImpl(
       _$_AddItemState _value, $Res Function(_$_AddItemState) _then)
@@ -749,6 +908,7 @@ class __$$_AddItemStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isUploaded = freezed,
+    Object? loadPrevious = freezed,
     Object? exception = freezed,
     Object? item = freezed,
     Object? fileName = freezed,
@@ -758,6 +918,10 @@ class __$$_AddItemStateCopyWithImpl<$Res>
       isUploaded: isUploaded == freezed
           ? _value.isUploaded
           : isUploaded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadPrevious: loadPrevious == freezed
+          ? _value.loadPrevious
+          : loadPrevious // ignore: cast_nullable_to_non_nullable
               as bool,
       exception: exception == freezed
           ? _value.exception
@@ -784,22 +948,24 @@ class __$$_AddItemStateCopyWithImpl<$Res>
 class _$_AddItemState implements _AddItemState {
   const _$_AddItemState(
       {this.isUploaded = false,
+      this.loadPrevious = false,
       this.exception = null,
       this.item = const Item(imageUrl: "", name: "", description: ""),
       this.fileName = '',
       this.fileBytes = null});
 
-// @Default(false) bool isEdit,
   @override
   @JsonKey()
   final bool isUploaded;
+  @override
+  @JsonKey()
+  final bool loadPrevious;
   @override
   @JsonKey()
   final Exception? exception;
   @override
   @JsonKey()
   final Item item;
-// @Default(null) PlatformFile? file,
   @override
   @JsonKey()
   final String fileName;
@@ -809,7 +975,7 @@ class _$_AddItemState implements _AddItemState {
 
   @override
   String toString() {
-    return 'AddItemState(isUploaded: $isUploaded, exception: $exception, item: $item, fileName: $fileName, fileBytes: $fileBytes)';
+    return 'AddEditItemState(isUploaded: $isUploaded, loadPrevious: $loadPrevious, exception: $exception, item: $item, fileName: $fileName, fileBytes: $fileBytes)';
   }
 
   @override
@@ -819,6 +985,8 @@ class _$_AddItemState implements _AddItemState {
             other is _$_AddItemState &&
             const DeepCollectionEquality()
                 .equals(other.isUploaded, isUploaded) &&
+            const DeepCollectionEquality()
+                .equals(other.loadPrevious, loadPrevious) &&
             const DeepCollectionEquality().equals(other.exception, exception) &&
             const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality().equals(other.fileName, fileName) &&
@@ -829,6 +997,7 @@ class _$_AddItemState implements _AddItemState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isUploaded),
+      const DeepCollectionEquality().hash(loadPrevious),
       const DeepCollectionEquality().hash(exception),
       const DeepCollectionEquality().hash(item),
       const DeepCollectionEquality().hash(fileName),
@@ -843,18 +1012,21 @@ class _$_AddItemState implements _AddItemState {
 abstract class _AddItemState implements AddEditItemState {
   const factory _AddItemState(
       {final bool isUploaded,
+      final bool loadPrevious,
       final Exception? exception,
       final Item item,
       final String fileName,
       final Uint8List? fileBytes}) = _$_AddItemState;
 
-  @override // @Default(false) bool isEdit,
+  @override
   bool get isUploaded => throw _privateConstructorUsedError;
+  @override
+  bool get loadPrevious => throw _privateConstructorUsedError;
   @override
   Exception? get exception => throw _privateConstructorUsedError;
   @override
   Item get item => throw _privateConstructorUsedError;
-  @override // @Default(null) PlatformFile? file,
+  @override
   String get fileName => throw _privateConstructorUsedError;
   @override
   Uint8List? get fileBytes => throw _privateConstructorUsedError;

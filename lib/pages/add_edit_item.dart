@@ -74,8 +74,12 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
             }
           },
           builder: (context, state) {
-            nameController.text = state.item.name;
-            descriptionController.text = state.item.description;
+            if (state.loadPrevious) {
+              nameController.text = state.item.name;
+              descriptionController.text = state.item.description;
+
+              context.read<AddEditItemBloc>().add(AddEditItemEvent.loaded());
+            }
 
             return Form(
               key: _formKey,
@@ -90,7 +94,6 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                           name: 'Description',
                           controller: descriptionController),
 //============================================= Image upload ================================================
-                      // ItemFileField(name: state.item.imageUrl),
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: FormField<Uint8List>(
@@ -119,8 +122,8 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                                             context.read<AddEditItemBloc>().add(
                                                 AddEditItemEvent.setImage(
                                                     picked.files.first));
-                                            formFieldState
-                                                .setValue(picked.files.first.bytes);
+                                            formFieldState.setValue(
+                                                picked.files.first.bytes);
                                           }
                                         },
                                         child: Row(
@@ -208,9 +211,8 @@ class _ItemTextFieldState extends State<ItemTextField> {
       child: TextFormField(
         controller: widget.controller,
         onSaved: (newValue) {
-          context
-              .read<AddEditItemBloc>()
-              .add(AddEditItemEvent.update(widget.name.toLowerCase(), newValue));
+          context.read<AddEditItemBloc>().add(
+              AddEditItemEvent.update(widget.name.toLowerCase(), newValue));
         },
         validator: (value) {
           if (value == null || value.isEmpty) {

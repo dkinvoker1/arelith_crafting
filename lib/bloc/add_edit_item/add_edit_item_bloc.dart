@@ -11,7 +11,7 @@ import '../../models/item.dart';
 
 part 'add_edit_item_event.dart';
 part 'add_edit_item_state.dart';
-part 'add_item_bloc.freezed.dart';
+part 'add_edit_item_bloc.freezed.dart';
 
 class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
   AddEditItemBloc() : super(_AddItemState()) {
@@ -27,10 +27,17 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
         var newState = state.copyWith(
             item: itemSnapshot.data()!,
             fileName: imageName,
-            fileBytes: imageBytes);
+            fileBytes: imageBytes,
+            loadPrevious: true);
 
         emit.call(newState);
       }
+    });
+
+    on<_Loaded>((event, emit) async {
+      var newState = state.copyWith(loadPrevious: false);
+
+      emit.call(newState);
     });
 
     on<_Update>((event, emit) {
