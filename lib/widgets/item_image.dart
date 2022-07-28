@@ -15,23 +15,21 @@ class ItemImage extends StatefulWidget {
 }
 
 class _itemImageState extends State<ItemImage> {
-  double baseSize = 40;
+  final double _baseSize = 40;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: () {
-          // context.router
-          //     .push(RecipeRoute(rootItemDocumentId: widget.item.documentId));
           context.router
-              .push(AddEditItemRoute(editedItemDocumentId: widget.item.documentId));
+              .push(RecipeRoute(rootItemDocumentId: widget.item.documentId));
         },
         child: Tooltip(
           message: widget.item.name,
           preferBelow: false,
           child: Container(
-              width: baseSize,
-              height: baseSize,
+              width: _baseSize * widget.item.width,
+              height: _baseSize * widget.item.height,
               child: Image.network(widget.item.imageUrl)),
         ));
   }

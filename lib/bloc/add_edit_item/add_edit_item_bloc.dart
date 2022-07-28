@@ -28,16 +28,10 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
             item: itemSnapshot.data()!,
             fileName: imageName,
             fileBytes: imageBytes,
-            loadPrevious: true);
+            loadPrevious: false);
 
         emit.call(newState);
       }
-    });
-
-    on<_Loaded>((event, emit) async {
-      var newState = state.copyWith(loadPrevious: false);
-
-      emit.call(newState);
     });
 
     on<_Update>((event, emit) {

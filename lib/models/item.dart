@@ -12,6 +12,8 @@ class Item with _$Item {
     required String imageUrl,
     required String name,
     required String description,
+    required int height,
+    required int width,
     @Default([]) List<String> recipeOfReferencesList,
     @Default('') String documentId,
   }) = _Item;

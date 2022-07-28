@@ -22,7 +22,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
 
   Future<Recipe> getRecipe(String rootItemPath) async {
     Recipe recipe =
-        Recipe(item: const Item(imageUrl: '', name: '', description: ''));
+        Recipe(item: const Item(imageUrl: '', name: '', description: '', width: 1, height: 1));
 
     var itemSnapshot = await DatabaseService().getItemById(rootItemPath);
     if (!itemSnapshot.exists) {

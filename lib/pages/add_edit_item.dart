@@ -25,17 +25,7 @@ class AddEditItemPage extends StatefulWidget {
 class _AddEditItemPageState extends State<AddEditItemPage> {
   final _formKey = GlobalKey<FormState>();
 
-  final nameController = TextEditingController();
-  final descriptionController = TextEditingController();
-
   final double _baseSize = 40;
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    descriptionController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +64,8 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
             }
           },
           builder: (context, state) {
-            if (state.loadPrevious) {
-              nameController.text = state.item.name;
-              descriptionController.text = state.item.description;
-
-              context.read<AddEditItemBloc>().add(AddEditItemEvent.loaded());
+            if (widget.editedItemDocumentId != null && state.loadPrevious) {
+              return Center(child: CircularProgressIndicator());
             }
 
             return Form(
@@ -89,10 +76,23 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                   Flexible(
                     child: Column(children: [
 //============================================= Text boxes ================================================
-                      ItemTextField(name: 'Name', controller: nameController),
                       ItemTextField(
-                          name: 'Description',
-                          controller: descriptionController),
+                        name: 'Name',
+                        initialValue: state.item.name,
+                      ),
+                      ItemTextField(
+                        name: 'Description',
+                        initialValue: state.item.description,
+                      ),
+//============================================= ItemDropdown ================================================
+                      ItemDropdown(
+                        name: 'Width',
+                        initialValue: state.item.width,
+                      ),
+                      ItemDropdown(
+                        name: 'Height',
+                        initialValue: state.item.height,
+                      ),
 //============================================= Image upload ================================================
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -135,14 +135,23 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                                           ],
                                         )),
                                     state.fileBytes != null
-                                        ? Image.memory(
-                                            state.fileBytes!,
-                                            width: _baseSize,
-                                            height: _baseSize,
+                                        ? Container(
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.grey)),
+                                            child: Image.memory(
+                                              fit: BoxFit.fill,
+                                              state.fileBytes!,
+                                              width:
+                                                  _baseSize * state.item.width,
+                                              height:
+                                                  _baseSize * state.item.height,
+                                            ),
                                           )
                                         : Container(
-                                            width: _baseSize,
-                                            height: _baseSize,
+                                            width: _baseSize * state.item.width,
+                                            height:
+                                                _baseSize * state.item.height,
                                             color: Colors.white,
                                           ),
                                   ],
@@ -187,17 +196,19 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
   }
 }
 
-//=========================== Text field ================================
+//=======================================================================
+//=========================== ItemTextField =============================
+//=======================================================================
 
 class ItemTextField extends StatefulWidget {
   ItemTextField({
     Key? key,
     required this.name,
-    required this.controller,
+    this.initialValue,
   }) : super(key: key);
 
   final String name;
-  final TextEditingController controller;
+  final String? initialValue;
 
   @override
   State<ItemTextField> createState() => _ItemTextFieldState();
@@ -209,7 +220,7 @@ class _ItemTextFieldState extends State<ItemTextField> {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: TextFormField(
-        controller: widget.controller,
+        initialValue: widget.initialValue,
         onSaved: (newValue) {
           context.read<AddEditItemBloc>().add(
               AddEditItemEvent.update(widget.name.toLowerCase(), newValue));
@@ -222,8 +233,61 @@ class _ItemTextFieldState extends State<ItemTextField> {
         },
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          hintText: widget.name,
+          labelText: widget.name,
         ),
+      ),
+    );
+  }
+}
+
+//=======================================================================
+//=========================== ItemDropdown ==============================
+//=======================================================================
+
+class ItemDropdown extends StatefulWidget {
+  ItemDropdown({Key? key, required this.name, this.initialValue})
+      : super(key: key);
+
+  final String name;
+  final int? initialValue;
+
+  @override
+  State<ItemDropdown> createState() => _ItemDropdownState();
+}
+
+class _ItemDropdownState extends State<ItemDropdown> {
+  int dropdownValue = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initialValue != null) {
+      dropdownValue = widget.initialValue!;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(6.0),
+      child: DropdownButtonFormField<int>(
+        decoration: InputDecoration(labelText: widget.name),
+        items: <int>[1, 2, 3, 4, 5, 6].map<DropdownMenuItem<int>>((int value) {
+          return DropdownMenuItem<int>(
+            value: value,
+            child: Text(value.toString()),
+          );
+        }).toList(),
+        icon: const Icon(Icons.arrow_downward),
+        elevation: 16,
+        value: dropdownValue,
+        onChanged: (newValue) {
+          setState(() {
+            dropdownValue = newValue!;
+          });
+          context.read<AddEditItemBloc>().add(
+              AddEditItemEvent.update(widget.name.toLowerCase(), newValue));
+        },
       ),
     );
   }

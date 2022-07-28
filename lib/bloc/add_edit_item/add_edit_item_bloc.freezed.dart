@@ -945,14 +945,16 @@ class __$$_AddItemStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddItemState implements _AddItemState {
+class _$_AddItemState extends _AddItemState {
   const _$_AddItemState(
       {this.isUploaded = false,
-      this.loadPrevious = false,
+      this.loadPrevious = true,
       this.exception = null,
-      this.item = const Item(imageUrl: "", name: "", description: ""),
+      this.item = const Item(
+          imageUrl: "", name: "", description: "", width: 1, height: 1),
       this.fileName = '',
-      this.fileBytes = null});
+      this.fileBytes = null})
+      : super._();
 
   @override
   @JsonKey()
@@ -1009,7 +1011,7 @@ class _$_AddItemState implements _AddItemState {
       __$$_AddItemStateCopyWithImpl<_$_AddItemState>(this, _$identity);
 }
 
-abstract class _AddItemState implements AddEditItemState {
+abstract class _AddItemState extends AddEditItemState {
   const factory _AddItemState(
       {final bool isUploaded,
       final bool loadPrevious,
@@ -1017,6 +1019,7 @@ abstract class _AddItemState implements AddEditItemState {
       final Item item,
       final String fileName,
       final Uint8List? fileBytes}) = _$_AddItemState;
+  const _AddItemState._() : super._();
 
   @override
   bool get isUploaded => throw _privateConstructorUsedError;

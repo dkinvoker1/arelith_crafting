@@ -23,6 +23,8 @@ mixin _$Item {
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+  int get width => throw _privateConstructorUsedError;
   List<String> get recipeOfReferencesList => throw _privateConstructorUsedError;
   String get documentId => throw _privateConstructorUsedError;
 
@@ -39,6 +41,8 @@ abstract class $ItemCopyWith<$Res> {
       {String imageUrl,
       String name,
       String description,
+      int height,
+      int width,
       List<String> recipeOfReferencesList,
       String documentId});
 }
@@ -56,6 +60,8 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? height = freezed,
+    Object? width = freezed,
     Object? recipeOfReferencesList = freezed,
     Object? documentId = freezed,
   }) {
@@ -72,6 +78,14 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+      width: width == freezed
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int,
       recipeOfReferencesList: recipeOfReferencesList == freezed
           ? _value.recipeOfReferencesList
           : recipeOfReferencesList // ignore: cast_nullable_to_non_nullable
@@ -93,6 +107,8 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       {String imageUrl,
       String name,
       String description,
+      int height,
+      int width,
       List<String> recipeOfReferencesList,
       String documentId});
 }
@@ -111,6 +127,8 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? height = freezed,
+    Object? width = freezed,
     Object? recipeOfReferencesList = freezed,
     Object? documentId = freezed,
   }) {
@@ -127,6 +145,14 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+      width: width == freezed
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int,
       recipeOfReferencesList: recipeOfReferencesList == freezed
           ? _value._recipeOfReferencesList
           : recipeOfReferencesList // ignore: cast_nullable_to_non_nullable
@@ -146,6 +172,8 @@ class _$_Item implements _Item {
       {required this.imageUrl,
       required this.name,
       required this.description,
+      required this.height,
+      required this.width,
       final List<String> recipeOfReferencesList = const [],
       this.documentId = ''})
       : _recipeOfReferencesList = recipeOfReferencesList;
@@ -158,6 +186,10 @@ class _$_Item implements _Item {
   final String name;
   @override
   final String description;
+  @override
+  final int height;
+  @override
+  final int width;
   final List<String> _recipeOfReferencesList;
   @override
   @JsonKey()
@@ -172,7 +204,7 @@ class _$_Item implements _Item {
 
   @override
   String toString() {
-    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, recipeOfReferencesList: $recipeOfReferencesList, documentId: $documentId)';
+    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, height: $height, width: $width, recipeOfReferencesList: $recipeOfReferencesList, documentId: $documentId)';
   }
 
   @override
@@ -184,6 +216,8 @@ class _$_Item implements _Item {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.height, height) &&
+            const DeepCollectionEquality().equals(other.width, width) &&
             const DeepCollectionEquality().equals(
                 other._recipeOfReferencesList, _recipeOfReferencesList) &&
             const DeepCollectionEquality()
@@ -197,6 +231,8 @@ class _$_Item implements _Item {
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(height),
+      const DeepCollectionEquality().hash(width),
       const DeepCollectionEquality().hash(_recipeOfReferencesList),
       const DeepCollectionEquality().hash(documentId));
 
@@ -216,6 +252,8 @@ abstract class _Item implements Item {
       {required final String imageUrl,
       required final String name,
       required final String description,
+      required final int height,
+      required final int width,
       final List<String> recipeOfReferencesList,
       final String documentId}) = _$_Item;
 
@@ -227,6 +265,10 @@ abstract class _Item implements Item {
   String get name => throw _privateConstructorUsedError;
   @override
   String get description => throw _privateConstructorUsedError;
+  @override
+  int get height => throw _privateConstructorUsedError;
+  @override
+  int get width => throw _privateConstructorUsedError;
   @override
   List<String> get recipeOfReferencesList => throw _privateConstructorUsedError;
   @override
