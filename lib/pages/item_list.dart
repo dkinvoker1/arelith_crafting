@@ -74,12 +74,17 @@ class _ItemListPageState extends State<ItemListPage> {
                           .contains(searchText))
                       .toList();
 
-                  return ListView.builder(
-                    itemCount: itemsWhere.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ItemCard(item: itemsWhere[index].data());
-                    },
-                  );
+                  return GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 350,
+                              childAspectRatio: 1,
+                              crossAxisSpacing: 2,
+                              mainAxisSpacing: 2),
+                      itemCount: itemsWhere.length,
+                      itemBuilder: (context, index) {
+                        return ItemCard(item: itemsWhere[index].data());
+                      });
                 },
               ),
             ),

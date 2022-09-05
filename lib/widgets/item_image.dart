@@ -27,10 +27,12 @@ class _itemImageState extends State<ItemImage> {
         child: Tooltip(
           message: widget.item.name,
           preferBelow: false,
-          child: Container(
-              width: _baseSize * widget.item.width,
-              height: _baseSize * widget.item.height,
-              child: Image.network(widget.item.imageUrl)),
+          child: Image.network(
+            widget.item.imageUrl,
+            width: _baseSize * widget.item.width,
+            height: _baseSize * widget.item.height,
+            fit: BoxFit.fill,
+          ),
         ));
   }
 }

@@ -66,6 +66,12 @@ class DatabaseService {
     }
   }
 
+  Future<void> deleteItem(String itemId) async {
+    var itemPath = 'items/$itemId';
+
+    await FirebaseFirestore.instance.doc(itemPath).delete();
+  }
+
   Future<Uint8List?> getImageBytesByUrl(String imageUrl) async {
     Uint8List? imageBytes;
 
