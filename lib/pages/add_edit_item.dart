@@ -180,10 +180,12 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                         ),
                       ),
 //============================================= Components ================================================
-                      Expanded(
-                        child: ComponentsField(
-                            componentItems: state.componentItems!),
-                      ),
+                      state.componentItems != null
+                          ? Expanded(
+                              child: ComponentsField(
+                                  componentItems: state.componentItems!),
+                            )
+                          : Container(),
 //============================================= Save button ================================================
                       ElevatedButton(
                         onPressed: () {
