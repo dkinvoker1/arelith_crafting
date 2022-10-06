@@ -56,8 +56,12 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
           for (var component in item.components) {
             var index = componentItems.indexWhere(
                 (element) => element.item.documentId == component.documentId);
-            componentItems.replaceRange(index, index + 1,
-                [componentItems[index].copyWith(quantity: component.quantity)]);
+
+            if (index >= 0) {
+              componentItems.replaceRange(index, index + 1, [
+                componentItems[index].copyWith(quantity: component.quantity)
+              ]);
+            }
           }
         }
 
