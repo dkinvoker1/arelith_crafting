@@ -96,7 +96,7 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
           : item // ignore: cast_nullable_to_non_nullable
               as Item,
       components: components == freezed
-          ? _value._components
+          ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<Recipe>,
     ));
@@ -106,18 +106,13 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Recipe implements _Recipe {
-  _$_Recipe({required this.item, final List<Recipe> components = const []})
-      : _components = components;
+  _$_Recipe({required this.item, this.components = const []});
 
   @override
   final Item item;
-  final List<Recipe> _components;
   @override
   @JsonKey()
-  List<Recipe> get components {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_components);
-  }
+  final List<Recipe> components;
 
   @override
   String toString() {
@@ -131,14 +126,14 @@ class _$_Recipe implements _Recipe {
             other is _$_Recipe &&
             const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality()
-                .equals(other._components, _components));
+                .equals(other.components, components));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(_components));
+      const DeepCollectionEquality().hash(components));
 
   @JsonKey(ignore: true)
   @override

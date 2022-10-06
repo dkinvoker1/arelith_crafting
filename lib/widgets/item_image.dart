@@ -7,8 +7,10 @@ import '../models/item.dart';
 import '../routes/router.gr.dart';
 
 class ItemImage extends StatefulWidget {
-  const ItemImage({Key? key, required this.item}) : super(key: key);
+  const ItemImage({Key? key, required this.item, this.scale = 1})
+      : super(key: key);
   final Item item;
+  final double scale;
 
   @override
   State<ItemImage> createState() => _itemImageState();
@@ -19,6 +21,8 @@ class _itemImageState extends State<ItemImage> {
 
   @override
   Widget build(BuildContext context) {
+    double size = _baseSize * widget.scale;
+
     return TextButton(
         onPressed: () {
           context.router
@@ -29,8 +33,8 @@ class _itemImageState extends State<ItemImage> {
           preferBelow: false,
           child: Image.network(
             widget.item.imageUrl,
-            width: _baseSize * widget.item.width,
-            height: _baseSize * widget.item.height,
+            width: size * widget.item.width,
+            height: size * widget.item.height,
             fit: BoxFit.fill,
           ),
         ));

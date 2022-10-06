@@ -1,14 +1,17 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages, use_build_context_synchronously, invalid_use_of_protected_member
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages, use_build_context_synchronously, invalid_use_of_protected_member, library_private_types_in_public_api, must_call_super
 
 import 'dart:typed_data';
 
 import 'package:arelith_crafting/bloc/add_edit_item/add_edit_item_bloc.dart';
+import 'package:arelith_crafting/models/component_item.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 
 import '../routes/router.gr.dart';
+import '../widgets/component_card.dart';
+import '../widgets/component_prompt.dart';
 
 class AddEditItemPage extends StatefulWidget {
   AddEditItemPage({
@@ -30,6 +33,9 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
   @override
   Widget build(BuildContext context) {
     var bloc = AddEditItemBloc();
+
+    bloc.add(AddEditItemEvent.initialiseComponents());
+
     if (widget.editedItemDocumentId != null) {
       bloc.add(AddEditItemEvent.load(widget.editedItemDocumentId!));
     }
@@ -173,6 +179,11 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                           },
                         ),
                       ),
+//============================================= Components ================================================
+                      Expanded(
+                        child: ComponentsField(
+                            componentItems: state.componentItems!),
+                      ),
 //============================================= Save button ================================================
                       ElevatedButton(
                         onPressed: () {
@@ -290,5 +301,107 @@ class _ItemDropdownState extends State<ItemDropdown> {
         },
       ),
     );
+  }
+}
+
+//=======================================================================
+//=========================== ComponentsField ==============================
+//=======================================================================
+
+class ComponentsField extends StatefulWidget {
+  const ComponentsField({super.key, required this.componentItems});
+
+  final List<ComponentItem> componentItems;
+
+  @override
+  _ComponentsFieldState createState() => _ComponentsFieldState();
+}
+
+class _ComponentsFieldState extends State<ComponentsField> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: () async {
+          await _showMyDialog(context);
+        },
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              mainAxisExtent: 60,
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 1,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2),
+          itemCount: widget.componentItems.length,
+          itemBuilder: (BuildContext context, int index) {
+            return InkWell(
+              onTap: () {
+                _showMyDialog(context);
+              },
+              child: ComponentPrompt(
+                item: widget.componentItems[index].item,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Future<void> _showMyDialog(BuildContext localContext) async {
+    List<ComponentCard> componentCards = [];
+
+    for (var component in widget.componentItems) {
+      componentCards.add(ComponentCard(component: component));
+    }
+
+    return showDialog<void>(
+      context: localContext,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('AlertDialog Title'),
+          content: SingleChildScrollView(
+              child: Column(
+            children: componentCards,
+          )),
+          actionsAlignment: MainAxisAlignment.spaceEvenly,
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.all(24),
+                  primary: Colors.red),
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                var componentItems =
+                    componentCards.map((e) => e.component).toList();
+                _updateComponents(componentItems);
+                Navigator.of(context).pop();
+              },
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  padding: EdgeInsets.all(24),
+                  primary: Colors.green),
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _updateComponents(List<ComponentItem> componentItems) {
+    context
+        .read<AddEditItemBloc>()
+        .add(AddEditItemEvent.setComponentItems(componentItems));
   }
 }

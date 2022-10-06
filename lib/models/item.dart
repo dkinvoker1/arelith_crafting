@@ -3,10 +3,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'component.dart';
+
 part 'item.freezed.dart';
 part 'item.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class Item with _$Item {
   const factory Item({
     required String imageUrl,
@@ -14,8 +16,8 @@ class Item with _$Item {
     required String description,
     required int height,
     required int width,
-    @Default([]) List<String> recipeOfReferencesList,
     @Default('') String documentId,
+    @Default([]) List<Component> components,
   }) = _Item;
 
   factory Item.fromJson(Map<String, Object?> json) => _$ItemFromJson(json);

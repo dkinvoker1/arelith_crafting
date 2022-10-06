@@ -12,11 +12,12 @@ _$_Item _$$_ItemFromJson(Map json) => _$_Item(
       description: json['description'] as String,
       height: json['height'] as int,
       width: json['width'] as int,
-      recipeOfReferencesList: (json['recipeOfReferencesList'] as List<dynamic>?)
-              ?.map((e) => e as String)
+      documentId: json['documentId'] as String? ?? '',
+      components: (json['components'] as List<dynamic>?)
+              ?.map((e) =>
+                  Component.fromJson(Map<String, Object?>.from(e as Map)))
               .toList() ??
           const [],
-      documentId: json['documentId'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
@@ -25,6 +26,6 @@ Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'description': instance.description,
       'height': instance.height,
       'width': instance.width,
-      'recipeOfReferencesList': instance.recipeOfReferencesList,
       'documentId': instance.documentId,
+      'components': instance.components.map((e) => e.toJson()).toList(),
     };

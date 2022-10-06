@@ -1,6 +1,6 @@
 part of 'add_edit_item_bloc.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class AddEditItemState with _$AddEditItemState {
   const AddEditItemState._();
 
@@ -12,5 +12,6 @@ class AddEditItemState with _$AddEditItemState {
         Item item,
     @Default('') String fileName,
     @Default(null) Uint8List? fileBytes,
+    @Default(null) List<ComponentItem>? componentItems,
   }) = _AddItemState;
 }

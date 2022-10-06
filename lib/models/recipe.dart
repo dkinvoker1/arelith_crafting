@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recipe.freezed.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class Recipe with _$Recipe {
    factory Recipe({
     required Item item,

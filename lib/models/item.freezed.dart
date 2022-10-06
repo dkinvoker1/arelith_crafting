@@ -25,8 +25,8 @@ mixin _$Item {
   String get description => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
   int get width => throw _privateConstructorUsedError;
-  List<String> get recipeOfReferencesList => throw _privateConstructorUsedError;
   String get documentId => throw _privateConstructorUsedError;
+  List<Component> get components => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,8 +43,8 @@ abstract class $ItemCopyWith<$Res> {
       String description,
       int height,
       int width,
-      List<String> recipeOfReferencesList,
-      String documentId});
+      String documentId,
+      List<Component> components});
 }
 
 /// @nodoc
@@ -62,8 +62,8 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object? description = freezed,
     Object? height = freezed,
     Object? width = freezed,
-    Object? recipeOfReferencesList = freezed,
     Object? documentId = freezed,
+    Object? components = freezed,
   }) {
     return _then(_value.copyWith(
       imageUrl: imageUrl == freezed
@@ -86,14 +86,14 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
               as int,
-      recipeOfReferencesList: recipeOfReferencesList == freezed
-          ? _value.recipeOfReferencesList
-          : recipeOfReferencesList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       documentId: documentId == freezed
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
+      components: components == freezed
+          ? _value.components
+          : components // ignore: cast_nullable_to_non_nullable
+              as List<Component>,
     ));
   }
 }
@@ -109,8 +109,8 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       String description,
       int height,
       int width,
-      List<String> recipeOfReferencesList,
-      String documentId});
+      String documentId,
+      List<Component> components});
 }
 
 /// @nodoc
@@ -129,8 +129,8 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? description = freezed,
     Object? height = freezed,
     Object? width = freezed,
-    Object? recipeOfReferencesList = freezed,
     Object? documentId = freezed,
+    Object? components = freezed,
   }) {
     return _then(_$_Item(
       imageUrl: imageUrl == freezed
@@ -153,14 +153,14 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
               as int,
-      recipeOfReferencesList: recipeOfReferencesList == freezed
-          ? _value._recipeOfReferencesList
-          : recipeOfReferencesList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       documentId: documentId == freezed
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
+      components: components == freezed
+          ? _value.components
+          : components // ignore: cast_nullable_to_non_nullable
+              as List<Component>,
     ));
   }
 }
@@ -174,9 +174,8 @@ class _$_Item implements _Item {
       required this.description,
       required this.height,
       required this.width,
-      final List<String> recipeOfReferencesList = const [],
-      this.documentId = ''})
-      : _recipeOfReferencesList = recipeOfReferencesList;
+      this.documentId = '',
+      this.components = const []});
 
   factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
 
@@ -190,21 +189,16 @@ class _$_Item implements _Item {
   final int height;
   @override
   final int width;
-  final List<String> _recipeOfReferencesList;
-  @override
-  @JsonKey()
-  List<String> get recipeOfReferencesList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_recipeOfReferencesList);
-  }
-
   @override
   @JsonKey()
   final String documentId;
+  @override
+  @JsonKey()
+  final List<Component> components;
 
   @override
   String toString() {
-    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, height: $height, width: $width, recipeOfReferencesList: $recipeOfReferencesList, documentId: $documentId)';
+    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, height: $height, width: $width, documentId: $documentId, components: $components)';
   }
 
   @override
@@ -218,10 +212,10 @@ class _$_Item implements _Item {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.height, height) &&
             const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(
-                other._recipeOfReferencesList, _recipeOfReferencesList) &&
             const DeepCollectionEquality()
-                .equals(other.documentId, documentId));
+                .equals(other.documentId, documentId) &&
+            const DeepCollectionEquality()
+                .equals(other.components, components));
   }
 
   @JsonKey(ignore: true)
@@ -233,8 +227,8 @@ class _$_Item implements _Item {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(height),
       const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(_recipeOfReferencesList),
-      const DeepCollectionEquality().hash(documentId));
+      const DeepCollectionEquality().hash(documentId),
+      const DeepCollectionEquality().hash(components));
 
   @JsonKey(ignore: true)
   @override
@@ -254,8 +248,8 @@ abstract class _Item implements Item {
       required final String description,
       required final int height,
       required final int width,
-      final List<String> recipeOfReferencesList,
-      final String documentId}) = _$_Item;
+      final String documentId,
+      final List<Component> components}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
@@ -270,9 +264,9 @@ abstract class _Item implements Item {
   @override
   int get width => throw _privateConstructorUsedError;
   @override
-  List<String> get recipeOfReferencesList => throw _privateConstructorUsedError;
-  @override
   String get documentId => throw _privateConstructorUsedError;
+  @override
+  List<Component> get components => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ItemCopyWith<_$_Item> get copyWith => throw _privateConstructorUsedError;

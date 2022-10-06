@@ -3,6 +3,7 @@
 import 'dart:developer';
 import 'dart:typed_data';
 
+import 'package:arelith_crafting/models/recipe.dart';
 import 'package:injectable/injectable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:firebase_storage/firebase_storage.dart";
@@ -45,7 +46,11 @@ class DatabaseService {
               toFirestore: (result, _) => result.toJson(),
             );
 
-        await itemsRef.add(item.copyWith(imageUrl: imageUrl));
+        item = item.copyWith(imageUrl: imageUrl);
+        var itemRef = await itemsRef.add(item);
+
+        item = item.copyWith(documentId: itemRef.id);
+        await itemRef.update(item.toJson());
       }
 
       return null;
@@ -89,7 +94,7 @@ class DatabaseService {
     return imageBytes;
   }
 
-  Stream<QuerySnapshot<Item>> getItems() {
+  Stream<QuerySnapshot<Item>> getItemsStream() {
     Stream<QuerySnapshot<Item>> query = FirebaseFirestore.instance
         .collection('items')
         .withConverter<Item>(
@@ -97,6 +102,18 @@ class DatabaseService {
           toFirestore: (result, _) => result.toJson(),
         )
         .snapshots();
+
+    return query;
+  }
+
+  Future<QuerySnapshot<Item>> getItemsFuture() {
+    var query = FirebaseFirestore.instance
+        .collection('items')
+        .withConverter<Item>(
+          fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
+          toFirestore: (result, _) => result.toJson(),
+        )
+        .get();
 
     return query;
   }
@@ -115,16 +132,40 @@ class DatabaseService {
     return item;
   }
 
-  Future<QuerySnapshot<Item>> getComponentsByItemId(String itemId) async {
-    var item = await FirebaseFirestore.instance
+  Future<Recipe> getRecipe(Item finalItem) async {
+    var recipe =
+        Recipe(item: finalItem, components: List<Recipe>.empty(growable: true));
+
+    var componentsList = await getComponentItems(finalItem);
+
+    for (var component in componentsList) {
+      var componentRecipe = await getRecipe(component);
+      recipe.components.add(componentRecipe);
+    }
+
+    return recipe;
+  }
+
+  Future<List<Item>> getComponentItems(Item finalItem) async {
+    var componentIds = finalItem.components.map((e) => e.documentId).toList();
+
+    if (componentIds.isEmpty) {
+      return List.empty();
+    }
+
+    var componentsQuerySnapshot = await FirebaseFirestore.instance
         .collection('items')
-        .where('recipeOfReferencesList', arrayContains: itemId)
+        .where('documentId', whereIn: componentIds)
         .withConverter<Item>(
           fromFirestore: (snapshot, _) => Item.fromDocumentSnapshot(snapshot),
           toFirestore: (result, _) => result.toJson(),
         )
         .get();
 
-    return item;
+    var componentDocumentSnapshotsList = componentsQuerySnapshot.docs;
+    var componentsList =
+        componentDocumentSnapshotsList.map((e) => e.data()).toList();
+
+    return componentsList;
   }
 }

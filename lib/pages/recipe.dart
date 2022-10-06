@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages, overridden_fields
 
+import 'package:arelith_crafting/models/recipe.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/recipe/recipe_bloc.dart';
-import '../models/recipe.dart';
 import '../services/recipe_lines_painter.dart';
 import '../widgets/item_image.dart';
 
@@ -46,8 +46,7 @@ class InheritedRecipe extends InheritedWidget {
       required this.changeOffset,
       required this.boxOffset,
       required this.changeBoxOffset,
-      required this.child
-      })
+      required this.child})
       : super(key: key, child: child);
 
   final Offset offset;
@@ -123,9 +122,11 @@ class _RecipeWidgetState extends State<RecipeWidget> {
 
     var itemWidgetList = <Widget>[];
 
-    for (var itemQuery in widget.recipe.components) {
+    for (var component in widget.recipe.components) {
       var item = Flexible(
-        child: RecipeWidget(recipe: itemQuery),
+        child: RecipeWidget(
+          recipe: component,
+        ),
       );
       itemWidgetList.add(item);
     }

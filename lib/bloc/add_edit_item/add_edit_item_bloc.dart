@@ -2,6 +2,8 @@
 
 import 'dart:typed_data';
 
+import 'package:arelith_crafting/models/component.dart';
+import 'package:arelith_crafting/models/component_item.dart';
 import 'package:arelith_crafting/services/database_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,6 +17,25 @@ part 'add_edit_item_bloc.freezed.dart';
 
 class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
   AddEditItemBloc() : super(_AddItemState()) {
+    on<_InitialiseComponents>(
+      (event, emit) async {
+        List<ComponentItem> components = List.empty(growable: true);
+
+        var itemsQuerySnapshot = await DatabaseService().getItemsFuture();
+        var itemsDocumentSnapshot = itemsQuerySnapshot.docs;
+
+        var itemsList = itemsDocumentSnapshot.map((e) => e.data()).toList();
+
+        for (var item in itemsList) {
+          var component = ComponentItem(item: item, quantity: 0);
+          components.add(component);
+        }
+
+        var newState = state.copyWith(componentItems: components);
+        emit.call(newState);
+      },
+    );
+
     on<_Load>((event, emit) async {
       var itemSnapshot = await DatabaseService().getItemById(event.itemId);
       if (itemSnapshot.data() != null) {
@@ -24,10 +45,27 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
         var imageName = itemSnapshot.data()!.imageUrl;
         imageName = imageName.split('/').last.split('?').first;
 
+        var item = itemSnapshot.data()!;
+
+        var componentItems = state.componentItems;
+        if (componentItems != null) {
+          componentItems = state.componentItems!
+              .where((element) => element.item.documentId != item.documentId)
+              .toList();
+
+          for (var component in item.components) {
+            var index = componentItems.indexWhere(
+                (element) => element.item.documentId == component.documentId);
+            componentItems.replaceRange(index, index + 1,
+                [componentItems[index].copyWith(quantity: component.quantity)]);
+          }
+        }
+
         var newState = state.copyWith(
-            item: itemSnapshot.data()!,
+            item: item,
             fileName: imageName,
             fileBytes: imageBytes,
+            componentItems: componentItems,
             loadPrevious: false);
 
         emit.call(newState);
@@ -53,7 +91,15 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
       emit.call(newState);
     });
 
+    on<_SetComponents>((event, emit) {
+      var newState = state.copyWith(componentItems: event.componentItems);
+
+      emit.call(newState);
+    });
+
     on<_Save>((event, emit) async {
+      _updateItemComponents();
+
       if (state.fileBytes != null) {
         var error = await DatabaseService().updateItem(
             item: state.item,
@@ -63,5 +109,18 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
             exception: error, isUploaded: error == null ? true : false));
       }
     });
+  }
+
+  void _updateItemComponents() {
+    if (state.componentItems != null) {
+      var selectedComponentItems =
+          state.componentItems!.where((element) => element.quantity > 0);
+
+      var selectedComponents = selectedComponentItems.map((e) =>
+          Component(documentId: e.item.documentId, quantity: e.quantity));
+
+      state.item.components.clear();
+      state.item.components.addAll(selectedComponents);
+    }
   }
 }

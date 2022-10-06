@@ -14,7 +14,7 @@ part 'item_list_bloc.freezed.dart';
 class ItemListBloc extends Bloc<ItemListEvent, ItemListState> {
   ItemListBloc() : super(_ItemListState()) {
     on<_Initialse>((event, emit) {
-      var itemsStream = DatabaseService().getItems();
+      var itemsStream = DatabaseService().getItemsStream();
 
       var newState = state.copyWith(itemsStream: itemsStream);
       emit.call(newState);

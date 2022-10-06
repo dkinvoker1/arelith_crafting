@@ -18,56 +18,63 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddEditItemEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
-    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
     required TResult Function() save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
     required TResult orElse(),
   }) =>
@@ -89,6 +96,136 @@ class _$AddEditItemEventCopyWithImpl<$Res>
   final AddEditItemEvent _value;
   // ignore: unused_field
   final $Res Function(AddEditItemEvent) _then;
+}
+
+/// @nodoc
+abstract class _$$_InitialiseComponentsCopyWith<$Res> {
+  factory _$$_InitialiseComponentsCopyWith(_$_InitialiseComponents value,
+          $Res Function(_$_InitialiseComponents) then) =
+      __$$_InitialiseComponentsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InitialiseComponentsCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res>
+    implements _$$_InitialiseComponentsCopyWith<$Res> {
+  __$$_InitialiseComponentsCopyWithImpl(_$_InitialiseComponents _value,
+      $Res Function(_$_InitialiseComponents) _then)
+      : super(_value, (v) => _then(v as _$_InitialiseComponents));
+
+  @override
+  _$_InitialiseComponents get _value => super._value as _$_InitialiseComponents;
+}
+
+/// @nodoc
+
+class _$_InitialiseComponents implements _InitialiseComponents {
+  const _$_InitialiseComponents();
+
+  @override
+  String toString() {
+    return 'AddEditItemEvent.initialiseComponents()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_InitialiseComponents);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
+    required TResult Function(String itemId) load,
+    required TResult Function(String key, dynamic value) update,
+    required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
+    required TResult Function() save,
+  }) {
+    return initialiseComponents();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
+    TResult Function(String itemId)? load,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult Function()? save,
+  }) {
+    return initialiseComponents?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
+    TResult Function(String itemId)? load,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (initialiseComponents != null) {
+      return initialiseComponents();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
+    required TResult Function(_Load value) load,
+    required TResult Function(_Update value) update,
+    required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
+    required TResult Function(_Save value) save,
+  }) {
+    return initialiseComponents(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
+    TResult Function(_Load value)? load,
+    TResult Function(_Update value)? update,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
+    TResult Function(_Save value)? save,
+  }) {
+    return initialiseComponents?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
+    TResult Function(_Load value)? load,
+    TResult Function(_Update value)? update,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
+    TResult Function(_Save value)? save,
+    required TResult orElse(),
+  }) {
+    if (initialiseComponents != null) {
+      return initialiseComponents(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitialiseComponents implements AddEditItemEvent {
+  const factory _InitialiseComponents() = _$_InitialiseComponents;
 }
 
 /// @nodoc
@@ -153,10 +290,12 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
-    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
     required TResult Function() save,
   }) {
     return load(itemId);
@@ -165,10 +304,11 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
   }) {
     return load?.call(itemId);
@@ -177,10 +317,11 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
     required TResult orElse(),
   }) {
@@ -193,10 +334,11 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
   }) {
     return load(this);
@@ -205,10 +347,11 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
   }) {
     return load?.call(this);
@@ -217,10 +360,11 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
     required TResult orElse(),
   }) {
@@ -237,126 +381,6 @@ abstract class _Load implements AddEditItemEvent {
   String get itemId => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_LoadCopyWith<_$_Load> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadedCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
-      : super(_value, (v) => _then(v as _$_Loaded));
-
-  @override
-  _$_Loaded get _value => super._value as _$_Loaded;
-}
-
-/// @nodoc
-
-class _$_Loaded implements _Loaded {
-  const _$_Loaded();
-
-  @override
-  String toString() {
-    return 'AddEditItemEvent.loaded()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loaded);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String itemId) load,
-    required TResult Function() loaded,
-    required TResult Function(String key, dynamic value) update,
-    required TResult Function(PlatformFile file) setImage,
-    required TResult Function() save,
-  }) {
-    return loaded();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String itemId)? load,
-    TResult Function()? loaded,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function()? save,
-  }) {
-    return loaded?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String itemId)? load,
-    TResult Function()? loaded,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function()? save,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Update value) update,
-    required TResult Function(_SetImage value) setImage,
-    required TResult Function(_Save value) save,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Update value)? update,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_Save value)? save,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Update value)? update,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_Save value)? save,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loaded implements AddEditItemEvent {
-  const factory _Loaded() = _$_Loaded;
 }
 
 /// @nodoc
@@ -431,10 +455,12 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
-    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
     required TResult Function() save,
   }) {
     return update(key, value);
@@ -443,10 +469,11 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
   }) {
     return update?.call(key, value);
@@ -455,10 +482,11 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
     required TResult orElse(),
   }) {
@@ -471,10 +499,11 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
   }) {
     return update(this);
@@ -483,10 +512,11 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
   }) {
     return update?.call(this);
@@ -495,10 +525,11 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
     required TResult orElse(),
   }) {
@@ -584,10 +615,12 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
-    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
     required TResult Function() save,
   }) {
     return setImage(file);
@@ -596,10 +629,11 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
   }) {
     return setImage?.call(file);
@@ -608,10 +642,11 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
     required TResult orElse(),
   }) {
@@ -624,10 +659,11 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
   }) {
     return setImage(this);
@@ -636,10 +672,11 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
   }) {
     return setImage?.call(this);
@@ -648,10 +685,11 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
     required TResult orElse(),
   }) {
@@ -668,6 +706,172 @@ abstract class _SetImage implements AddEditItemEvent {
   PlatformFile get file => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_SetImageCopyWith<_$_SetImage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SetComponentsCopyWith<$Res> {
+  factory _$$_SetComponentsCopyWith(
+          _$_SetComponents value, $Res Function(_$_SetComponents) then) =
+      __$$_SetComponentsCopyWithImpl<$Res>;
+  $Res call({List<ComponentItem> componentItems});
+}
+
+/// @nodoc
+class __$$_SetComponentsCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res>
+    implements _$$_SetComponentsCopyWith<$Res> {
+  __$$_SetComponentsCopyWithImpl(
+      _$_SetComponents _value, $Res Function(_$_SetComponents) _then)
+      : super(_value, (v) => _then(v as _$_SetComponents));
+
+  @override
+  _$_SetComponents get _value => super._value as _$_SetComponents;
+
+  @override
+  $Res call({
+    Object? componentItems = freezed,
+  }) {
+    return _then(_$_SetComponents(
+      componentItems == freezed
+          ? _value._componentItems
+          : componentItems // ignore: cast_nullable_to_non_nullable
+              as List<ComponentItem>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SetComponents implements _SetComponents {
+  const _$_SetComponents(final List<ComponentItem> componentItems)
+      : _componentItems = componentItems;
+
+  final List<ComponentItem> _componentItems;
+  @override
+  List<ComponentItem> get componentItems {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_componentItems);
+  }
+
+  @override
+  String toString() {
+    return 'AddEditItemEvent.setComponentItems(componentItems: $componentItems)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SetComponents &&
+            const DeepCollectionEquality()
+                .equals(other._componentItems, _componentItems));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_componentItems));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SetComponentsCopyWith<_$_SetComponents> get copyWith =>
+      __$$_SetComponentsCopyWithImpl<_$_SetComponents>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
+    required TResult Function(String itemId) load,
+    required TResult Function(String key, dynamic value) update,
+    required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
+    required TResult Function() save,
+  }) {
+    return setComponentItems(componentItems);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
+    TResult Function(String itemId)? load,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult Function()? save,
+  }) {
+    return setComponentItems?.call(componentItems);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
+    TResult Function(String itemId)? load,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (setComponentItems != null) {
+      return setComponentItems(componentItems);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
+    required TResult Function(_Load value) load,
+    required TResult Function(_Update value) update,
+    required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
+    required TResult Function(_Save value) save,
+  }) {
+    return setComponentItems(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
+    TResult Function(_Load value)? load,
+    TResult Function(_Update value)? update,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
+    TResult Function(_Save value)? save,
+  }) {
+    return setComponentItems?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
+    TResult Function(_Load value)? load,
+    TResult Function(_Update value)? update,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
+    TResult Function(_Save value)? save,
+    required TResult orElse(),
+  }) {
+    if (setComponentItems != null) {
+      return setComponentItems(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetComponents implements AddEditItemEvent {
+  const factory _SetComponents(final List<ComponentItem> componentItems) =
+      _$_SetComponents;
+
+  List<ComponentItem> get componentItems => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_SetComponentsCopyWith<_$_SetComponents> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -709,10 +913,12 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
-    required TResult Function() loaded,
     required TResult Function(String key, dynamic value) update,
     required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
     required TResult Function() save,
   }) {
     return save();
@@ -721,10 +927,11 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
   }) {
     return save?.call();
@@ -733,10 +940,11 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
-    TResult Function()? loaded,
     TResult Function(String key, dynamic value)? update,
     TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
     required TResult orElse(),
   }) {
@@ -749,10 +957,11 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
-    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Update value) update,
     required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
   }) {
     return save(this);
@@ -761,10 +970,11 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
   }) {
     return save?.call(this);
@@ -773,10 +983,11 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
-    TResult Function(_Loaded value)? loaded,
     TResult Function(_Update value)? update,
     TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
     required TResult orElse(),
   }) {
@@ -799,6 +1010,7 @@ mixin _$AddEditItemState {
   Item get item => throw _privateConstructorUsedError;
   String get fileName => throw _privateConstructorUsedError;
   Uint8List? get fileBytes => throw _privateConstructorUsedError;
+  List<ComponentItem>? get componentItems => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddEditItemStateCopyWith<AddEditItemState> get copyWith =>
@@ -816,7 +1028,8 @@ abstract class $AddEditItemStateCopyWith<$Res> {
       Exception? exception,
       Item item,
       String fileName,
-      Uint8List? fileBytes});
+      Uint8List? fileBytes,
+      List<ComponentItem>? componentItems});
 
   $ItemCopyWith<$Res> get item;
 }
@@ -838,6 +1051,7 @@ class _$AddEditItemStateCopyWithImpl<$Res>
     Object? item = freezed,
     Object? fileName = freezed,
     Object? fileBytes = freezed,
+    Object? componentItems = freezed,
   }) {
     return _then(_value.copyWith(
       isUploaded: isUploaded == freezed
@@ -864,6 +1078,10 @@ class _$AddEditItemStateCopyWithImpl<$Res>
           ? _value.fileBytes
           : fileBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
+      componentItems: componentItems == freezed
+          ? _value.componentItems
+          : componentItems // ignore: cast_nullable_to_non_nullable
+              as List<ComponentItem>?,
     ));
   }
 
@@ -888,7 +1106,8 @@ abstract class _$$_AddItemStateCopyWith<$Res>
       Exception? exception,
       Item item,
       String fileName,
-      Uint8List? fileBytes});
+      Uint8List? fileBytes,
+      List<ComponentItem>? componentItems});
 
   @override
   $ItemCopyWith<$Res> get item;
@@ -913,6 +1132,7 @@ class __$$_AddItemStateCopyWithImpl<$Res>
     Object? item = freezed,
     Object? fileName = freezed,
     Object? fileBytes = freezed,
+    Object? componentItems = freezed,
   }) {
     return _then(_$_AddItemState(
       isUploaded: isUploaded == freezed
@@ -939,6 +1159,10 @@ class __$$_AddItemStateCopyWithImpl<$Res>
           ? _value.fileBytes
           : fileBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
+      componentItems: componentItems == freezed
+          ? _value.componentItems
+          : componentItems // ignore: cast_nullable_to_non_nullable
+              as List<ComponentItem>?,
     ));
   }
 }
@@ -953,7 +1177,8 @@ class _$_AddItemState extends _AddItemState {
       this.item = const Item(
           imageUrl: "", name: "", description: "", width: 1, height: 1),
       this.fileName = '',
-      this.fileBytes = null})
+      this.fileBytes = null,
+      this.componentItems = null})
       : super._();
 
   @override
@@ -974,10 +1199,13 @@ class _$_AddItemState extends _AddItemState {
   @override
   @JsonKey()
   final Uint8List? fileBytes;
+  @override
+  @JsonKey()
+  final List<ComponentItem>? componentItems;
 
   @override
   String toString() {
-    return 'AddEditItemState(isUploaded: $isUploaded, loadPrevious: $loadPrevious, exception: $exception, item: $item, fileName: $fileName, fileBytes: $fileBytes)';
+    return 'AddEditItemState(isUploaded: $isUploaded, loadPrevious: $loadPrevious, exception: $exception, item: $item, fileName: $fileName, fileBytes: $fileBytes, componentItems: $componentItems)';
   }
 
   @override
@@ -992,7 +1220,9 @@ class _$_AddItemState extends _AddItemState {
             const DeepCollectionEquality().equals(other.exception, exception) &&
             const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality().equals(other.fileName, fileName) &&
-            const DeepCollectionEquality().equals(other.fileBytes, fileBytes));
+            const DeepCollectionEquality().equals(other.fileBytes, fileBytes) &&
+            const DeepCollectionEquality()
+                .equals(other.componentItems, componentItems));
   }
 
   @override
@@ -1003,7 +1233,8 @@ class _$_AddItemState extends _AddItemState {
       const DeepCollectionEquality().hash(exception),
       const DeepCollectionEquality().hash(item),
       const DeepCollectionEquality().hash(fileName),
-      const DeepCollectionEquality().hash(fileBytes));
+      const DeepCollectionEquality().hash(fileBytes),
+      const DeepCollectionEquality().hash(componentItems));
 
   @JsonKey(ignore: true)
   @override
@@ -1018,7 +1249,8 @@ abstract class _AddItemState extends AddEditItemState {
       final Exception? exception,
       final Item item,
       final String fileName,
-      final Uint8List? fileBytes}) = _$_AddItemState;
+      final Uint8List? fileBytes,
+      final List<ComponentItem>? componentItems}) = _$_AddItemState;
   const _AddItemState._() : super._();
 
   @override
@@ -1033,6 +1265,8 @@ abstract class _AddItemState extends AddEditItemState {
   String get fileName => throw _privateConstructorUsedError;
   @override
   Uint8List? get fileBytes => throw _privateConstructorUsedError;
+  @override
+  List<ComponentItem>? get componentItems => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AddItemStateCopyWith<_$_AddItemState> get copyWith =>
