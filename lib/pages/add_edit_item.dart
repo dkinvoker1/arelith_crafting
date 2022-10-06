@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:arelith_crafting/bloc/add_edit_item/add_edit_item_bloc.dart';
 import 'package:arelith_crafting/models/component_item.dart';
+import 'package:arelith_crafting/widgets/styled/rounded_elevated_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -322,6 +323,9 @@ class ComponentsField extends StatefulWidget {
 class _ComponentsFieldState extends State<ComponentsField> {
   @override
   Widget build(BuildContext context) {
+    var chosenComponent =
+        widget.componentItems.where((element) => element.quantity > 0).toList();
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
@@ -335,14 +339,14 @@ class _ComponentsFieldState extends State<ComponentsField> {
               childAspectRatio: 1,
               crossAxisSpacing: 2,
               mainAxisSpacing: 2),
-          itemCount: widget.componentItems.length,
+          itemCount: chosenComponent.length,
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
               onTap: () {
                 _showMyDialog(context);
               },
               child: ComponentPrompt(
-                item: widget.componentItems[index].item,
+                item: chosenComponent[index].item,
               ),
             );
           },
@@ -370,31 +374,23 @@ class _ComponentsFieldState extends State<ComponentsField> {
           )),
           actionsAlignment: MainAxisAlignment.spaceEvenly,
           actions: <Widget>[
-            ElevatedButton(
+            RoundedElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
-                  padding: EdgeInsets.all(24),
-                  primary: Colors.red),
+              color: Colors.red,
               child: Text('Cancel'),
             ),
-            ElevatedButton(
+            RoundedElevatedButton(
               onPressed: () {
                 var componentItems =
                     componentCards.map((e) => e.component).toList();
                 _updateComponents(componentItems);
                 Navigator.of(context).pop();
               },
-              style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
-                  padding: EdgeInsets.all(24),
-                  primary: Colors.green),
+              color: Colors.green,
               child: Text('OK'),
-            ),
+            )
           ],
         );
       },

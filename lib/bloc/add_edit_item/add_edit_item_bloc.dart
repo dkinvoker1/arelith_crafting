@@ -23,7 +23,6 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
 
         var itemsQuerySnapshot = await DatabaseService().getItemsFuture();
         var itemsDocumentSnapshot = itemsQuerySnapshot.docs;
-
         var itemsList = itemsDocumentSnapshot.map((e) => e.data()).toList();
 
         for (var item in itemsList) {

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:arelith_crafting/widgets/item_image.dart';
+import 'package:arelith_crafting/widgets/styled/circle_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 import '../models/component_item.dart';
@@ -47,32 +48,24 @@ class _ComponentCardState extends State<ComponentCard> {
                 Text(widget.component.item.name),
                 Row(
                   children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          widget.component = widget.component.copyWith(
-                              quantity: widget.component.quantity + 1);
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(24),
-                          primary: Colors.green),
-                      child: Icon(Icons.add),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          widget.component = widget.component.copyWith(
-                              quantity: widget.component.quantity - 1);
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(24),
-                          primary: Colors.red),
-                      child: Icon(Icons.horizontal_rule),
-                    )
+                    CircleElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            widget.component = widget.component.copyWith(
+                                quantity: widget.component.quantity + 1);
+                          });
+                        },
+                        color: Colors.green,
+                        child: Icon(Icons.add)),
+                    CircleElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            widget.component = widget.component.copyWith(
+                                quantity: widget.component.quantity - 1);
+                          });
+                        },
+                        color: Colors.red,
+                        child: Icon(Icons.horizontal_rule)),
                   ],
                 )
               ],
