@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
-import 'package:arelith_crafting/widgets/item_image.dart';
-import 'package:arelith_crafting/widgets/styled/circle_elevated_button.dart';
 import 'package:flutter/material.dart';
 
-import '../models/component_item.dart';
+import '../../models/component_item.dart';
+import '../item/image.dart';
+import '../styled_elevated_button/circle_elevated_button.dart';
 
 class ComponentCard extends StatefulWidget {
   ComponentCard({Key? key, required this.component}) : super(key: key);

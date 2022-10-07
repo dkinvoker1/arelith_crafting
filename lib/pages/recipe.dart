@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages, overridden_fields
 
 import 'package:arelith_crafting/models/recipe.dart';
+import 'package:arelith_crafting/widgets/item/image_button.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/recipe/recipe_bloc.dart';
 import '../services/recipe_lines_painter.dart';
-import '../widgets/item_image.dart';
 
 class RecipePage extends StatefulWidget {
   const RecipePage(
@@ -136,7 +136,7 @@ class _RecipeWidgetState extends State<RecipeWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Flexible(child: ItemImage(key: key, item: widget.recipe.item)),
+        Flexible(child: ItemImageButton(key: key, item: widget.recipe.item)),
         Flexible(
           fit: FlexFit.tight,
           child: InheritedRecipe(

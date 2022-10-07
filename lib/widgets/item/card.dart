@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, depend_on_referenced_packages
 
-import 'package:arelith_crafting/widgets/item_image.dart';
+import 'package:arelith_crafting/widgets/item/image_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/item_card/item_card_bloc.dart';
-import '../models/item.dart';
-import '../routes/router.gr.dart';
+import '../../bloc/item_card/item_card_bloc.dart';
+import '../../models/item.dart';
+import '../../routes/router.gr.dart';
 
 class ItemCard extends StatelessWidget {
   const ItemCard({Key? key, required this.item}) : super(key: key);
@@ -23,7 +23,7 @@ class ItemCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ItemImage(item: item),
+              ItemImageButton(item: item),
               Column(
                 children: [
                   IconButton(

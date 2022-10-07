@@ -4,15 +4,15 @@ import 'dart:typed_data';
 
 import 'package:arelith_crafting/bloc/add_edit_item/add_edit_item_bloc.dart';
 import 'package:arelith_crafting/models/component_item.dart';
-import 'package:arelith_crafting/widgets/styled/rounded_elevated_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 
 import '../routes/router.gr.dart';
-import '../widgets/component_card.dart';
-import '../widgets/component_prompt.dart';
+import '../widgets/component/card.dart';
+import '../widgets/component/prompt.dart';
+import '../widgets/styled_elevated_button/rounded_elevated_button.dart';
 
 class AddEditItemPage extends StatefulWidget {
   AddEditItemPage({
@@ -334,20 +334,18 @@ class _ComponentsFieldState extends State<ComponentsField> {
         },
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              mainAxisExtent: 60,
+              mainAxisExtent: 40,
               maxCrossAxisExtent: 200,
-              childAspectRatio: 1,
-              crossAxisSpacing: 2,
+              childAspectRatio: 10,
+              crossAxisSpacing: 10,
               mainAxisSpacing: 2),
           itemCount: chosenComponent.length,
           itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-              onTap: () {
+            return ComponentPrompt(
+              component: chosenComponent[index],
+              onPressed: () {
                 _showMyDialog(context);
               },
-              child: ComponentPrompt(
-                item: chosenComponent[index].item,
-              ),
             );
           },
         ),
