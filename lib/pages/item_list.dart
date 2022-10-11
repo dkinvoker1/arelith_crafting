@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages
 
 import 'package:arelith_crafting/widgets/item/card.dart';
+import 'package:arelith_crafting/widgets/styled_elevated_button/rounded_elevated_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,13 +49,13 @@ class _ItemListPageState extends State<ItemListPage> {
                     ),
                   ),
                 ),
-                TextButton(
+                RoundedElevatedButton(
                     onPressed: () {
                       context.router.push(AddEditItemRoute());
                     },
                     child: Row(
                       children: [Icon(Icons.add), Text('Add item')],
-                    ))
+                    )),
               ],
             ),
             Flexible(
@@ -71,7 +72,7 @@ class _ItemListPageState extends State<ItemListPage> {
                           .data()
                           .name
                           .toLowerCase()
-                          .contains(searchText))
+                          .contains(searchText.toLowerCase()))
                       .toList();
 
                   return GridView.builder(

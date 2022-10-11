@@ -356,41 +356,63 @@ class _ComponentsFieldState extends State<ComponentsField> {
   Future<void> _showMyDialog(BuildContext localContext) async {
     List<ComponentCard> componentCards = [];
 
-    for (var component in widget.componentItems) {
-      componentCards.add(ComponentCard(component: component));
-    }
-
     return showDialog<void>(
       context: localContext,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('AlertDialog Title'),
-          content: SingleChildScrollView(
-              child: Column(
-            children: componentCards,
-          )),
-          actionsAlignment: MainAxisAlignment.spaceEvenly,
-          actions: <Widget>[
-            RoundedElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              color: Colors.red,
-              child: Text('Cancel'),
+        String searchText = '';
+
+        return StatefulBuilder(builder: (context, setState) {
+          componentCards.clear();
+          var filteredComponentItems = widget.componentItems.where((element) =>
+              element.item.name
+                  .toLowerCase()
+                  .contains(searchText.toLowerCase()));
+          for (var component in filteredComponentItems) {
+            componentCards.add(ComponentCard(component: component));
+          }
+
+          return AlertDialog(
+            title: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                onChanged: (text) {
+                  setState(() {
+                    searchText = text;
+                  });
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Search',
+                ),
+              ),
             ),
-            RoundedElevatedButton(
-              onPressed: () {
-                var componentItems =
-                    componentCards.map((e) => e.component).toList();
-                _updateComponents(componentItems);
-                Navigator.of(context).pop();
-              },
-              color: Colors.green,
-              child: Text('OK'),
-            )
-          ],
-        );
+            content: SingleChildScrollView(
+                child: Column(
+              children: componentCards,
+            )),
+            actionsAlignment: MainAxisAlignment.spaceEvenly,
+            actions: <Widget>[
+              RoundedElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                color: Colors.red,
+                child: Text('Cancel'),
+              ),
+              RoundedElevatedButton(
+                onPressed: () {
+                  var componentItems =
+                      componentCards.map((e) => e.component).toList();
+                  _updateComponents(componentItems);
+                  Navigator.of(context).pop();
+                },
+                color: Colors.green,
+                child: Text('OK'),
+              )
+            ],
+          );
+        });
       },
     );
   }
