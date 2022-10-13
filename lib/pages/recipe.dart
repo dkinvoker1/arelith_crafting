@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages, overridden_fields
 
 import 'package:arelith_crafting/models/recipe.dart';
-import 'package:arelith_crafting/widgets/item/image_button.dart';
+import 'package:arelith_crafting/widgets/component/image_button.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -136,7 +136,8 @@ class _RecipeWidgetState extends State<RecipeWidget> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Flexible(child: ItemImageButton(key: key, item: widget.recipe.item)),
+        Flexible(
+            child: ComponentImageButton(key: key, component: widget.recipe.item)),
         Flexible(
           fit: FlexFit.tight,
           child: InheritedRecipe(

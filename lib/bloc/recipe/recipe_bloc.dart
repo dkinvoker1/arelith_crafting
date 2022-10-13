@@ -1,6 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:arelith_crafting/models/item.dart';
+import 'package:arelith_crafting/models/component_item.dart';
 import 'package:arelith_crafting/models/recipe.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,7 +19,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
 
       if (itemSnapshot.exists) {
         var item = itemSnapshot.data()!;
-        var recipe = await DatabaseService().getRecipe(item);
+        var itemComponent = ComponentItem(item: item);
+        var recipe = await DatabaseService().getRecipe(itemComponent);
 
         emit.call(state.copyWith(recipe: recipe));
       }

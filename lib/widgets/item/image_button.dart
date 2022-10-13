@@ -15,10 +15,10 @@ class ItemImageButton extends StatefulWidget {
   final Item item;
 
   @override
-  State<ItemImageButton> createState() => _itemImageState();
+  State<ItemImageButton> createState() => _itemImageButtonState();
 }
 
-class _itemImageState extends State<ItemImageButton> {
+class _itemImageButtonState extends State<ItemImageButton> {
 
   @override
   Widget build(BuildContext context) {

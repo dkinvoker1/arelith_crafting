@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:firebase_storage/firebase_storage.dart";
 
+import '../models/component_item.dart';
 import '../models/item.dart';
 
 @singleton
@@ -132,11 +133,12 @@ class DatabaseService {
     return item;
   }
 
-  Future<Recipe> getRecipe(Item finalItem) async {
-    var recipe =
-        Recipe(item: finalItem, components: List<Recipe>.empty(growable: true));
+  Future<Recipe> getRecipe(ComponentItem finalComponentItem) async {
+    var recipe = Recipe(
+        item: finalComponentItem,
+        components: List<Recipe>.empty(growable: true));
 
-    var componentsList = await getComponentItems(finalItem);
+    var componentsList = await getComponentItems(finalComponentItem.item);
 
     for (var component in componentsList) {
       var componentRecipe = await getRecipe(component);
@@ -146,14 +148,14 @@ class DatabaseService {
     return recipe;
   }
 
-  Future<List<Item>> getComponentItems(Item finalItem) async {
+  Future<List<ComponentItem>> getComponentItems(Item finalItem) async {
     var componentIds = finalItem.components.map((e) => e.documentId).toList();
 
     if (componentIds.isEmpty) {
       return List.empty();
     }
 
-    var componentsQuerySnapshot = await FirebaseFirestore.instance
+    var itemsQuerySnapshot = await FirebaseFirestore.instance
         .collection('items')
         .where('documentId', whereIn: componentIds)
         .withConverter<Item>(
@@ -162,10 +164,19 @@ class DatabaseService {
         )
         .get();
 
-    var componentDocumentSnapshotsList = componentsQuerySnapshot.docs;
-    var componentsList =
-        componentDocumentSnapshotsList.map((e) => e.data()).toList();
+    var itemDocumentSnapshotsList = itemsQuerySnapshot.docs;
+    var itemsList = itemDocumentSnapshotsList.map((e) => e.data()).toList();
 
-    return componentsList;
+    List<ComponentItem> componentItemList = [];
+
+    for (var item in itemsList) {
+      var quantity = finalItem.components
+          .firstWhere((e) => e.documentId == item.documentId)
+          .quantity;
+      var componentItem = ComponentItem(item: item, quantity: quantity);
+      componentItemList.add(componentItem);
+    }
+
+    return componentItemList;
   }
 }

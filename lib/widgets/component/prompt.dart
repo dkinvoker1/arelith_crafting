@@ -25,11 +25,15 @@ class _ComponentPromptState extends State<ComponentPrompt> {
       padding: 4,
       color: Colors.lightBlue,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ItemImage(
-            item: widget.component.item,
-            ignoreItemDimensions: true,
-            scale: 0.9,
+          Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: ItemImage(
+              item: widget.component.item,
+              ignoreItemDimensions: true,
+              scale: 0.9,
+            ),
           ),
           Text(
             widget.component.quantity.toString(),

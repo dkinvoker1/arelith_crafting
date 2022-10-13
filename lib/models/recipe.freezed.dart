@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Recipe {
-  Item get item => throw _privateConstructorUsedError;
+  ComponentItem get item => throw _privateConstructorUsedError;
   List<Recipe> get components => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -27,9 +27,9 @@ mixin _$Recipe {
 abstract class $RecipeCopyWith<$Res> {
   factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
       _$RecipeCopyWithImpl<$Res>;
-  $Res call({Item item, List<Recipe> components});
+  $Res call({ComponentItem item, List<Recipe> components});
 
-  $ItemCopyWith<$Res> get item;
+  $ComponentItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Item,
+              as ComponentItem,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
@@ -58,8 +58,8 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
   }
 
   @override
-  $ItemCopyWith<$Res> get item {
-    return $ItemCopyWith<$Res>(_value.item, (value) {
+  $ComponentItemCopyWith<$Res> get item {
+    return $ComponentItemCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value));
     });
   }
@@ -70,10 +70,10 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
       __$$_RecipeCopyWithImpl<$Res>;
   @override
-  $Res call({Item item, List<Recipe> components});
+  $Res call({ComponentItem item, List<Recipe> components});
 
   @override
-  $ItemCopyWith<$Res> get item;
+  $ComponentItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Item,
+              as ComponentItem,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ class _$_Recipe implements _Recipe {
   _$_Recipe({required this.item, this.components = const []});
 
   @override
-  final Item item;
+  final ComponentItem item;
   @override
   @JsonKey()
   final List<Recipe> components;
@@ -142,11 +142,12 @@ class _$_Recipe implements _Recipe {
 }
 
 abstract class _Recipe implements Recipe {
-  factory _Recipe({required final Item item, final List<Recipe> components}) =
-      _$_Recipe;
+  factory _Recipe(
+      {required final ComponentItem item,
+      final List<Recipe> components}) = _$_Recipe;
 
   @override
-  Item get item => throw _privateConstructorUsedError;
+  ComponentItem get item => throw _privateConstructorUsedError;
   @override
   List<Recipe> get components => throw _privateConstructorUsedError;
   @override
