@@ -75,134 +75,141 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
               return Center(child: CircularProgressIndicator());
             }
 
-            return Form(
-              key: _formKey,
-              child: Row(
-                children: [
-                  Flexible(child: Container()),
-                  Flexible(
-                    child: Column(children: [
-//============================================= Text boxes ================================================
-                      ItemTextField(
-                        name: 'Name',
-                        initialValue: state.item.name,
-                      ),
-                      ItemTextField(
-                        name: 'Description',
-                        initialValue: state.item.description,
-                      ),
-//============================================= ItemDropdown ================================================
-                      ItemDropdown(
-                        name: 'Width',
-                        initialValue: state.item.width,
-                      ),
-                      ItemDropdown(
-                        name: 'Height',
-                        initialValue: state.item.height,
-                      ),
-//============================================= Image upload ================================================
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: FormField<Uint8List>(
-                          builder: (formFieldState) {
-                            return Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    TextButton(
-                                        onPressed: () async {
-                                          var picked = await FilePicker.platform
-                                              .pickFiles(
-                                            type: FileType.custom,
-                                            allowMultiple: false,
-                                            allowedExtensions: [
-                                              'jpg',
-                                              'jpeg',
-                                              'png'
-                                            ],
-                                          );
+            return SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                child: Row(
+                  children: [
+                    Flexible(child: Container()),
+                    Flexible(
+                      child: Column(children: [
+                        //============================================= Text boxes ================================================
+                        ItemTextField(
+                          name: 'Name',
+                          initialValue: state.item.name,
+                        ),
+                        ItemTextField(
+                          name: 'Description',
+                          initialValue: state.item.description,
+                        ),
+                        //============================================= ItemDropdown ================================================
+                        ItemDropdown(
+                          name: 'Width',
+                          initialValue: state.item.width,
+                        ),
+                        ItemDropdown(
+                          name: 'Height',
+                          initialValue: state.item.height,
+                        ),
+                        //============================================= Image upload ================================================
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: FormField<Uint8List>(
+                            builder: (formFieldState) {
+                              return Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      TextButton(
+                                          onPressed: () async {
+                                            var picked = await FilePicker
+                                                .platform
+                                                .pickFiles(
+                                              type: FileType.custom,
+                                              allowMultiple: false,
+                                              allowedExtensions: [
+                                                'jpg',
+                                                'jpeg',
+                                                'png'
+                                              ],
+                                            );
 
-                                          if (picked != null &&
-                                              picked.files.first.bytes !=
-                                                  null) {
-                                            context.read<AddEditItemBloc>().add(
-                                                AddEditItemEvent.setImage(
-                                                    picked.files.first));
-                                            formFieldState.setValue(
-                                                picked.files.first.bytes);
-                                          }
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Text('Select image'),
-                                            Icon(
-                                              Icons.upload,
-                                            ),
-                                          ],
-                                        )),
-                                    state.fileBytes != null
-                                        ? Container(
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.grey)),
-                                            child: Image.memory(
-                                              fit: BoxFit.fill,
-                                              state.fileBytes!,
+                                            if (picked != null &&
+                                                picked.files.first.bytes !=
+                                                    null) {
+                                              context
+                                                  .read<AddEditItemBloc>()
+                                                  .add(
+                                                      AddEditItemEvent.setImage(
+                                                          picked.files.first));
+                                              formFieldState.setValue(
+                                                  picked.files.first.bytes);
+                                            }
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Text('Select image'),
+                                              Icon(
+                                                Icons.upload,
+                                              ),
+                                            ],
+                                          )),
+                                      state.fileBytes != null
+                                          ? Container(
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: Colors.grey)),
+                                              child: Image.memory(
+                                                fit: BoxFit.fill,
+                                                state.fileBytes!,
+                                                width: _baseSize *
+                                                    state.item.width,
+                                                height: _baseSize *
+                                                    state.item.height,
+                                              ),
+                                            )
+                                          : Container(
                                               width:
                                                   _baseSize * state.item.width,
                                               height:
                                                   _baseSize * state.item.height,
+                                              color: Colors.white,
                                             ),
-                                          )
-                                        : Container(
-                                            width: _baseSize * state.item.width,
-                                            height:
-                                                _baseSize * state.item.height,
-                                            color: Colors.white,
-                                          ),
-                                  ],
-                                ),
-                                formFieldState.hasError
-                                    ? Text(formFieldState.errorText!,
-                                        style: TextStyle(
-                                            color: Color(0xffd32f2f),
-                                            fontSize: 12))
-                                    : SizedBox.shrink()
-                              ],
-                            );
-                          },
-                          validator: (value) {
-                            if (state.fileBytes == null) {
-                              return 'Please select image';
-                            }
-                            return null;
-                          },
+                                    ],
+                                  ),
+                                  formFieldState.hasError
+                                      ? Text(formFieldState.errorText!,
+                                          style: TextStyle(
+                                              color: Color(0xffd32f2f),
+                                              fontSize: 12))
+                                      : SizedBox.shrink()
+                                ],
+                              );
+                            },
+                            validator: (value) {
+                              if (state.fileBytes == null) {
+                                return 'Please select image';
+                              }
+                              return null;
+                            },
+                          ),
                         ),
-                      ),
-//============================================= Components ================================================
-                      state.componentItems != null
-                          ? Expanded(
-                              child: ComponentsField(
-                                  componentItems: state.componentItems!),
-                            )
-                          : Container(),
-//============================================= Save button ================================================
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            _formKey.currentState?.save();
-                            context
-                                .read<AddEditItemBloc>()
-                                .add(AddEditItemEvent.save());
-                          }
-                        },
-                        child: Text('Submit'),
-                      ),
-                    ]),
-                  ),
-                  Flexible(child: Container()),
-                ],
+                        //============================================= Components ================================================
+                        state.componentItems != null
+                            ? ComponentsField(
+                                componentItems: state.componentItems!)
+                            : Container(),
+                        //============================================= Save button ================================================
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: RoundedElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState?.save();
+                                context
+                                    .read<AddEditItemBloc>()
+                                    .add(AddEditItemEvent.save());
+                              }
+                            },
+                            child: Text('Save'),
+                          ),
+                        )
+                      ]),
+                    ),
+                    Flexible(child: Container()),
+                  ],
+                ),
               ),
             );
           },
@@ -326,30 +333,81 @@ class _ComponentsFieldState extends State<ComponentsField> {
     var chosenComponent =
         widget.componentItems.where((element) => element.quantity > 0).toList();
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () async {
-          await _showMyDialog(context);
-        },
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              mainAxisExtent: 40,
-              maxCrossAxisExtent: 200,
-              childAspectRatio: 10,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 2),
-          itemCount: chosenComponent.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ComponentPrompt(
+    var column = Column(
+      children: [],
+    );
+
+    var rowWidth = 3;
+    var rows = (chosenComponent.length / rowWidth).ceil();
+    double containerHeight = rows * 60 + 4;
+
+    for (var r = 0; r < rows; r++) {
+      var row = Row(
+        children: [],
+      );
+
+      for (var c = 0; c < rowWidth; c++) {
+        var index = r * rowWidth + c;
+        if (index < chosenComponent.length) {
+          row.children.add(ComponentPrompt(
               component: chosenComponent[index],
               onPressed: () {
                 _showMyDialog(context);
-              },
-            );
-          },
+              }));
+        } else {
+          row.children.add(Expanded(child: SizedBox()));
+        }
+      }
+      column.children.add(row);
+    }
+
+    if (column.children.isEmpty) {
+      column.children.add(Row());
+      containerHeight = 64;
+    }
+
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Container(
+            height: containerHeight,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: Colors.grey.shade700,
+                width: 1.0,
+                style: BorderStyle.solid,
+              ),
+            ),
+            child: InkWell(
+                onTap: () async {
+                  await _showMyDialog(context);
+                },
+                child: column),
+          ),
         ),
-      ),
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Container(
+                  color: Colors.black,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Text(
+                      'Components',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  )),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

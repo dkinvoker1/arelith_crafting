@@ -60,8 +60,10 @@ class _ComponentCardState extends State<ComponentCard> {
                     CircleElevatedButton(
                         onPressed: () {
                           setState(() {
-                            widget.component = widget.component.copyWith(
-                                quantity: widget.component.quantity - 1);
+                            if (widget.component.quantity > 0) {
+                              widget.component = widget.component.copyWith(
+                                  quantity: widget.component.quantity - 1);
+                            }
                           });
                         },
                         color: Colors.red,

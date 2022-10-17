@@ -20,26 +20,31 @@ class ComponentPrompt extends StatefulWidget {
 class _ComponentPromptState extends State<ComponentPrompt> {
   @override
   Widget build(BuildContext context) {
-    return RoundedElevatedButton(
-      onPressed: widget.onPressed,
-      padding: 4,
-      color: Colors.lightBlue,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: ItemImage(
-              item: widget.component.item,
-              ignoreItemDimensions: true,
-              scale: 0.9,
-            ),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: RoundedElevatedButton(
+          onPressed: widget.onPressed,
+          padding: 4,
+          color: Colors.lightBlue,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: ItemImage(
+                  item: widget.component.item,
+                  ignoreItemDimensions: true,
+                  scale: 0.9,
+                ),
+              ),
+              Text(
+                widget.component.quantity.toString(),
+                style: TextStyle(color: Colors.black),
+              )
+            ],
           ),
-          Text(
-            widget.component.quantity.toString(),
-            style: TextStyle(color: Colors.black),
-          )
-        ],
+        ),
       ),
     );
   }
