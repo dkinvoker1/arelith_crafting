@@ -4,6 +4,8 @@ import 'dart:typed_data';
 
 import 'package:arelith_crafting/bloc/add_edit_item/add_edit_item_bloc.dart';
 import 'package:arelith_crafting/models/component_item.dart';
+import 'package:arelith_crafting/widgets/form/int_dropdown.dart';
+import 'package:arelith_crafting/widgets/form/text_field.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,23 +86,41 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                     Flexible(
                       child: Column(children: [
                         //============================================= Text boxes ================================================
-                        ItemTextField(
+                        ArelithTextFormField(
                           name: 'Name',
+                          onSaved: (newValue) {
+                            context.read<AddEditItemBloc>().add(
+                                AddEditItemEvent.update(
+                                    'Name'.toLowerCase(), newValue));
+                          },
                           initialValue: state.item.name,
                         ),
-                        ItemTextField(
+                        ArelithTextFormField(
                           name: 'Description',
-                          initialValue: state.item.description,
+                          onSaved: (newValue) {
+                            context.read<AddEditItemBloc>().add(
+                                AddEditItemEvent.update(
+                                    'Description'.toLowerCase(), newValue));
+                          },
+                          initialValue: state.item.name,
                         ),
                         //============================================= ItemDropdown ================================================
-                        ItemDropdown(
-                          name: 'Width',
-                          initialValue: state.item.width,
-                        ),
-                        ItemDropdown(
-                          name: 'Height',
-                          initialValue: state.item.height,
-                        ),
+                        ArelithIntDropdown(
+                            name: 'Width',
+                            initialValue: state.item.width,
+                            onChanged: (newValue) {
+                              context.read<AddEditItemBloc>().add(
+                                  AddEditItemEvent.update(
+                                      'Width'.toLowerCase(), newValue));
+                            }),
+                        ArelithIntDropdown(
+                            name: 'Height',
+                            initialValue: state.item.height,
+                            onChanged: (newValue) {
+                              context.read<AddEditItemBloc>().add(
+                                  AddEditItemEvent.update(
+                                      'Height'.toLowerCase(), newValue));
+                            }),
                         //============================================= Image upload ================================================
                         Padding(
                           padding: EdgeInsets.all(8.0),
@@ -214,103 +234,6 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
             );
           },
         ));
-  }
-}
-
-//=======================================================================
-//=========================== ItemTextField =============================
-//=======================================================================
-
-class ItemTextField extends StatefulWidget {
-  ItemTextField({
-    Key? key,
-    required this.name,
-    this.initialValue,
-  }) : super(key: key);
-
-  final String name;
-  final String? initialValue;
-
-  @override
-  State<ItemTextField> createState() => _ItemTextFieldState();
-}
-
-class _ItemTextFieldState extends State<ItemTextField> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: TextFormField(
-        initialValue: widget.initialValue,
-        onSaved: (newValue) {
-          context.read<AddEditItemBloc>().add(
-              AddEditItemEvent.update(widget.name.toLowerCase(), newValue));
-        },
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Insert ${widget.name}';
-          }
-          return null;
-        },
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: widget.name,
-        ),
-      ),
-    );
-  }
-}
-
-//=======================================================================
-//=========================== ItemDropdown ==============================
-//=======================================================================
-
-class ItemDropdown extends StatefulWidget {
-  ItemDropdown({Key? key, required this.name, this.initialValue})
-      : super(key: key);
-
-  final String name;
-  final int? initialValue;
-
-  @override
-  State<ItemDropdown> createState() => _ItemDropdownState();
-}
-
-class _ItemDropdownState extends State<ItemDropdown> {
-  int dropdownValue = 1;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.initialValue != null) {
-      dropdownValue = widget.initialValue!;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(6.0),
-      child: DropdownButtonFormField<int>(
-        decoration: InputDecoration(labelText: widget.name),
-        items: <int>[1, 2, 3, 4, 5, 6].map<DropdownMenuItem<int>>((int value) {
-          return DropdownMenuItem<int>(
-            value: value,
-            child: Text(value.toString()),
-          );
-        }).toList(),
-        icon: const Icon(Icons.arrow_downward),
-        elevation: 16,
-        value: dropdownValue,
-        onChanged: (newValue) {
-          setState(() {
-            dropdownValue = newValue!;
-          });
-          context.read<AddEditItemBloc>().add(
-              AddEditItemEvent.update(widget.name.toLowerCase(), newValue));
-        },
-      ),
-    );
   }
 }
 
