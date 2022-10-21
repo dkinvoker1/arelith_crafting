@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../bloc/item_list/item_list_bloc.dart';
+import '../helpers/item_list_helper.dart';
 import '../models/item.dart';
 import '../routes/router.gr.dart';
 
@@ -20,7 +21,6 @@ class ItemListPage extends StatefulWidget {
 
 class _ItemListPageState extends State<ItemListPage> {
   String searchText = '';
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -58,36 +58,36 @@ class _ItemListPageState extends State<ItemListPage> {
                     )),
               ],
             ),
-            Flexible(
-              child: StreamBuilder(
-                stream: state.itemsStream,
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot<Item>> snapshot) {
-                  if (snapshot.data == null) {
-                    return Text('snapshot.data == null');
-                  }
+            StreamBuilder(
+              stream: state.itemsStream,
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot<Item>> snapshot) {
+                if (snapshot.data == null) {
+                  return Text('snapshot.data == null');
+                }
 
-                  var itemsWhere = snapshot.data!.docs
-                      .where((element) => element
-                          .data()
-                          .name
-                          .toLowerCase()
-                          .contains(searchText.toLowerCase()))
-                      .toList();
+                var itemsWhereSnapshot = snapshot.data!.docs
+                    .where((element) => element
+                        .data()
+                        .name
+                        .toLowerCase()
+                        .contains(searchText.toLowerCase()))
+                    .toList();
 
-                  return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                              maxCrossAxisExtent: 350,
-                              childAspectRatio: 1,
-                              crossAxisSpacing: 2,
-                              mainAxisSpacing: 2),
-                      itemCount: itemsWhere.length,
-                      itemBuilder: (context, index) {
-                        return ItemCard(item: itemsWhere[index].data());
-                      });
-                },
-              ),
+                var itemsWhere =
+                    itemsWhereSnapshot.map((e) => e.data()).toList();
+
+                var itemsHelper = ItemListHelper(items: itemsWhere);
+
+                var widgetsList = itemsHelper.getAlphabeticalCategoriesWidgets();
+
+                return Flexible(
+                  child: ListView(
+                    padding: EdgeInsets.all(8),
+                    children: widgetsList,
+                  ),
+                );
+              },
             ),
           ],
         );

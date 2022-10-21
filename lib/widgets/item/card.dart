@@ -15,38 +15,41 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-      child: Column(
-        children: [
-          Text(item.name),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ItemImageButton(item: item),
-              Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      context.router.push(AddEditItemRoute(
-                          editedItemDocumentId: item.documentId));
-                    },
-                    icon: Icon(Icons.edit),
-                    iconSize: 16,
-                  ),
-                  IconButton(
-                    onPressed: () => showDeleteDialog(context),
-                    icon: Icon(
-                      Icons.clear,
-                      color: Colors.red,
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: Container(
+        decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+        child: Column(
+          children: [
+            Text(item.name),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ItemImageButton(item: item),
+                Column(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        context.router.push(AddEditItemRoute(
+                            editedItemDocumentId: item.documentId));
+                      },
+                      icon: Icon(Icons.edit),
+                      iconSize: 16,
                     ),
-                    iconSize: 16,
-                  ),
-                ],
-              )
-            ],
-          )
-        ],
+                    IconButton(
+                      onPressed: () => showDeleteDialog(context),
+                      icon: Icon(
+                        Icons.clear,
+                        color: Colors.red,
+                      ),
+                      iconSize: 16,
+                    ),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
