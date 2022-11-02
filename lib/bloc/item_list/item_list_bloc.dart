@@ -19,5 +19,9 @@ class ItemListBloc extends Bloc<ItemListEvent, ItemListState> {
       var newState = state.copyWith(itemsStream: itemsStream);
       emit.call(newState);
     });
+    
+    on<_Delete>((event, emit) async {
+      await DatabaseService().deleteItem(event.itemId);
+    });
   }
 }

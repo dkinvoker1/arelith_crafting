@@ -19,32 +19,38 @@ mixin _$ItemListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialse,
+    required TResult Function(String itemId) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String itemId)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String itemId)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialse value) initialse,
+    required TResult Function(_Delete value) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_Delete value)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +114,7 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialse,
+    required TResult Function(String itemId) delete,
   }) {
     return initialse();
   }
@@ -116,6 +123,7 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String itemId)? delete,
   }) {
     return initialse?.call();
   }
@@ -124,6 +132,7 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String itemId)? delete,
     required TResult orElse(),
   }) {
     if (initialse != null) {
@@ -136,6 +145,7 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialse value) initialse,
+    required TResult Function(_Delete value) delete,
   }) {
     return initialse(this);
   }
@@ -144,6 +154,7 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_Delete value)? delete,
   }) {
     return initialse?.call(this);
   }
@@ -152,6 +163,7 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
     if (initialse != null) {
@@ -163,6 +175,137 @@ class _$_Initialse implements _Initialse {
 
 abstract class _Initialse implements ItemListEvent {
   const factory _Initialse() = _$_Initialse;
+}
+
+/// @nodoc
+abstract class _$$_DeleteCopyWith<$Res> {
+  factory _$$_DeleteCopyWith(_$_Delete value, $Res Function(_$_Delete) then) =
+      __$$_DeleteCopyWithImpl<$Res>;
+  $Res call({String itemId});
+}
+
+/// @nodoc
+class __$$_DeleteCopyWithImpl<$Res> extends _$ItemListEventCopyWithImpl<$Res>
+    implements _$$_DeleteCopyWith<$Res> {
+  __$$_DeleteCopyWithImpl(_$_Delete _value, $Res Function(_$_Delete) _then)
+      : super(_value, (v) => _then(v as _$_Delete));
+
+  @override
+  _$_Delete get _value => super._value as _$_Delete;
+
+  @override
+  $Res call({
+    Object? itemId = freezed,
+  }) {
+    return _then(_$_Delete(
+      itemId == freezed
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Delete implements _Delete {
+  const _$_Delete(this.itemId);
+
+  @override
+  final String itemId;
+
+  @override
+  String toString() {
+    return 'ItemListEvent.delete(itemId: $itemId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Delete &&
+            const DeepCollectionEquality().equals(other.itemId, itemId));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(itemId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DeleteCopyWith<_$_Delete> get copyWith =>
+      __$$_DeleteCopyWithImpl<_$_Delete>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialse,
+    required TResult Function(String itemId) delete,
+  }) {
+    return delete(itemId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialse,
+    TResult Function(String itemId)? delete,
+  }) {
+    return delete?.call(itemId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialse,
+    TResult Function(String itemId)? delete,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(itemId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialse value) initialse,
+    required TResult Function(_Delete value) delete,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialse value)? initialse,
+    TResult Function(_Delete value)? delete,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialse value)? initialse,
+    TResult Function(_Delete value)? delete,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Delete implements ItemListEvent {
+  const factory _Delete(final String itemId) = _$_Delete;
+
+  String get itemId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_DeleteCopyWith<_$_Delete> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

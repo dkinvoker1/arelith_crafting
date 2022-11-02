@@ -11,9 +11,12 @@ part 'item_list_helper.freezed.dart';
 @Freezed(makeCollectionsUnmodifiable: false)
 class ItemListHelper with _$ItemListHelper {
   const ItemListHelper._();
-  factory ItemListHelper({required List<Item> items}) = _ItemListHelper;
+  factory ItemListHelper(
+      {required List<Item> items,
+      required String nameFilter}) = _ItemListHelper;
 
-  List<Widget> getAlphabeticalCategoriesWidgets() {
+  List<Widget> getAlphabeticalCategoriesWidgets(
+      void Function(Offset off, Item item) onItemPressed) {
     List<Widget> widgets = [];
     List<String> categories = [
       'A',
@@ -42,9 +45,11 @@ class ItemListHelper with _$ItemListHelper {
       'Z'
     ];
 
+    var filteredItems= getFilteredItems();
+
     Iterable<Map<String, List<Item>>> categoriesWithItemsMap =
         categories.map((category) => {
-              category: items
+              category: filteredItems
                   .where((element) =>
                       element.name.characters.first.toLowerCase() ==
                       category.characters.first.toLowerCase())
@@ -55,9 +60,9 @@ class ItemListHelper with _$ItemListHelper {
         .where((element) => element.values.first.isNotEmpty);
 
     for (var map in categoriesWithItemsMap) {
-      var items = map.values.first;
+      var categoryItems = map.values.first;
       var itemsInRow = 5;
-      var rowCount = (items.length / itemsInRow).ceil();
+      var rowCount = (categoryItems.length / itemsInRow).ceil();
 
       var column = Column(
         children: [],
@@ -71,8 +76,11 @@ class ItemListHelper with _$ItemListHelper {
 
         for (var c = 0; c < itemsInRow; c++) {
           var index = r * itemsInRow + c;
-          if (index < items.length) {
-            row.children.add(ItemCard(item: items[index]));
+          if (index < categoryItems.length) {
+            row.children.add(ItemCard(
+              item: categoryItems[index],
+              onPressed: onItemPressed,
+            ));
           }
         }
 
@@ -95,5 +103,12 @@ class ItemListHelper with _$ItemListHelper {
     }
 
     return widgets;
+  }
+
+  List<Item> getFilteredItems() {
+    return items
+        .where((element) =>
+            element.name.toLowerCase().contains(nameFilter.toLowerCase()))
+        .toList();
   }
 }
