@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Recipe {
-  ComponentItem get item => throw _privateConstructorUsedError;
+  RecipeItem get recipeItem => throw _privateConstructorUsedError;
   List<Recipe> get components => throw _privateConstructorUsedError;
+  int get underMe => throw _privateConstructorUsedError;
+  bool get isPlaceholder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeCopyWith<Recipe> get copyWith => throw _privateConstructorUsedError;
@@ -27,9 +29,13 @@ mixin _$Recipe {
 abstract class $RecipeCopyWith<$Res> {
   factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
       _$RecipeCopyWithImpl<$Res>;
-  $Res call({ComponentItem item, List<Recipe> components});
+  $Res call(
+      {RecipeItem recipeItem,
+      List<Recipe> components,
+      int underMe,
+      bool isPlaceholder});
 
-  $ComponentItemCopyWith<$Res> get item;
+  $RecipeItemCopyWith<$Res> get recipeItem;
 }
 
 /// @nodoc
@@ -42,25 +48,35 @@ class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? item = freezed,
+    Object? recipeItem = freezed,
     Object? components = freezed,
+    Object? underMe = freezed,
+    Object? isPlaceholder = freezed,
   }) {
     return _then(_value.copyWith(
-      item: item == freezed
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as ComponentItem,
+      recipeItem: recipeItem == freezed
+          ? _value.recipeItem
+          : recipeItem // ignore: cast_nullable_to_non_nullable
+              as RecipeItem,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<Recipe>,
+      underMe: underMe == freezed
+          ? _value.underMe
+          : underMe // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPlaceholder: isPlaceholder == freezed
+          ? _value.isPlaceholder
+          : isPlaceholder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
   @override
-  $ComponentItemCopyWith<$Res> get item {
-    return $ComponentItemCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
+  $RecipeItemCopyWith<$Res> get recipeItem {
+    return $RecipeItemCopyWith<$Res>(_value.recipeItem, (value) {
+      return _then(_value.copyWith(recipeItem: value));
     });
   }
 }
@@ -70,10 +86,14 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
       __$$_RecipeCopyWithImpl<$Res>;
   @override
-  $Res call({ComponentItem item, List<Recipe> components});
+  $Res call(
+      {RecipeItem recipeItem,
+      List<Recipe> components,
+      int underMe,
+      bool isPlaceholder});
 
   @override
-  $ComponentItemCopyWith<$Res> get item;
+  $RecipeItemCopyWith<$Res> get recipeItem;
 }
 
 /// @nodoc
@@ -87,18 +107,28 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? item = freezed,
+    Object? recipeItem = freezed,
     Object? components = freezed,
+    Object? underMe = freezed,
+    Object? isPlaceholder = freezed,
   }) {
     return _then(_$_Recipe(
-      item: item == freezed
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
-              as ComponentItem,
+      recipeItem: recipeItem == freezed
+          ? _value.recipeItem
+          : recipeItem // ignore: cast_nullable_to_non_nullable
+              as RecipeItem,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<Recipe>,
+      underMe: underMe == freezed
+          ? _value.underMe
+          : underMe // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPlaceholder: isPlaceholder == freezed
+          ? _value.isPlaceholder
+          : isPlaceholder // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -106,17 +136,27 @@ class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Recipe implements _Recipe {
-  _$_Recipe({required this.item, this.components = const []});
+  _$_Recipe(
+      {required this.recipeItem,
+      this.components = const [],
+      this.underMe = 0,
+      this.isPlaceholder = false});
 
   @override
-  final ComponentItem item;
+  final RecipeItem recipeItem;
   @override
   @JsonKey()
   final List<Recipe> components;
+  @override
+  @JsonKey()
+  final int underMe;
+  @override
+  @JsonKey()
+  final bool isPlaceholder;
 
   @override
   String toString() {
-    return 'Recipe(item: $item, components: $components)';
+    return 'Recipe(recipeItem: $recipeItem, components: $components, underMe: $underMe, isPlaceholder: $isPlaceholder)';
   }
 
   @override
@@ -124,16 +164,22 @@ class _$_Recipe implements _Recipe {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Recipe &&
-            const DeepCollectionEquality().equals(other.item, item) &&
             const DeepCollectionEquality()
-                .equals(other.components, components));
+                .equals(other.recipeItem, recipeItem) &&
+            const DeepCollectionEquality()
+                .equals(other.components, components) &&
+            const DeepCollectionEquality().equals(other.underMe, underMe) &&
+            const DeepCollectionEquality()
+                .equals(other.isPlaceholder, isPlaceholder));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(components));
+      const DeepCollectionEquality().hash(recipeItem),
+      const DeepCollectionEquality().hash(components),
+      const DeepCollectionEquality().hash(underMe),
+      const DeepCollectionEquality().hash(isPlaceholder));
 
   @JsonKey(ignore: true)
   @override
@@ -143,13 +189,19 @@ class _$_Recipe implements _Recipe {
 
 abstract class _Recipe implements Recipe {
   factory _Recipe(
-      {required final ComponentItem item,
-      final List<Recipe> components}) = _$_Recipe;
+      {required final RecipeItem recipeItem,
+      final List<Recipe> components,
+      final int underMe,
+      final bool isPlaceholder}) = _$_Recipe;
 
   @override
-  ComponentItem get item => throw _privateConstructorUsedError;
+  RecipeItem get recipeItem => throw _privateConstructorUsedError;
   @override
   List<Recipe> get components => throw _privateConstructorUsedError;
+  @override
+  int get underMe => throw _privateConstructorUsedError;
+  @override
+  bool get isPlaceholder => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>

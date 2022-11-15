@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:arelith_crafting/models/recipe.dart';
+import 'package:arelith_crafting/models/recipe_item.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:firebase_storage/firebase_storage.dart";
@@ -133,16 +135,28 @@ class DatabaseService {
     return item;
   }
 
-  Future<Recipe> getRecipe(ComponentItem finalComponentItem) async {
+  Future<Recipe> getRecipe(
+      ComponentItem finalComponentItem, int aboveMe) async {
     var recipe = Recipe(
-        item: finalComponentItem,
-        components: List<Recipe>.empty(growable: true));
+      recipeItem: RecipeItem(item: finalComponentItem, key: GlobalKey()),
+      components: List<Recipe>.empty(growable: true),
+    );
 
     var componentsList = await getComponentItems(finalComponentItem.item);
 
-    for (var component in componentsList) {
-      var componentRecipe = await getRecipe(component);
-      recipe.components.add(componentRecipe);
+    if (componentsList.isNotEmpty) {
+      int maxDepth = 0;
+
+      for (var component in componentsList) {
+        var componentRecipe = await getRecipe(component, aboveMe + 1);
+        recipe.components.add(componentRecipe);
+
+        maxDepth = maxDepth < componentRecipe.underMe
+            ? componentRecipe.underMe
+            : maxDepth;
+      }
+
+      recipe = recipe.copyWith(underMe: maxDepth + 1);
     }
 
     return recipe;
