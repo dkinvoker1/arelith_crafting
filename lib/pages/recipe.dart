@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/recipe/recipe_bloc.dart';
 import '../models/recipe_item.dart';
 import '../services/recipe_lines_painter.dart';
+import '../services/recipe_lines_painter2.dart';
 
 class RecipePage extends StatefulWidget {
   const RecipePage(
@@ -65,7 +66,6 @@ class RecipeWidget extends StatefulWidget {
 
 class _RecipeWidgetState extends State<RecipeWidget> {
   var boxKey = GlobalKey();
-  Map<ComponentItem, GlobalKey> itemKeys = {};
   Map<Offset, List<Offset>> aaa = {};
 
   Offset boxOffset = Offset.zero;
@@ -83,16 +83,17 @@ class _RecipeWidgetState extends State<RecipeWidget> {
         changeBoxOffset(Offset(bx, by));
       }
 
-      for (var element in itemKeys.entries) {
-        var item = element.key;
-        var key = element.value;
+      // for (var element in widget.recipe.components) {
+      //   var key = element.recipeItem.key;
 
-        if (key.currentContext != null) {
-          var off = getKeyOffset(key);
+      //   if (key != null && key.currentContext != null) {
+      //     var off = getKeyOffset(key);
 
-          changeMyOffset(off);
-        }
-      }
+      //     changeMyOffset(off);
+      //   }
+      // }
+
+      getRecipeOffsetMap(widget.recipe);
     });
   }
 
@@ -105,7 +106,7 @@ class _RecipeWidgetState extends State<RecipeWidget> {
   Offset getKeyOffset(GlobalKey key) {
     var itemBox = key.currentContext!.findRenderObject() as RenderBox;
     var x = itemBox.localToGlobal(Offset.zero).dx + itemBox.size.width / 2;
-    var y = itemBox.localToGlobal(Offset.zero).dy + itemBox.size.height;
+    var y = itemBox.localToGlobal(Offset.zero).dy + itemBox.size.height / 2;
     var off = Offset(x, y);
 
     return off;
@@ -114,6 +115,51 @@ class _RecipeWidgetState extends State<RecipeWidget> {
   void changeMyOffset(Offset offset) {
     setState(() {
       myOffset = offset;
+    });
+  }
+
+  void getRecipeOffsetMap(Recipe recipe) {
+    // for (var element in widget.recipe.components) {
+    //   var key = element.recipeItem.key;
+
+    //   if (key != null && key.currentContext != null) {
+    //     var off = getKeyOffset(key);
+
+    //     changeMyOffset(off);
+    //   }
+    // }
+
+    var key = recipe.recipeItem.key;
+    if (recipe.isPlaceholder || key == null || key.currentContext == null) {
+      return;
+    }
+
+    var hasNoPlaceholderComponents = recipe.components.isNotEmpty &&
+        recipe.components.any((element) => !element.isPlaceholder);
+
+    if (!hasNoPlaceholderComponents) {
+      return;
+    }
+
+    List<Offset> mmm = [];
+
+    for (var element in recipe.components) {
+      var componentKey = element.recipeItem.key;
+      if (componentKey != null && componentKey.currentContext != null) {
+        var componentOffset = getKeyOffset(componentKey);
+        mmm.add(componentOffset);
+      }
+    }
+
+    var off = getKeyOffset(key);
+
+    var ccc = {off: mmm};
+
+    Map<Offset, List<Offset>> bbbb = {};
+    bbbb.addAll(ccc);
+
+    setState(() {
+      aaa = bbbb;
     });
   }
 
@@ -164,12 +210,17 @@ class _RecipeWidgetState extends State<RecipeWidget> {
     );
 
     return CustomPaint(
-      painter: RecipeLinesPainter(
-          parentOffset: Offset(0, 0),
-          childOffset: myOffset,
-          boxOffset: boxOffset),
+      painter: RecipeLinesPainter2(boxOffset: boxOffset, offsetMap: aaa),
       child: recipeWidget,
     );
+
+    // return CustomPaint(
+    //   painter: RecipeLinesPainter(
+    //       parentOffset: Offset(0, 0),
+    //       childOffset: myOffset,
+    //       boxOffset: boxOffset),
+    //   child: recipeWidget,
+    // );
 
     // return recipeWidget;
   }
@@ -181,13 +232,6 @@ class _RecipeWidgetState extends State<RecipeWidget> {
     if (!r.isPlaceholder) {
       expandedRecipe = ComponentImageButton(
           key: r.recipeItem.key, component: r.recipeItem.item!);
-    }
-
-    var a = list.length;
-    var b = r.recipeItem.level;
-    if (a == b) {
-      var c = 1;
-      return;
     }
 
     var row = list[r.recipeItem.level].child as Row;
