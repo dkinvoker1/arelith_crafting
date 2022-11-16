@@ -2,38 +2,85 @@
 
 import 'package:flutter/material.dart';
 
-class RecipeLinesPainter extends CustomPainter {
-  Offset parentOffset;
-  Offset childOffset;
+class RecipeLinesPainter2 extends CustomPainter {
   Offset boxOffset;
+  Map<Offset, List<Offset>> offsetMap;
 
-  RecipeLinesPainter(
-      {required this.parentOffset,
-      required this.childOffset,
-      required this.boxOffset});
+  RecipeLinesPainter2({required this.boxOffset, required this.offsetMap});
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (offsetMap.isEmpty) {
+      return;
+    }
+
+    canvas.translate(-boxOffset.dx, -boxOffset.dy);
+
+    for (var enrty in offsetMap.entries) {
+      paintOneMapEntry(canvas, enrty);
+    }
+  }
+
+  void paintOneMapEntry(
+      Canvas canvas, MapEntry<Offset, List<Offset>> mapEntry) {
+    if (mapEntry.value.isEmpty) {
+      return;
+    }
+    if (mapEntry.value.length < 2) {
+      paintOneComonentRecipe(canvas, mapEntry);
+    } else {
+      paintManyComonentRecipe(canvas, mapEntry);
+    }
+  }
+
+  void paintOneComonentRecipe(
+      Canvas canvas, MapEntry<Offset, List<Offset>> mapEntry) {
     //Brush properties
     var paint = Paint()
       ..color = Colors.blue
       ..strokeWidth = 1
       ..strokeCap = StrokeCap.round;
 
-    canvas.translate(-boxOffset.dx, -boxOffset.dy);
+    var parentOffset = mapEntry.key;
+    var childOffset = mapEntry.value.first;
 
-    var halfY = (parentOffset.dy + childOffset.dy) / 2;
+    canvas.drawLine(parentOffset, childOffset, paint);
+  }
 
+  void paintManyComonentRecipe(
+      Canvas canvas, MapEntry<Offset, List<Offset>> mapEntry) {
+    //Brush properties
+    var paint = Paint()
+      ..color = Colors.blue
+      ..strokeWidth = 1
+      ..strokeCap = StrokeCap.round;
+
+    var parentOffset = mapEntry.key;
+
+    var childOffsetYSum = mapEntry.value.fold<double>(
+        0, (previousValue, element) => previousValue + element.dy);
+    var meanY = childOffsetYSum / mapEntry.value.length;
+
+    var halfY = (parentOffset.dy + meanY) / 2;
+
+    //parent to mid
     canvas.drawLine(parentOffset, Offset(parentOffset.dx, halfY), paint);
 
-    canvas.drawLine(
-        Offset(parentOffset.dx, halfY), Offset(childOffset.dx, halfY), paint);
+    //child to mid
+    for (var childOffset in mapEntry.value) {
+      canvas.drawLine(childOffset, Offset(childOffset.dx, halfY), paint);
+    }
 
-    canvas.drawLine(childOffset, Offset(childOffset.dx, halfY), paint);
+    //mid
+    var firstChildOffset = mapEntry.value.first;
+    var lastChildOffset = mapEntry.value.last;
+
+    canvas.drawLine(Offset(firstChildOffset.dx, halfY),
+        Offset(lastChildOffset.dx, halfY), paint);
   }
 
   @override
-  bool shouldRepaint(RecipeLinesPainter oldDelegate) {
+  bool shouldRepaint(RecipeLinesPainter2 oldDelegate) {
     return true;
   }
 }
