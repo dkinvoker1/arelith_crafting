@@ -147,7 +147,7 @@ class _RecipeWidgetState extends State<RecipeWidget> {
       columnChildren.add(Expanded(child: row));
     }
 
-    setRecipe(widget.recipe, columnChildren);
+    setRecipe(widget.recipe, columnChildren, 1);
 
     var recipeWidget = Column(
       key: boxKey,
@@ -163,21 +163,26 @@ class _RecipeWidgetState extends State<RecipeWidget> {
     );
   }
 
-  void setRecipe(Recipe recipe, List<Expanded> list) {
+  void setRecipe(Recipe recipe, List<Expanded> list, int multiplier) {
     var elementFlex = (recipe.recipeItem.flex * 1000000).ceil();
     Widget expandedRecipe = Container();
 
     if (!recipe.isPlaceholder) {
       expandedRecipe = ComponentImageButton(
-          key: recipe.recipeItem.key, component: recipe.recipeItem.item!);
+          key: recipe.recipeItem.key,
+          component: recipe.recipeItem.item!,
+          multiplier: multiplier);
     }
 
     var row = list[recipe.recipeItem.level].child as Row;
     row.children.add(Expanded(flex: elementFlex, child: expandedRecipe));
 
     if (recipe.components.isNotEmpty) {
+      var componentMltiplier = recipe.recipeItem.item != null
+          ? multiplier * recipe.recipeItem.item!.quantity
+          : multiplier;
       for (var element in recipe.components) {
-        setRecipe(element, list);
+        setRecipe(element, list, componentMltiplier);
       }
     }
   }
