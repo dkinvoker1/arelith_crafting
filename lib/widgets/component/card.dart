@@ -31,32 +31,13 @@ class _ComponentCardState extends State<ComponentCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey,
-                  ),
-                  child:
-                      Center(child: Text(widget.component.quantity.toString())),
-                ),
+                Text(widget.component.item.name),
                 ItemImage(
                   item: widget.component.item,
                   scale: 0.5,
                 ),
-                Text(widget.component.item.name),
                 Row(
                   children: [
-                    CircleElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            widget.component = widget.component.copyWith(
-                                quantity: widget.component.quantity + 1);
-                          });
-                        },
-                        color: Colors.green,
-                        child: Icon(Icons.add)),
                     CircleElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -68,6 +49,25 @@ class _ComponentCardState extends State<ComponentCard> {
                         },
                         color: Colors.red,
                         child: Icon(Icons.horizontal_rule)),
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey,
+                      ),
+                      child: Center(
+                          child: Text(widget.component.quantity.toString())),
+                    ),
+                    CircleElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            widget.component = widget.component.copyWith(
+                                quantity: widget.component.quantity + 1);
+                          });
+                        },
+                        color: Colors.green,
+                        child: Icon(Icons.add)),
                   ],
                 )
               ],
