@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'component_item.dart';
+import '../component/component_item.dart';
 
 part 'recipe_item.freezed.dart';
 

@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../../models/item.dart';
+import '../../models/item/item.dart';
+
 
 class ItemImage extends StatefulWidget {
   const ItemImage(

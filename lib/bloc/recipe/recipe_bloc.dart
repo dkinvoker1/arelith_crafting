@@ -1,12 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:arelith_crafting/models/component_item.dart';
-import 'package:arelith_crafting/models/recipe.dart';
 import 'package:bloc/bloc.dart';
-import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../models/recipe_item.dart';
+import '../../models/component/component_item.dart';
+import '../../models/recipe/recipe.dart';
+import '../../models/recipe/recipe_item.dart';
 import '../../services/database_service.dart';
 
 part 'recipe_event.dart';
@@ -22,22 +21,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       if (itemSnapshot.exists) {
         var item = itemSnapshot.data()!;
         var itemComponent = ComponentItem(item: item);
+
         var recipe = await DatabaseService().getRecipe(itemComponent, 0);
-
-        var aaaa = setRecipePositions(recipe, 1, 0, recipe.underMe + 1);
-
-        // var recipeElementList =
-        //     getRecipeElementList(recipe, 1, 0, recipe.underMe);
-
-        // recipeElementList.sort((f, s) => f.level.compareTo(s.level));
-
-        // var groupedRecipeElementLists =
-        //     groupBy(recipeElementList, (RecipeItem obj) => obj.level);
-
-        emit.call(state.copyWith(recipe: aaaa
-            // recipe: recipe
-            // , recipeElements: groupedRecipeElementLists
-            ));
+        recipe = setRecipePositions(recipe, 1, 0, recipe.underMe + 1);
+        
+        emit.call(state.copyWith(recipe: recipe));
       }
     });
   }
@@ -74,25 +62,4 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
 
     return emptyRecipe;
   }
-
-  // List<RecipeItem> getRecipeElementList(
-  //     Recipe recipe, double flex, int level, int depth) {
-  //   var recipeElementList = [
-  //     RecipeItem(item: recipe.recipeItem.item, flex: flex, level: level)
-  //   ];
-
-  //   for (var component in recipe.components) {
-  //     var childRecipeElementList = getRecipeElementList(
-  //         component, flex / recipe.components.length, level + 1, depth);
-  //     recipeElementList.addAll(childRecipeElementList);
-  //   }
-
-  //   if (recipe.components.isEmpty) {
-  //     for (var i = level; i < depth; i++) {
-  //       recipeElementList.add(RecipeItem(level: i + 1, flex: flex));
-  //     }
-  //   }
-
-  //   return recipeElementList;
-  // }
 }

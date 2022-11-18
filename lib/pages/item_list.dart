@@ -10,7 +10,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../bloc/item_list/item_list_bloc.dart';
 import '../helpers/item_list_helper.dart';
-import '../models/item.dart';
+import '../models/item/item.dart';
 import '../routes/router.gr.dart';
 
 class ItemListPage extends StatefulWidget {

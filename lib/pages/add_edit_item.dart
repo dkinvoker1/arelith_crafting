@@ -3,7 +3,6 @@
 import 'dart:typed_data';
 
 import 'package:arelith_crafting/bloc/add_edit_item/add_edit_item_bloc.dart';
-import 'package:arelith_crafting/models/component_item.dart';
 import 'package:arelith_crafting/widgets/form/int_dropdown.dart';
 import 'package:arelith_crafting/widgets/form/text_field.dart';
 import 'package:auto_route/auto_route.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 
+import '../models/component/component_item.dart';
 import '../routes/router.gr.dart';
 import '../widgets/component/card.dart';
 import '../widgets/component/prompt.dart';

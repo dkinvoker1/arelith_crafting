@@ -2,14 +2,14 @@
 
 import 'dart:typed_data';
 
-import 'package:arelith_crafting/models/component.dart';
-import 'package:arelith_crafting/models/component_item.dart';
 import 'package:arelith_crafting/services/database_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:file_picker/file_picker.dart';
 
-import '../../models/item.dart';
+import '../../models/component/component.dart';
+import '../../models/component/component_item.dart';
+import '../../models/item/item.dart';
 
 part 'add_edit_item_event.dart';
 part 'add_edit_item_state.dart';

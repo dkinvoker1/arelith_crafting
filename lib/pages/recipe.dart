@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages, overridden_fields
 
-import 'package:arelith_crafting/models/recipe.dart';
 import 'package:arelith_crafting/widgets/component/image_button.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/recipe/recipe_bloc.dart';
+import '../models/recipe/recipe.dart';
 import '../services/recipe_lines_painter.dart';
 
 class RecipePage extends StatefulWidget {

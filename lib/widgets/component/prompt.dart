@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../models/component_item.dart';
+import '../../models/component/component_item.dart';
 import '../item/image.dart';
 import '../styled_elevated_button/rounded_elevated_button.dart';
 

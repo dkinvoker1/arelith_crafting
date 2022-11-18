@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../models/item.dart';
+import '../../models/item/item.dart';
 import 'image.dart';
 
 class ItemCard extends StatefulWidget {

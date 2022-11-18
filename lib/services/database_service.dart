@@ -3,15 +3,15 @@
 import 'dart:developer';
 import 'dart:typed_data';
 
-import 'package:arelith_crafting/models/recipe.dart';
-import 'package:arelith_crafting/models/recipe_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:firebase_storage/firebase_storage.dart";
 
-import '../models/component_item.dart';
-import '../models/item.dart';
+import '../models/component/component_item.dart';
+import '../models/item/item.dart';
+import '../models/recipe/recipe.dart';
+import '../models/recipe/recipe_item.dart';
 
 @singleton
 class DatabaseService {

@@ -1,5 +1,6 @@
-import 'package:arelith_crafting/models/recipe_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../recipe/recipe_item.dart';
 
 part 'recipe.freezed.dart';
 

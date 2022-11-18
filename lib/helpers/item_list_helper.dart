@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:arelith_crafting/models/item.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../models/item/item.dart';
 import '../widgets/item/card.dart';
 
 part 'item_list_helper.freezed.dart';
