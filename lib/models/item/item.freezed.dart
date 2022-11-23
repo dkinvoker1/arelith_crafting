@@ -26,6 +26,7 @@ mixin _$Item {
   int get height => throw _privateConstructorUsedError;
   int get width => throw _privateConstructorUsedError;
   String get documentId => throw _privateConstructorUsedError;
+  List<ItemCategory> get categories => throw _privateConstructorUsedError;
   List<Component> get components => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $ItemCopyWith<$Res> {
       int height,
       int width,
       String documentId,
+      List<ItemCategory> categories,
       List<Component> components});
 }
 
@@ -63,6 +65,7 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object? height = freezed,
     Object? width = freezed,
     Object? documentId = freezed,
+    Object? categories = freezed,
     Object? components = freezed,
   }) {
     return _then(_value.copyWith(
@@ -90,6 +93,10 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
+      categories: categories == freezed
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<ItemCategory>,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
@@ -110,6 +117,7 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       int height,
       int width,
       String documentId,
+      List<ItemCategory> categories,
       List<Component> components});
 }
 
@@ -130,6 +138,7 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object? height = freezed,
     Object? width = freezed,
     Object? documentId = freezed,
+    Object? categories = freezed,
     Object? components = freezed,
   }) {
     return _then(_$_Item(
@@ -157,6 +166,10 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
+      categories: categories == freezed
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<ItemCategory>,
       components: components == freezed
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
@@ -167,7 +180,7 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Item implements _Item {
+class _$_Item with DiagnosticableTreeMixin implements _Item {
   const _$_Item(
       {required this.imageUrl,
       required this.name,
@@ -175,6 +188,7 @@ class _$_Item implements _Item {
       required this.height,
       required this.width,
       this.documentId = '',
+      this.categories = const [],
       this.components = const []});
 
   factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
@@ -194,11 +208,29 @@ class _$_Item implements _Item {
   final String documentId;
   @override
   @JsonKey()
+  final List<ItemCategory> categories;
+  @override
+  @JsonKey()
   final List<Component> components;
 
   @override
-  String toString() {
-    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, height: $height, width: $width, documentId: $documentId, components: $components)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Item(imageUrl: $imageUrl, name: $name, description: $description, height: $height, width: $width, documentId: $documentId, categories: $categories, components: $components)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Item'))
+      ..add(DiagnosticsProperty('imageUrl', imageUrl))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('height', height))
+      ..add(DiagnosticsProperty('width', width))
+      ..add(DiagnosticsProperty('documentId', documentId))
+      ..add(DiagnosticsProperty('categories', categories))
+      ..add(DiagnosticsProperty('components', components));
   }
 
   @override
@@ -215,6 +247,8 @@ class _$_Item implements _Item {
             const DeepCollectionEquality()
                 .equals(other.documentId, documentId) &&
             const DeepCollectionEquality()
+                .equals(other.categories, categories) &&
+            const DeepCollectionEquality()
                 .equals(other.components, components));
   }
 
@@ -228,6 +262,7 @@ class _$_Item implements _Item {
       const DeepCollectionEquality().hash(height),
       const DeepCollectionEquality().hash(width),
       const DeepCollectionEquality().hash(documentId),
+      const DeepCollectionEquality().hash(categories),
       const DeepCollectionEquality().hash(components));
 
   @JsonKey(ignore: true)
@@ -249,6 +284,7 @@ abstract class _Item implements Item {
       required final int height,
       required final int width,
       final String documentId,
+      final List<ItemCategory> categories,
       final List<Component> components}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
@@ -265,6 +301,8 @@ abstract class _Item implements Item {
   int get width => throw _privateConstructorUsedError;
   @override
   String get documentId => throw _privateConstructorUsedError;
+  @override
+  List<ItemCategory> get categories => throw _privateConstructorUsedError;
   @override
   List<Component> get components => throw _privateConstructorUsedError;
   @override

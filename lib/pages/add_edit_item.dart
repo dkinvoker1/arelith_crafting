@@ -3,6 +3,7 @@
 import 'dart:typed_data';
 
 import 'package:arelith_crafting/bloc/add_edit_item/add_edit_item_bloc.dart';
+import 'package:arelith_crafting/enums/category.dart';
 import 'package:arelith_crafting/widgets/form/int_dropdown.dart';
 import 'package:arelith_crafting/widgets/form/text_field.dart';
 import 'package:auto_route/auto_route.dart';
@@ -15,6 +16,7 @@ import '../routes/router.gr.dart';
 import '../widgets/component/card.dart';
 import '../widgets/component/prompt.dart';
 import '../widgets/styled_elevated_button/rounded_elevated_button.dart';
+import '../widgets/styled_elevated_button/rounded_elevated_button_switch.dart';
 
 class AddEditItemPage extends StatefulWidget {
   AddEditItemPage({
@@ -103,6 +105,11 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                                     'Description'.toLowerCase(), newValue));
                           },
                           initialValue: state.item.name,
+                        ),
+
+                        //============================================= Item categories ================================================
+                        CategoriesField(
+                          initialCategories: state.item.categories,
                         ),
                         //============================================= ItemDropdown ================================================
                         ArelithIntDropdown(
@@ -238,7 +245,101 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
 }
 
 //=======================================================================
-//=========================== ComponentsField ==============================
+//========================= CategoriesField =============================
+//=======================================================================
+
+class CategoriesField extends StatefulWidget {
+  CategoriesField({Key? key, required this.initialCategories})
+      : super(key: key);
+
+  final List<ItemCategory> initialCategories;
+
+  @override
+  State<CategoriesField> createState() => _CategoriesFieldState();
+}
+
+class _CategoriesFieldState extends State<CategoriesField> {
+  @override
+  Widget build(BuildContext context) {
+    var categoryWidgets = <Row>[
+      Row(
+        children: [],
+      )
+    ];
+    var i = 0;
+
+    for (var element in ItemCategory.values) {
+      if (i > 2) {
+        categoryWidgets.add(Row(children: []));
+        i = 0;
+      }
+
+      categoryWidgets.last.children.add(Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: RoundedElevatedButtonSwitch(
+            onPressed: (bool value) {
+              context
+                  .read<AddEditItemBloc>()
+                  .add(AddEditItemEvent.updateCategory(element, value));
+            },
+            color: element.color,
+            text: element.displayName,
+            initialValue: widget.initialCategories.contains(element),
+          ),
+        ),
+      ));
+      i++;
+    }
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(
+                  color: Colors.grey.shade700,
+                  width: 1.0,
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: Column(
+                children: categoryWidgets,
+              ),
+            ),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Container(
+                    color: Colors.black,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: Text(
+                        'Categories',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    )),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+//=======================================================================
+//========================= ComponentsField =============================
 //=======================================================================
 
 class ComponentsField extends StatefulWidget {
@@ -289,48 +390,51 @@ class _ComponentsFieldState extends State<ComponentsField> {
       containerHeight = 64;
     }
 
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Container(
-            height: containerHeight,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(
-                color: Colors.grey.shade700,
-                width: 1.0,
-                style: BorderStyle.solid,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Container(
+              height: containerHeight,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(
+                  color: Colors.grey.shade700,
+                  width: 1.0,
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: InkWell(
+                  onTap: () async {
+                    await _showMyDialog(context);
+                  },
+                  child: column),
+            ),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Container(
+                    color: Colors.black,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: Text(
+                        'Components',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    )),
               ),
             ),
-            child: InkWell(
-                onTap: () async {
-                  await _showMyDialog(context);
-                },
-                child: column),
           ),
-        ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8),
-              child: Container(
-                  color: Colors.black,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Text(
-                      'Components',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  )),
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

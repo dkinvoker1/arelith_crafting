@@ -2,7 +2,8 @@
 
 import 'dart:typed_data';
 
-import 'package:arelith_crafting/services/database_service.dart';
+import 'package:arelith_crafting/enums/category.dart';
+import 'package:arelith_crafting/repositories/items_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:file_picker/file_picker.dart';
@@ -21,7 +22,7 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
       (event, emit) async {
         List<ComponentItem> components = List.empty(growable: true);
 
-        var itemsQuerySnapshot = await DatabaseService().getItemsFuture();
+        var itemsQuerySnapshot = await ItemsRepository().getItemsFuture();
         var itemsDocumentSnapshot = itemsQuerySnapshot.docs;
         var itemsList = itemsDocumentSnapshot.map((e) => e.data()).toList();
 
@@ -36,9 +37,9 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
     );
 
     on<_Load>((event, emit) async {
-      var itemSnapshot = await DatabaseService().getItemById(event.itemId);
+      var itemSnapshot = await ItemsRepository().getItemById(event.itemId);
       if (itemSnapshot.data() != null) {
-        var imageBytes = await DatabaseService()
+        var imageBytes = await ItemsRepository()
             .getImageBytesByUrl(itemSnapshot.data()!.imageUrl);
 
         var imageName = itemSnapshot.data()!.imageUrl;
@@ -88,6 +89,26 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
       emit.call(newState);
     });
 
+    on<_UpdateCategory>((event, emit) {
+      var itemHasCategory = state.item.categories.contains(event.category);
+      var shouldChangeItemCategories = itemHasCategory != event.hasThisCategory;
+
+      if (shouldChangeItemCategories) {
+        var newCategories = <ItemCategory>[];
+        newCategories.addAll(state.item.categories);
+
+        if (event.hasThisCategory) {
+          newCategories.add(event.category);
+        } else {
+          newCategories.remove(event.category);
+        }
+
+        var newState = state.copyWith(
+            item: state.item.copyWith(categories: newCategories));
+        emit.call(newState);
+      }
+    });
+
     on<_SetImage>((event, emit) {
       var newState = state.copyWith(
           fileName: event.file.name, fileBytes: event.file.bytes);
@@ -104,7 +125,7 @@ class AddEditItemBloc extends Bloc<AddEditItemEvent, AddEditItemState> {
       _updateItemComponents();
 
       if (state.fileBytes != null) {
-        var error = await DatabaseService().updateItem(
+        var error = await ItemsRepository().updateItem(
             item: state.item,
             fileName: state.fileName,
             fileBytes: state.fileBytes!);

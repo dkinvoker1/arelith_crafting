@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../models/component/component_item.dart';
 import '../../models/recipe/recipe.dart';
 import '../../models/recipe/recipe_item.dart';
-import '../../services/database_service.dart';
+import '../../repositories/items_repository.dart';
 
 part 'recipe_event.dart';
 part 'recipe_state.dart';
@@ -16,13 +16,13 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   RecipeBloc() : super(_RecipeState()) {
     on<_Search>((event, emit) async {
       var itemSnapshot =
-          await DatabaseService().getItemById(event.rootItemDocumentPath);
+          await ItemsRepository().getItemById(event.rootItemDocumentPath);
 
       if (itemSnapshot.exists) {
         var item = itemSnapshot.data()!;
         var itemComponent = ComponentItem(item: item);
 
-        var recipe = await DatabaseService().getRecipe(itemComponent, 0);
+        var recipe = await ItemsRepository().getRecipe(itemComponent, 0);
         recipe = setRecipePositions(recipe, 1, 0, recipe.underMe + 1);
         
         emit.call(state.copyWith(recipe: recipe));

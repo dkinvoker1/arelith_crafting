@@ -1,8 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../enums/category.dart';
 import '../component/component.dart';
 
 part 'item.freezed.dart';
@@ -17,6 +19,7 @@ class Item with _$Item {
     required int height,
     required int width,
     @Default('') String documentId,
+    @Default([]) List<ItemCategory> categories,
     @Default([]) List<Component> components,
   }) = _Item;
 

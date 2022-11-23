@@ -13,6 +13,10 @@ _$_Item _$$_ItemFromJson(Map json) => _$_Item(
       height: json['height'] as int,
       width: json['width'] as int,
       documentId: json['documentId'] as String? ?? '',
+      categories: (json['categories'] as List<dynamic>?)
+              ?.map((e) => $enumDecode(_$ItemCategoryEnumMap, e))
+              .toList() ??
+          const [],
       components: (json['components'] as List<dynamic>?)
               ?.map((e) =>
                   Component.fromJson(Map<String, Object?>.from(e as Map)))
@@ -27,5 +31,16 @@ Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'height': instance.height,
       'width': instance.width,
       'documentId': instance.documentId,
+      'categories':
+          instance.categories.map((e) => _$ItemCategoryEnumMap[e]).toList(),
       'components': instance.components.map((e) => e.toJson()).toList(),
     };
+
+const _$ItemCategoryEnumMap = {
+  ItemCategory.smithing: 'smithing',
+  ItemCategory.carpentry: 'carpentry',
+  ItemCategory.tailoring: 'tailoring',
+  ItemCategory.artCrafting: 'artCrafting',
+  ItemCategory.herbalism: 'herbalism',
+  ItemCategory.alchemy: 'alchemy',
+};

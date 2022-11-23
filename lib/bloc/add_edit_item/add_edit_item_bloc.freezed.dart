@@ -21,6 +21,8 @@ mixin _$AddEditItemEvent {
     required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
     required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function(List<ComponentItem> componentItems)
         setComponentItems,
@@ -32,6 +34,8 @@ mixin _$AddEditItemEvent {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -42,6 +46,8 @@ mixin _$AddEditItemEvent {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -53,6 +59,7 @@ mixin _$AddEditItemEvent {
     required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
     required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
@@ -63,6 +70,7 @@ mixin _$AddEditItemEvent {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -73,6 +81,7 @@ mixin _$AddEditItemEvent {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -142,6 +151,8 @@ class _$_InitialiseComponents implements _InitialiseComponents {
     required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
     required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function(List<ComponentItem> componentItems)
         setComponentItems,
@@ -156,6 +167,8 @@ class _$_InitialiseComponents implements _InitialiseComponents {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -169,6 +182,8 @@ class _$_InitialiseComponents implements _InitialiseComponents {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -186,6 +201,7 @@ class _$_InitialiseComponents implements _InitialiseComponents {
     required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
     required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
@@ -199,6 +215,7 @@ class _$_InitialiseComponents implements _InitialiseComponents {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -212,6 +229,7 @@ class _$_InitialiseComponents implements _InitialiseComponents {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -293,6 +311,8 @@ class _$_Load implements _Load {
     required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
     required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function(List<ComponentItem> componentItems)
         setComponentItems,
@@ -307,6 +327,8 @@ class _$_Load implements _Load {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -320,6 +342,8 @@ class _$_Load implements _Load {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -337,6 +361,7 @@ class _$_Load implements _Load {
     required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
     required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
@@ -350,6 +375,7 @@ class _$_Load implements _Load {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -363,6 +389,7 @@ class _$_Load implements _Load {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -458,6 +485,8 @@ class _$_Update implements _Update {
     required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
     required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function(List<ComponentItem> componentItems)
         setComponentItems,
@@ -472,6 +501,8 @@ class _$_Update implements _Update {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -485,6 +516,8 @@ class _$_Update implements _Update {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -502,6 +535,7 @@ class _$_Update implements _Update {
     required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
     required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
@@ -515,6 +549,7 @@ class _$_Update implements _Update {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -528,6 +563,7 @@ class _$_Update implements _Update {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -547,6 +583,188 @@ abstract class _Update implements AddEditItemEvent {
   dynamic get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_UpdateCopyWith<_$_Update> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateCategoryCopyWith<$Res> {
+  factory _$$_UpdateCategoryCopyWith(
+          _$_UpdateCategory value, $Res Function(_$_UpdateCategory) then) =
+      __$$_UpdateCategoryCopyWithImpl<$Res>;
+  $Res call({ItemCategory category, bool hasThisCategory});
+}
+
+/// @nodoc
+class __$$_UpdateCategoryCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res>
+    implements _$$_UpdateCategoryCopyWith<$Res> {
+  __$$_UpdateCategoryCopyWithImpl(
+      _$_UpdateCategory _value, $Res Function(_$_UpdateCategory) _then)
+      : super(_value, (v) => _then(v as _$_UpdateCategory));
+
+  @override
+  _$_UpdateCategory get _value => super._value as _$_UpdateCategory;
+
+  @override
+  $Res call({
+    Object? category = freezed,
+    Object? hasThisCategory = freezed,
+  }) {
+    return _then(_$_UpdateCategory(
+      category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as ItemCategory,
+      hasThisCategory == freezed
+          ? _value.hasThisCategory
+          : hasThisCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateCategory implements _UpdateCategory {
+  const _$_UpdateCategory(this.category, this.hasThisCategory);
+
+  @override
+  final ItemCategory category;
+  @override
+  final bool hasThisCategory;
+
+  @override
+  String toString() {
+    return 'AddEditItemEvent.updateCategory(category: $category, hasThisCategory: $hasThisCategory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateCategory &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality()
+                .equals(other.hasThisCategory, hasThisCategory));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(hasThisCategory));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UpdateCategoryCopyWith<_$_UpdateCategory> get copyWith =>
+      __$$_UpdateCategoryCopyWithImpl<_$_UpdateCategory>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialiseComponents,
+    required TResult Function(String itemId) load,
+    required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
+    required TResult Function(PlatformFile file) setImage,
+    required TResult Function(List<ComponentItem> componentItems)
+        setComponentItems,
+    required TResult Function() save,
+  }) {
+    return updateCategory(category, hasThisCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
+    TResult Function(String itemId)? load,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult Function()? save,
+  }) {
+    return updateCategory?.call(category, hasThisCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialiseComponents,
+    TResult Function(String itemId)? load,
+    TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
+    TResult Function(PlatformFile file)? setImage,
+    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (updateCategory != null) {
+      return updateCategory(category, hasThisCategory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialiseComponents value) initialiseComponents,
+    required TResult Function(_Load value) load,
+    required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
+    required TResult Function(_SetImage value) setImage,
+    required TResult Function(_SetComponents value) setComponentItems,
+    required TResult Function(_Save value) save,
+  }) {
+    return updateCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
+    TResult Function(_Load value)? load,
+    TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
+    TResult Function(_Save value)? save,
+  }) {
+    return updateCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialiseComponents value)? initialiseComponents,
+    TResult Function(_Load value)? load,
+    TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
+    TResult Function(_SetImage value)? setImage,
+    TResult Function(_SetComponents value)? setComponentItems,
+    TResult Function(_Save value)? save,
+    required TResult orElse(),
+  }) {
+    if (updateCategory != null) {
+      return updateCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCategory implements AddEditItemEvent {
+  const factory _UpdateCategory(
+          final ItemCategory category, final bool hasThisCategory) =
+      _$_UpdateCategory;
+
+  ItemCategory get category => throw _privateConstructorUsedError;
+  bool get hasThisCategory => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_UpdateCategoryCopyWith<_$_UpdateCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -618,6 +836,8 @@ class _$_SetImage implements _SetImage {
     required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
     required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function(List<ComponentItem> componentItems)
         setComponentItems,
@@ -632,6 +852,8 @@ class _$_SetImage implements _SetImage {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -645,6 +867,8 @@ class _$_SetImage implements _SetImage {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -662,6 +886,7 @@ class _$_SetImage implements _SetImage {
     required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
     required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
@@ -675,6 +900,7 @@ class _$_SetImage implements _SetImage {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -688,6 +914,7 @@ class _$_SetImage implements _SetImage {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -783,6 +1010,8 @@ class _$_SetComponents implements _SetComponents {
     required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
     required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function(List<ComponentItem> componentItems)
         setComponentItems,
@@ -797,6 +1026,8 @@ class _$_SetComponents implements _SetComponents {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -810,6 +1041,8 @@ class _$_SetComponents implements _SetComponents {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -827,6 +1060,7 @@ class _$_SetComponents implements _SetComponents {
     required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
     required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
@@ -840,6 +1074,7 @@ class _$_SetComponents implements _SetComponents {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -853,6 +1088,7 @@ class _$_SetComponents implements _SetComponents {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -916,6 +1152,8 @@ class _$_Save implements _Save {
     required TResult Function() initialiseComponents,
     required TResult Function(String itemId) load,
     required TResult Function(String key, dynamic value) update,
+    required TResult Function(ItemCategory category, bool hasThisCategory)
+        updateCategory,
     required TResult Function(PlatformFile file) setImage,
     required TResult Function(List<ComponentItem> componentItems)
         setComponentItems,
@@ -930,6 +1168,8 @@ class _$_Save implements _Save {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -943,6 +1183,8 @@ class _$_Save implements _Save {
     TResult Function()? initialiseComponents,
     TResult Function(String itemId)? load,
     TResult Function(String key, dynamic value)? update,
+    TResult Function(ItemCategory category, bool hasThisCategory)?
+        updateCategory,
     TResult Function(PlatformFile file)? setImage,
     TResult Function(List<ComponentItem> componentItems)? setComponentItems,
     TResult Function()? save,
@@ -960,6 +1202,7 @@ class _$_Save implements _Save {
     required TResult Function(_InitialiseComponents value) initialiseComponents,
     required TResult Function(_Load value) load,
     required TResult Function(_Update value) update,
+    required TResult Function(_UpdateCategory value) updateCategory,
     required TResult Function(_SetImage value) setImage,
     required TResult Function(_SetComponents value) setComponentItems,
     required TResult Function(_Save value) save,
@@ -973,6 +1216,7 @@ class _$_Save implements _Save {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,
@@ -986,6 +1230,7 @@ class _$_Save implements _Save {
     TResult Function(_InitialiseComponents value)? initialiseComponents,
     TResult Function(_Load value)? load,
     TResult Function(_Update value)? update,
+    TResult Function(_UpdateCategory value)? updateCategory,
     TResult Function(_SetImage value)? setImage,
     TResult Function(_SetComponents value)? setComponentItems,
     TResult Function(_Save value)? save,

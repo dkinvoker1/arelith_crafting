@@ -7,7 +7,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'services/database_service.dart'
+import 'repositories/items_repository.dart'
     as _i3; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
@@ -15,6 +15,6 @@ import 'services/database_service.dart'
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.singleton<_i3.DatabaseService>(_i3.DatabaseService());
+  gh.singleton<_i3.ItemsRepository>(_i3.ItemsRepository());
   return get;
 }

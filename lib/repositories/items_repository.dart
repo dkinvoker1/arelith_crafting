@@ -14,11 +14,7 @@ import '../models/recipe/recipe.dart';
 import '../models/recipe/recipe_item.dart';
 
 @singleton
-class DatabaseService {
-  // String _getUId() {
-  //   return FirebaseAuth.instance.currentUser!.uid;
-  // }
-
+class ItemsRepository {
   Future<Exception?> updateItem(
       {required Item item,
       required String fileName,

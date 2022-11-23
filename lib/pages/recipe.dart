@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/recipe/recipe_bloc.dart';
 import '../models/recipe/recipe.dart';
-import '../services/recipe_lines_painter.dart';
+import '../helpers/recipe_lines_painter.dart';
 
 class RecipePage extends StatefulWidget {
   const RecipePage(
