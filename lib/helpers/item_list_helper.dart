@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../enums/category.dart';
 import '../models/item/item.dart';
 import '../widgets/item/card.dart';
 
@@ -12,43 +13,44 @@ part 'item_list_helper.freezed.dart';
 class ItemListHelper with _$ItemListHelper {
   const ItemListHelper._();
   factory ItemListHelper(
-      {required List<Item> items,
-      required String nameFilter}) = _ItemListHelper;
+          {required void Function(Offset off, Item item) onItemPressed}) =
+      _ItemListHelper;
 
-  List<Widget> getAlphabeticalCategoriesWidgets(
-      void Function(Offset off, Item item) onItemPressed) {
+  final List<String> _categories = const [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'R',
+    'S',
+    'T',
+    'U',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ];
+
+  List<Widget> getAlphabeticalCategoriesWidgets(List<Item> items,
+      String nameFilter, Map<ItemCategory, bool> categoryFilter) {
     List<Widget> widgets = [];
-    List<String> categories = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'R',
-      'S',
-      'T',
-      'U',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ];
 
-    var filteredItems= getFilteredItems();
+    var filteredItems = getFilteredItems(items, nameFilter, categoryFilter);
 
     Iterable<Map<String, List<Item>>> categoriesWithItemsMap =
-        categories.map((category) => {
+        _categories.map((category) => {
               category: filteredItems
                   .where((element) =>
                       element.name.characters.first.toLowerCase() ==
@@ -105,10 +107,21 @@ class ItemListHelper with _$ItemListHelper {
     return widgets;
   }
 
-  List<Item> getFilteredItems() {
-    return items
-        .where((element) =>
-            element.name.toLowerCase().contains(nameFilter.toLowerCase()))
-        .toList();
+  List<Item> getFilteredItems(List<Item> items, String nameFilter,
+      Map<ItemCategory, bool> categoryFilter) {
+    var filteredItems = items.where((element) =>
+        element.name.toLowerCase().contains(nameFilter.toLowerCase()));
+
+    var trueCategories = categoryFilter.entries
+        .where((element) => element.value)
+        .map((e) => e.key);
+
+    filteredItems = filteredItems.where((element) =>
+        element.categories
+            .where((cat) => trueCategories.contains(cat))
+            .isNotEmpty ||
+        element.categories.isEmpty);
+
+    return filteredItems.toList();
   }
 }

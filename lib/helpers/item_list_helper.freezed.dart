@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ItemListHelper {
-  List<Item> get items => throw _privateConstructorUsedError;
-  String get nameFilter => throw _privateConstructorUsedError;
+  void Function(Offset, Item) get onItemPressed =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ItemListHelperCopyWith<ItemListHelper> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $ItemListHelperCopyWith<$Res> {
   factory $ItemListHelperCopyWith(
           ItemListHelper value, $Res Function(ItemListHelper) then) =
       _$ItemListHelperCopyWithImpl<$Res>;
-  $Res call({List<Item> items, String nameFilter});
+  $Res call({void Function(Offset, Item) onItemPressed});
 }
 
 /// @nodoc
@@ -43,18 +43,13 @@ class _$ItemListHelperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? items = freezed,
-    Object? nameFilter = freezed,
+    Object? onItemPressed = freezed,
   }) {
     return _then(_value.copyWith(
-      items: items == freezed
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-      nameFilter: nameFilter == freezed
-          ? _value.nameFilter
-          : nameFilter // ignore: cast_nullable_to_non_nullable
-              as String,
+      onItemPressed: onItemPressed == freezed
+          ? _value.onItemPressed
+          : onItemPressed // ignore: cast_nullable_to_non_nullable
+              as void Function(Offset, Item),
     ));
   }
 }
@@ -66,7 +61,7 @@ abstract class _$$_ItemListHelperCopyWith<$Res>
           _$_ItemListHelper value, $Res Function(_$_ItemListHelper) then) =
       __$$_ItemListHelperCopyWithImpl<$Res>;
   @override
-  $Res call({List<Item> items, String nameFilter});
+  $Res call({void Function(Offset, Item) onItemPressed});
 }
 
 /// @nodoc
@@ -82,18 +77,13 @@ class __$$_ItemListHelperCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? items = freezed,
-    Object? nameFilter = freezed,
+    Object? onItemPressed = freezed,
   }) {
     return _then(_$_ItemListHelper(
-      items: items == freezed
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
-      nameFilter: nameFilter == freezed
-          ? _value.nameFilter
-          : nameFilter // ignore: cast_nullable_to_non_nullable
-              as String,
+      onItemPressed: onItemPressed == freezed
+          ? _value.onItemPressed
+          : onItemPressed // ignore: cast_nullable_to_non_nullable
+              as void Function(Offset, Item),
     ));
   }
 }
@@ -101,17 +91,14 @@ class __$$_ItemListHelperCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ItemListHelper extends _ItemListHelper {
-  _$_ItemListHelper({required this.items, required this.nameFilter})
-      : super._();
+  _$_ItemListHelper({required this.onItemPressed}) : super._();
 
   @override
-  final List<Item> items;
-  @override
-  final String nameFilter;
+  final void Function(Offset, Item) onItemPressed;
 
   @override
   String toString() {
-    return 'ItemListHelper(items: $items, nameFilter: $nameFilter)';
+    return 'ItemListHelper(onItemPressed: $onItemPressed)';
   }
 
   @override
@@ -119,16 +106,12 @@ class _$_ItemListHelper extends _ItemListHelper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ItemListHelper &&
-            const DeepCollectionEquality().equals(other.items, items) &&
-            const DeepCollectionEquality()
-                .equals(other.nameFilter, nameFilter));
+            (identical(other.onItemPressed, onItemPressed) ||
+                other.onItemPressed == onItemPressed));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(items),
-      const DeepCollectionEquality().hash(nameFilter));
+  int get hashCode => Object.hash(runtimeType, onItemPressed);
 
   @JsonKey(ignore: true)
   @override
@@ -138,14 +121,13 @@ class _$_ItemListHelper extends _ItemListHelper {
 
 abstract class _ItemListHelper extends ItemListHelper {
   factory _ItemListHelper(
-      {required final List<Item> items,
-      required final String nameFilter}) = _$_ItemListHelper;
+          {required final void Function(Offset, Item) onItemPressed}) =
+      _$_ItemListHelper;
   _ItemListHelper._() : super._();
 
   @override
-  List<Item> get items => throw _privateConstructorUsedError;
-  @override
-  String get nameFilter => throw _privateConstructorUsedError;
+  void Function(Offset, Item) get onItemPressed =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ItemListHelperCopyWith<_$_ItemListHelper> get copyWith =>

@@ -12,6 +12,7 @@ import '../bloc/item_list/item_list_bloc.dart';
 import '../helpers/item_list_helper.dart';
 import '../models/item/item.dart';
 import '../routes/router.gr.dart';
+import '../widgets/styled_elevated_button/rounded_elevated_button_switch.dart';
 
 class ItemListPage extends StatefulWidget {
   const ItemListPage({Key? key}) : super(key: key);
@@ -29,8 +30,7 @@ class _ItemListPageState extends State<ItemListPage>
   Offset menuOffset = Offset(100, 100);
   Item? clickedItem;
 
-  String searchText = '';
-  var itemsHelper = ItemListHelper(items: [], nameFilter: '');
+  late ItemListHelper itemsHelper;
 
   @override
   void initState() {
@@ -47,6 +47,7 @@ class _ItemListPageState extends State<ItemListPage>
           reverseCurve: Curves.fastOutSlowIn),
     );
 
+    itemsHelper = ItemListHelper(onItemPressed: onItemPressed);
     super.initState();
   }
 
@@ -73,69 +74,10 @@ class _ItemListPageState extends State<ItemListPage>
       }),
     );
   }
+
 //===============================================================================================
-//                                       Build List
+//                                       onItemPressed
 //===============================================================================================
-
-  Column buildList(BuildContext context, ItemListState state) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Flexible(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  onChanged: (text) {
-                    setState(() {
-                      searchText = text;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Search',
-                  ),
-                ),
-              ),
-            ),
-            RoundedElevatedButton(
-                onPressed: () {
-                  context.router.push(AddEditItemRoute());
-                },
-                child: Row(
-                  children: [Icon(Icons.add), Text('Add item')],
-                )),
-          ],
-        ),
-        StreamBuilder(
-          stream: state.itemsStream,
-          builder: (BuildContext context,
-              AsyncSnapshot<QuerySnapshot<Item>> snapshot) {
-            if (snapshot.data == null) {
-              return Text('snapshot.data == null');
-            }
-
-            var itemsList = snapshot.data!.docs.map((e) => e.data()).toList();
-
-            itemsHelper =
-                itemsHelper.copyWith(items: itemsList, nameFilter: searchText);
-
-            var widgetsList =
-                itemsHelper.getAlphabeticalCategoriesWidgets(onItemPressed);
-
-            return Flexible(
-              child: ListView(
-                padding: EdgeInsets.all(8),
-                children: widgetsList,
-              ),
-            );
-          },
-        ),
-      ],
-    );
-  }
-
   Future<void> onItemPressed(Offset off, Item item) async {
     var changed = clickedItem != item && menuOffset != off;
 
@@ -170,6 +112,96 @@ class _ItemListPageState extends State<ItemListPage>
           ? (_animationController).forward()
           : (_animationController).reverse();
     }
+  }
+
+//===============================================================================================
+//                                       Build List
+//===============================================================================================
+
+  Column buildList(BuildContext context, ItemListState state) {
+    var categoryWidgets = Row(
+      children: [],
+    );
+
+    for (var element in state.categoryFilter.entries) {
+      categoryWidgets.children.add(Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: RoundedElevatedButtonSwitch(
+            onPressed: (bool value) {
+              context
+                  .read<ItemListBloc>()
+                  .add(ItemListEvent.updateCategoryFilter(element.key, value));
+            },
+            color: element.key.color,
+            text: element.key.displayName,
+            initialValue: element.value,
+          ),
+        ),
+      ));
+    }
+
+    return Column(
+      children: [
+        Container(
+          color: Colors.blueGrey[900],
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        onChanged: (text) {
+                          context
+                              .read<ItemListBloc>()
+                              .add(ItemListEvent.updateNameFilter(text));
+                        },
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Search',
+                        ),
+                      ),
+                    ),
+                  ),
+                  RoundedElevatedButton(
+                      onPressed: () {
+                        context.router.push(AddEditItemRoute());
+                      },
+                      child: Row(
+                        children: [Icon(Icons.add), Text('Add item')],
+                      )),
+                ],
+              ),
+              categoryWidgets,
+            ],
+          ),
+        ),
+        StreamBuilder(
+          stream: state.itemsStream,
+          builder: (BuildContext context,
+              AsyncSnapshot<QuerySnapshot<Item>> snapshot) {
+            if (snapshot.data == null) {
+              return Text('snapshot.data == null');
+            }
+
+            var itemsList = snapshot.data!.docs.map((e) => e.data()).toList();
+
+            var widgetsList = itemsHelper.getAlphabeticalCategoriesWidgets(
+                itemsList, state.nameFilter, state.categoryFilter);
+
+            return Flexible(
+              child: ListView(
+                padding: EdgeInsets.all(8),
+                children: widgetsList,
+              ),
+            );
+          },
+        ),
+      ],
+    );
   }
 
 //===============================================================================================

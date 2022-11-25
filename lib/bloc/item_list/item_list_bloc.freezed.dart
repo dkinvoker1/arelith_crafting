@@ -19,18 +19,27 @@ mixin _$ItemListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialse,
+    required TResult Function(String nameFilter) updateNameFilter,
+    required TResult Function(ItemCategory itemCategory, bool value)
+        updateCategoryFilter,
     required TResult Function(String itemId) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
     TResult Function(String itemId)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
     TResult Function(String itemId)? delete,
     required TResult orElse(),
   }) =>
@@ -38,18 +47,24 @@ mixin _$ItemListEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialse value) initialse,
+    required TResult Function(_UpdateNameFilter value) updateNameFilter,
+    required TResult Function(_UpdateCategoryFilter value) updateCategoryFilter,
     required TResult Function(_Delete value) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(_Delete value)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) =>
@@ -114,6 +129,9 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialse,
+    required TResult Function(String nameFilter) updateNameFilter,
+    required TResult Function(ItemCategory itemCategory, bool value)
+        updateCategoryFilter,
     required TResult Function(String itemId) delete,
   }) {
     return initialse();
@@ -123,6 +141,9 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
     TResult Function(String itemId)? delete,
   }) {
     return initialse?.call();
@@ -132,6 +153,9 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
     TResult Function(String itemId)? delete,
     required TResult orElse(),
   }) {
@@ -145,6 +169,8 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialse value) initialse,
+    required TResult Function(_UpdateNameFilter value) updateNameFilter,
+    required TResult Function(_UpdateCategoryFilter value) updateCategoryFilter,
     required TResult Function(_Delete value) delete,
   }) {
     return initialse(this);
@@ -154,6 +180,8 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(_Delete value)? delete,
   }) {
     return initialse?.call(this);
@@ -163,6 +191,8 @@ class _$_Initialse implements _Initialse {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
@@ -175,6 +205,321 @@ class _$_Initialse implements _Initialse {
 
 abstract class _Initialse implements ItemListEvent {
   const factory _Initialse() = _$_Initialse;
+}
+
+/// @nodoc
+abstract class _$$_UpdateNameFilterCopyWith<$Res> {
+  factory _$$_UpdateNameFilterCopyWith(
+          _$_UpdateNameFilter value, $Res Function(_$_UpdateNameFilter) then) =
+      __$$_UpdateNameFilterCopyWithImpl<$Res>;
+  $Res call({String nameFilter});
+}
+
+/// @nodoc
+class __$$_UpdateNameFilterCopyWithImpl<$Res>
+    extends _$ItemListEventCopyWithImpl<$Res>
+    implements _$$_UpdateNameFilterCopyWith<$Res> {
+  __$$_UpdateNameFilterCopyWithImpl(
+      _$_UpdateNameFilter _value, $Res Function(_$_UpdateNameFilter) _then)
+      : super(_value, (v) => _then(v as _$_UpdateNameFilter));
+
+  @override
+  _$_UpdateNameFilter get _value => super._value as _$_UpdateNameFilter;
+
+  @override
+  $Res call({
+    Object? nameFilter = freezed,
+  }) {
+    return _then(_$_UpdateNameFilter(
+      nameFilter == freezed
+          ? _value.nameFilter
+          : nameFilter // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateNameFilter implements _UpdateNameFilter {
+  const _$_UpdateNameFilter(this.nameFilter);
+
+  @override
+  final String nameFilter;
+
+  @override
+  String toString() {
+    return 'ItemListEvent.updateNameFilter(nameFilter: $nameFilter)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateNameFilter &&
+            const DeepCollectionEquality()
+                .equals(other.nameFilter, nameFilter));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(nameFilter));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UpdateNameFilterCopyWith<_$_UpdateNameFilter> get copyWith =>
+      __$$_UpdateNameFilterCopyWithImpl<_$_UpdateNameFilter>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialse,
+    required TResult Function(String nameFilter) updateNameFilter,
+    required TResult Function(ItemCategory itemCategory, bool value)
+        updateCategoryFilter,
+    required TResult Function(String itemId) delete,
+  }) {
+    return updateNameFilter(nameFilter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
+    TResult Function(String itemId)? delete,
+  }) {
+    return updateNameFilter?.call(nameFilter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
+    TResult Function(String itemId)? delete,
+    required TResult orElse(),
+  }) {
+    if (updateNameFilter != null) {
+      return updateNameFilter(nameFilter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialse value) initialse,
+    required TResult Function(_UpdateNameFilter value) updateNameFilter,
+    required TResult Function(_UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(_Delete value) delete,
+  }) {
+    return updateNameFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(_Delete value)? delete,
+  }) {
+    return updateNameFilter?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(_Delete value)? delete,
+    required TResult orElse(),
+  }) {
+    if (updateNameFilter != null) {
+      return updateNameFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateNameFilter implements ItemListEvent {
+  const factory _UpdateNameFilter(final String nameFilter) =
+      _$_UpdateNameFilter;
+
+  String get nameFilter => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_UpdateNameFilterCopyWith<_$_UpdateNameFilter> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdateCategoryFilterCopyWith<$Res> {
+  factory _$$_UpdateCategoryFilterCopyWith(_$_UpdateCategoryFilter value,
+          $Res Function(_$_UpdateCategoryFilter) then) =
+      __$$_UpdateCategoryFilterCopyWithImpl<$Res>;
+  $Res call({ItemCategory itemCategory, bool value});
+}
+
+/// @nodoc
+class __$$_UpdateCategoryFilterCopyWithImpl<$Res>
+    extends _$ItemListEventCopyWithImpl<$Res>
+    implements _$$_UpdateCategoryFilterCopyWith<$Res> {
+  __$$_UpdateCategoryFilterCopyWithImpl(_$_UpdateCategoryFilter _value,
+      $Res Function(_$_UpdateCategoryFilter) _then)
+      : super(_value, (v) => _then(v as _$_UpdateCategoryFilter));
+
+  @override
+  _$_UpdateCategoryFilter get _value => super._value as _$_UpdateCategoryFilter;
+
+  @override
+  $Res call({
+    Object? itemCategory = freezed,
+    Object? value = freezed,
+  }) {
+    return _then(_$_UpdateCategoryFilter(
+      itemCategory == freezed
+          ? _value.itemCategory
+          : itemCategory // ignore: cast_nullable_to_non_nullable
+              as ItemCategory,
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateCategoryFilter implements _UpdateCategoryFilter {
+  const _$_UpdateCategoryFilter(this.itemCategory, this.value);
+
+  @override
+  final ItemCategory itemCategory;
+  @override
+  final bool value;
+
+  @override
+  String toString() {
+    return 'ItemListEvent.updateCategoryFilter(itemCategory: $itemCategory, value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateCategoryFilter &&
+            const DeepCollectionEquality()
+                .equals(other.itemCategory, itemCategory) &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(itemCategory),
+      const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UpdateCategoryFilterCopyWith<_$_UpdateCategoryFilter> get copyWith =>
+      __$$_UpdateCategoryFilterCopyWithImpl<_$_UpdateCategoryFilter>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialse,
+    required TResult Function(String nameFilter) updateNameFilter,
+    required TResult Function(ItemCategory itemCategory, bool value)
+        updateCategoryFilter,
+    required TResult Function(String itemId) delete,
+  }) {
+    return updateCategoryFilter(itemCategory, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
+    TResult Function(String itemId)? delete,
+  }) {
+    return updateCategoryFilter?.call(itemCategory, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
+    TResult Function(String itemId)? delete,
+    required TResult orElse(),
+  }) {
+    if (updateCategoryFilter != null) {
+      return updateCategoryFilter(itemCategory, value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialse value) initialse,
+    required TResult Function(_UpdateNameFilter value) updateNameFilter,
+    required TResult Function(_UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(_Delete value) delete,
+  }) {
+    return updateCategoryFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(_Delete value)? delete,
+  }) {
+    return updateCategoryFilter?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(_Delete value)? delete,
+    required TResult orElse(),
+  }) {
+    if (updateCategoryFilter != null) {
+      return updateCategoryFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCategoryFilter implements ItemListEvent {
+  const factory _UpdateCategoryFilter(
+          final ItemCategory itemCategory, final bool value) =
+      _$_UpdateCategoryFilter;
+
+  ItemCategory get itemCategory => throw _privateConstructorUsedError;
+  bool get value => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_UpdateCategoryFilterCopyWith<_$_UpdateCategoryFilter> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -240,6 +585,9 @@ class _$_Delete implements _Delete {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialse,
+    required TResult Function(String nameFilter) updateNameFilter,
+    required TResult Function(ItemCategory itemCategory, bool value)
+        updateCategoryFilter,
     required TResult Function(String itemId) delete,
   }) {
     return delete(itemId);
@@ -249,6 +597,9 @@ class _$_Delete implements _Delete {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
     TResult Function(String itemId)? delete,
   }) {
     return delete?.call(itemId);
@@ -258,6 +609,9 @@ class _$_Delete implements _Delete {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialse,
+    TResult Function(String nameFilter)? updateNameFilter,
+    TResult Function(ItemCategory itemCategory, bool value)?
+        updateCategoryFilter,
     TResult Function(String itemId)? delete,
     required TResult orElse(),
   }) {
@@ -271,6 +625,8 @@ class _$_Delete implements _Delete {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialse value) initialse,
+    required TResult Function(_UpdateNameFilter value) updateNameFilter,
+    required TResult Function(_UpdateCategoryFilter value) updateCategoryFilter,
     required TResult Function(_Delete value) delete,
   }) {
     return delete(this);
@@ -280,6 +636,8 @@ class _$_Delete implements _Delete {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(_Delete value)? delete,
   }) {
     return delete?.call(this);
@@ -289,6 +647,8 @@ class _$_Delete implements _Delete {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialse value)? initialse,
+    TResult Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(_Delete value)? delete,
     required TResult orElse(),
   }) {
@@ -312,6 +672,9 @@ abstract class _Delete implements ItemListEvent {
 mixin _$ItemListState {
   Stream<QuerySnapshot<Item>>? get itemsStream =>
       throw _privateConstructorUsedError;
+  String get nameFilter => throw _privateConstructorUsedError;
+  Map<ItemCategory, bool> get categoryFilter =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ItemListStateCopyWith<ItemListState> get copyWith =>
@@ -323,7 +686,10 @@ abstract class $ItemListStateCopyWith<$Res> {
   factory $ItemListStateCopyWith(
           ItemListState value, $Res Function(ItemListState) then) =
       _$ItemListStateCopyWithImpl<$Res>;
-  $Res call({Stream<QuerySnapshot<Item>>? itemsStream});
+  $Res call(
+      {Stream<QuerySnapshot<Item>>? itemsStream,
+      String nameFilter,
+      Map<ItemCategory, bool> categoryFilter});
 }
 
 /// @nodoc
@@ -338,12 +704,22 @@ class _$ItemListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? itemsStream = freezed,
+    Object? nameFilter = freezed,
+    Object? categoryFilter = freezed,
   }) {
     return _then(_value.copyWith(
       itemsStream: itemsStream == freezed
           ? _value.itemsStream
           : itemsStream // ignore: cast_nullable_to_non_nullable
               as Stream<QuerySnapshot<Item>>?,
+      nameFilter: nameFilter == freezed
+          ? _value.nameFilter
+          : nameFilter // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryFilter: categoryFilter == freezed
+          ? _value.categoryFilter
+          : categoryFilter // ignore: cast_nullable_to_non_nullable
+              as Map<ItemCategory, bool>,
     ));
   }
 }
@@ -355,7 +731,10 @@ abstract class _$$_ItemListStateCopyWith<$Res>
           _$_ItemListState value, $Res Function(_$_ItemListState) then) =
       __$$_ItemListStateCopyWithImpl<$Res>;
   @override
-  $Res call({Stream<QuerySnapshot<Item>>? itemsStream});
+  $Res call(
+      {Stream<QuerySnapshot<Item>>? itemsStream,
+      String nameFilter,
+      Map<ItemCategory, bool> categoryFilter});
 }
 
 /// @nodoc
@@ -372,12 +751,22 @@ class __$$_ItemListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? itemsStream = freezed,
+    Object? nameFilter = freezed,
+    Object? categoryFilter = freezed,
   }) {
     return _then(_$_ItemListState(
       itemsStream: itemsStream == freezed
           ? _value.itemsStream
           : itemsStream // ignore: cast_nullable_to_non_nullable
               as Stream<QuerySnapshot<Item>>?,
+      nameFilter: nameFilter == freezed
+          ? _value.nameFilter
+          : nameFilter // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryFilter: categoryFilter == freezed
+          ? _value.categoryFilter
+          : categoryFilter // ignore: cast_nullable_to_non_nullable
+              as Map<ItemCategory, bool>,
     ));
   }
 }
@@ -385,15 +774,25 @@ class __$$_ItemListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ItemListState extends _ItemListState {
-  const _$_ItemListState({this.itemsStream = null}) : super._();
+  const _$_ItemListState(
+      {this.itemsStream = null,
+      this.nameFilter = '',
+      this.categoryFilter = const {}})
+      : super._();
 
   @override
   @JsonKey()
   final Stream<QuerySnapshot<Item>>? itemsStream;
+  @override
+  @JsonKey()
+  final String nameFilter;
+  @override
+  @JsonKey()
+  final Map<ItemCategory, bool> categoryFilter;
 
   @override
   String toString() {
-    return 'ItemListState(itemsStream: $itemsStream)';
+    return 'ItemListState(itemsStream: $itemsStream, nameFilter: $nameFilter, categoryFilter: $categoryFilter)';
   }
 
   @override
@@ -402,12 +801,19 @@ class _$_ItemListState extends _ItemListState {
         (other.runtimeType == runtimeType &&
             other is _$_ItemListState &&
             const DeepCollectionEquality()
-                .equals(other.itemsStream, itemsStream));
+                .equals(other.itemsStream, itemsStream) &&
+            const DeepCollectionEquality()
+                .equals(other.nameFilter, nameFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.categoryFilter, categoryFilter));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(itemsStream));
+      runtimeType,
+      const DeepCollectionEquality().hash(itemsStream),
+      const DeepCollectionEquality().hash(nameFilter),
+      const DeepCollectionEquality().hash(categoryFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -417,11 +823,18 @@ class _$_ItemListState extends _ItemListState {
 
 abstract class _ItemListState extends ItemListState {
   const factory _ItemListState(
-      {final Stream<QuerySnapshot<Item>>? itemsStream}) = _$_ItemListState;
+      {final Stream<QuerySnapshot<Item>>? itemsStream,
+      final String nameFilter,
+      final Map<ItemCategory, bool> categoryFilter}) = _$_ItemListState;
   const _ItemListState._() : super._();
 
   @override
   Stream<QuerySnapshot<Item>>? get itemsStream =>
+      throw _privateConstructorUsedError;
+  @override
+  String get nameFilter => throw _privateConstructorUsedError;
+  @override
+  Map<ItemCategory, bool> get categoryFilter =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
