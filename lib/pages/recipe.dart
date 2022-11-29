@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages, overridden_fields
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, library_private_types_in_public_api, depend_on_referenced_packages, overridden_fields, prefer_const_literals_to_create_immutables
 
 import 'package:arelith_crafting/widgets/component/image_button.dart';
 import 'package:auto_route/annotations.dart';

@@ -64,12 +64,19 @@ class _ItemListPageState extends State<ItemListPage>
           ItemListBloc()..add(ItemListEvent.initialse()),
       child:
           BlocBuilder<ItemListBloc, ItemListState>(builder: (context, state) {
-        return Stack(
-          key: stackKey,
-          children: [
-            buildList(context, state),
-            ..._buildMenuItems(),
-          ],
+        return GestureDetector(
+          onTap: () {
+            if (_animationController.status == AnimationStatus.completed) {
+              (_animationController).reverse();
+            }
+          },
+          child: Stack(
+            key: stackKey,
+            children: [
+              buildList(context, state),
+              ..._buildMenuItems(),
+            ],
+          ),
         );
       }),
     );
