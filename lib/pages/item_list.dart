@@ -154,33 +154,19 @@ class _ItemListPageState extends State<ItemListPage>
           color: Colors.blueGrey[900],
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        onChanged: (text) {
-                          context
-                              .read<ItemListBloc>()
-                              .add(ItemListEvent.updateNameFilter(text));
-                        },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Search',
-                        ),
-                      ),
-                    ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (text) {
+                    context
+                        .read<ItemListBloc>()
+                        .add(ItemListEvent.updateNameFilter(text));
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Search',
                   ),
-                  RoundedElevatedButton(
-                      onPressed: () {
-                        context.router.push(AddEditItemRoute());
-                      },
-                      child: Row(
-                        children: [Icon(Icons.add), Text('Add item')],
-                      )),
-                ],
+                ),
               ),
               categoryWidgets,
             ],
@@ -220,7 +206,7 @@ class _ItemListPageState extends State<ItemListPage>
       CircleElevatedButton(
           onPressed: () {
             if (clickedItem != null) {
-              context.router.push(AddEditItemRoute(
+              context.router.push(EditItemRoute(
                   editedItemDocumentId: clickedItem!.documentId));
             }
           },

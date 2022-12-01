@@ -1,14 +1,16 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, prefer_const_constructors_in_immutables
 
-import 'package:arelith_crafting/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
 import 'get_it_instance.dart';
+import 'routes/auth_service.dart';
+import 'routes/authentication_guard.dart';
+import 'routes/router.gr.dart';
 
 Future<void> main() async {
-    configureDependencies();
+  configureDependencies();
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -17,17 +19,25 @@ Future<void> main() async {
   runApp(App());
 }
 
-class App extends StatelessWidget {
-  final _appRouter = AppRouter();
-
+class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
+  static AppState of(BuildContext context) =>
+      context.findAncestorStateOfType<AppState>()!;
+  @override
+  State<App> createState() => AppState();
+}
+
+class AppState extends State<App> {
+  final authService = AuthService();
+  late final _appRouter =
+      AppRouter(authenticationGuard: AuthenticationGuard(authService));
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
+      routerDelegate: _appRouter.delegate(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
     );
   }

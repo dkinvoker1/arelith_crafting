@@ -11,17 +11,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 
-import '../models/component/component_item.dart';
-import '../routes/router.gr.dart';
-import '../widgets/component/card.dart';
-import '../widgets/component/prompt.dart';
-import '../widgets/styled_elevated_button/rounded_elevated_button.dart';
-import '../widgets/styled_elevated_button/rounded_elevated_button_switch.dart';
+import '../../models/component/component_item.dart';
+import '../../routes/router.gr.dart';
+import '../../widgets/component/card.dart';
+import '../../widgets/component/prompt.dart';
+import '../../widgets/styled_elevated_button/rounded_elevated_button.dart';
+import '../../widgets/styled_elevated_button/rounded_elevated_button_switch.dart';
 
 class AddEditItemPage extends StatefulWidget {
   AddEditItemPage({
     Key? key,
-    @PathParam('editedItemDocumentId') this.editedItemDocumentId,
+    this.editedItemDocumentId,
   }) : super(key: key);
 
   final String? editedItemDocumentId;
