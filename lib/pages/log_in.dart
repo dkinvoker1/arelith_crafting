@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/log_in/bloc/log_in_bloc.dart';
-import '../main.dart';
 import '../widgets/form/text_field.dart';
 import '../widgets/styled_elevated_button/rounded_elevated_button.dart';
 
@@ -29,7 +28,6 @@ class _LogInPageState extends State<LogInPage> {
           return state.isLoggedIn;
         },
         listener: (context, state) {
-          App.of(context).authService.authenticated = true;
           widget.onLoginCallback.call(true);
         },
         builder: (context, state) {

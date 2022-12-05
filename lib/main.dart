@@ -5,8 +5,6 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
 import 'get_it_instance.dart';
-import 'routes/auth_service.dart';
-import 'routes/authentication_guard.dart';
 import 'routes/router.gr.dart';
 
 Future<void> main() async {
@@ -28,9 +26,7 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> {
-  final authService = AuthService();
-  late final _appRouter =
-      AppRouter(authenticationGuard: AuthenticationGuard(authService));
+  late final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {

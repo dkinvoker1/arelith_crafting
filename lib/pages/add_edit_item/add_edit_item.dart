@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:file_picker/file_picker.dart';
 
 import '../../models/component/component_item.dart';
+import '../../repositories/log_in_repository.dart';
 import '../../routes/router.gr.dart';
 import '../../widgets/component/card.dart';
 import '../../widgets/component/prompt.dart';
@@ -31,6 +32,23 @@ class AddEditItemPage extends StatefulWidget {
 }
 
 class _AddEditItemPageState extends State<AddEditItemPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    var userStream = LogInRepository().getLogInUserStream();
+
+    userStream.listen((event) {
+      if (event == null) {
+        context.router.push(LogInRoute(
+          onLoginCallback: (_) {
+            context.router.push(ItemListRoute());
+          },
+        ));
+      }
+    });
+  }
+
   final _formKey = GlobalKey<FormState>();
 
   final double _baseSize = 40;

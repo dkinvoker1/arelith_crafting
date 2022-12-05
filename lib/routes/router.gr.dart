@@ -18,16 +18,11 @@ import '../pages/add_edit_item/edit_item.dart' as _i5;
 import '../pages/item_list.dart' as _i2;
 import '../pages/log_in.dart' as _i3;
 import '../pages/recipe.dart' as _i6;
-import 'authentication_guard.dart' as _i9;
 import 'menu_wrapper.dart' as _i1;
 
 class AppRouter extends _i7.RootStackRouter {
-  AppRouter(
-      {_i8.GlobalKey<_i8.NavigatorState>? navigatorKey,
-      required this.authenticationGuard})
+  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
       : super(navigatorKey);
-
-  final _i9.AuthenticationGuard authenticationGuard;
 
   @override
   final Map<String, _i7.PageFactory> pagesMap = {
@@ -86,13 +81,9 @@ class AppRouter extends _i7.RootStackRouter {
           _i7.RouteConfig(LogInRoute.name,
               path: 'logIn', parent: MenuWrapper.name),
           _i7.RouteConfig(AddItemRoute.name,
-              path: 'addItem',
-              parent: MenuWrapper.name,
-              guards: [authenticationGuard]),
+              path: 'addItem', parent: MenuWrapper.name),
           _i7.RouteConfig(EditItemRoute.name,
-              path: 'editItem/:editedItemDocumentId',
-              parent: MenuWrapper.name,
-              guards: [authenticationGuard]),
+              path: 'editItem/:editedItemDocumentId', parent: MenuWrapper.name),
           _i7.RouteConfig(RecipeRoute.name,
               path: 'recipe/:rootItemDocumentId', parent: MenuWrapper.name)
         ])

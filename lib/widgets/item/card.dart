@@ -10,7 +10,7 @@ class ItemCard extends StatefulWidget {
       : super(key: key);
 
   final Item item;
-  final void Function(Offset off, Item item) onPressed;
+  final Future<void> Function(Offset off, Item item) onPressed;
 
   @override
   State<ItemCard> createState() => _ItemCardState();
@@ -25,7 +25,7 @@ class _ItemCardState extends State<ItemCard> {
       padding: const EdgeInsets.all(2.0),
       child: InkWell(
         key: key,
-        onTap: () {
+        onTap: () async {
           if (key.currentContext != null) {
             var renderBox = key.currentContext!.findRenderObject() as RenderBox;
             var x = renderBox.localToGlobal(Offset.zero).dx +
@@ -33,7 +33,7 @@ class _ItemCardState extends State<ItemCard> {
             var y = renderBox.localToGlobal(Offset.zero).dy +
                 renderBox.size.height / 2;
 
-            widget.onPressed(Offset(x, y), widget.item);
+            await widget.onPressed(Offset(x, y), widget.item);
           }
         },
         child: Container(

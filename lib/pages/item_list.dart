@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages
 
 import 'dart:math' as math;
+import 'package:arelith_crafting/repositories/log_in_repository.dart';
 import 'package:arelith_crafting/widgets/styled_elevated_button/circle_elevated_button.dart';
-import 'package:arelith_crafting/widgets/styled_elevated_button/rounded_elevated_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -86,6 +86,13 @@ class _ItemListPageState extends State<ItemListPage>
 //                                       onItemPressed
 //===============================================================================================
   Future<void> onItemPressed(Offset off, Item item) async {
+    var loggedInUser = await LogInRepository().isLoggedIn();
+
+    if (!loggedInUser) {
+      context.router.push(RecipeRoute(rootItemDocumentId: item.documentId));
+      return;
+    }
+
     var changed = clickedItem != item && menuOffset != off;
 
     if (changed) {
@@ -206,8 +213,8 @@ class _ItemListPageState extends State<ItemListPage>
       CircleElevatedButton(
           onPressed: () {
             if (clickedItem != null) {
-              context.router.push(EditItemRoute(
-                  editedItemDocumentId: clickedItem!.documentId));
+              context.router.push(
+                  EditItemRoute(editedItemDocumentId: clickedItem!.documentId));
             }
           },
           child: Icon(Icons.edit)),

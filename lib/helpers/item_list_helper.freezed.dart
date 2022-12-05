@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ItemListHelper {
-  void Function(Offset, Item) get onItemPressed =>
+  Future<void> Function(Offset, Item) get onItemPressed =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +29,7 @@ abstract class $ItemListHelperCopyWith<$Res> {
   factory $ItemListHelperCopyWith(
           ItemListHelper value, $Res Function(ItemListHelper) then) =
       _$ItemListHelperCopyWithImpl<$Res>;
-  $Res call({void Function(Offset, Item) onItemPressed});
+  $Res call({Future<void> Function(Offset, Item) onItemPressed});
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$ItemListHelperCopyWithImpl<$Res>
       onItemPressed: onItemPressed == freezed
           ? _value.onItemPressed
           : onItemPressed // ignore: cast_nullable_to_non_nullable
-              as void Function(Offset, Item),
+              as Future<void> Function(Offset, Item),
     ));
   }
 }
@@ -61,7 +61,7 @@ abstract class _$$_ItemListHelperCopyWith<$Res>
           _$_ItemListHelper value, $Res Function(_$_ItemListHelper) then) =
       __$$_ItemListHelperCopyWithImpl<$Res>;
   @override
-  $Res call({void Function(Offset, Item) onItemPressed});
+  $Res call({Future<void> Function(Offset, Item) onItemPressed});
 }
 
 /// @nodoc
@@ -83,7 +83,7 @@ class __$$_ItemListHelperCopyWithImpl<$Res>
       onItemPressed: onItemPressed == freezed
           ? _value.onItemPressed
           : onItemPressed // ignore: cast_nullable_to_non_nullable
-              as void Function(Offset, Item),
+              as Future<void> Function(Offset, Item),
     ));
   }
 }
@@ -94,7 +94,7 @@ class _$_ItemListHelper extends _ItemListHelper {
   _$_ItemListHelper({required this.onItemPressed}) : super._();
 
   @override
-  final void Function(Offset, Item) onItemPressed;
+  final Future<void> Function(Offset, Item) onItemPressed;
 
   @override
   String toString() {
@@ -121,12 +121,12 @@ class _$_ItemListHelper extends _ItemListHelper {
 
 abstract class _ItemListHelper extends ItemListHelper {
   factory _ItemListHelper(
-          {required final void Function(Offset, Item) onItemPressed}) =
+          {required final Future<void> Function(Offset, Item) onItemPressed}) =
       _$_ItemListHelper;
   _ItemListHelper._() : super._();
 
   @override
-  void Function(Offset, Item) get onItemPressed =>
+  Future<void> Function(Offset, Item) get onItemPressed =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

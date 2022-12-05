@@ -13,8 +13,8 @@ part 'item_list_helper.freezed.dart';
 class ItemListHelper with _$ItemListHelper {
   const ItemListHelper._();
   factory ItemListHelper(
-          {required void Function(Offset off, Item item) onItemPressed}) =
-      _ItemListHelper;
+      {required Future<void> Function(Offset off, Item item)
+          onItemPressed}) = _ItemListHelper;
 
   final List<String> _categories = const [
     'A',
