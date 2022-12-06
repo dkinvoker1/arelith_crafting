@@ -57,83 +57,41 @@ class RecipeWidget extends StatefulWidget {
 
 class _RecipeWidgetState extends State<RecipeWidget> {
   var boxKey = GlobalKey();
-  Map<Offset, List<Offset>> offsetMapList = {};
 
-  Offset boxOffset = Offset.zero;
-  Offset myOffset = Offset.zero;
+  Map<GlobalKey, List<GlobalKey>> getRecipeKeyMap(Recipe recipe) {
+    Map<GlobalKey, List<GlobalKey>> keyMapList = {};
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPersistentFrameCallback((_) {
-      if (boxKey.currentContext != null) {
-        var boxBox = boxKey.currentContext!.findRenderObject() as RenderBox;
-        var bx = boxBox.localToGlobal(Offset.zero).dx;
-        var by = boxBox.localToGlobal(Offset.zero).dy;
+    var parentKey = recipe.recipeItem.key;
 
-        changeBoxOffset(Offset(bx, by));
-      }
-
-      var newOffsetMapList = getRecipeOffsetMap(widget.recipe);
-      setState(() {
-        offsetMapList = newOffsetMapList;
-      });
-    });
-  }
-
-  void changeBoxOffset(Offset offset) {
-    setState(() {
-      boxOffset = offset;
-    });
-  }
-
-  Map<Offset, List<Offset>> getRecipeOffsetMap(Recipe recipe) {
-    Map<Offset, List<Offset>> newOffsetMapList = {};
-
-    var key = recipe.recipeItem.key;
-    if (recipe.isPlaceholder || key == null || key.currentContext == null) {
-      return newOffsetMapList;
+    if (recipe.isPlaceholder || parentKey == null) {
+      return keyMapList;
     }
 
     var noPlaceholderComponents =
         recipe.components.where((element) => !element.isPlaceholder);
 
     if (noPlaceholderComponents.isEmpty) {
-      return newOffsetMapList;
+      return keyMapList;
     }
 
-    var parentOffset = getKeyOffset(key);
-
-    List<Offset> childrenOffsetList = [];
+    List<GlobalKey> componentKeyList = [];
 
     for (var component in noPlaceholderComponents) {
       var componentKey = component.recipeItem.key;
 
-      if (componentKey != null && componentKey.currentContext != null) {
-        var componentOffset = getKeyOffset(componentKey);
-        childrenOffsetList.add(componentOffset);
+      if (componentKey != null) {
+        componentKeyList.add(componentKey);
       }
     }
 
-    var mapEntry = {parentOffset: childrenOffsetList};
+    keyMapList.addAll({parentKey: componentKeyList});
 
-    newOffsetMapList.addAll(mapEntry);
-
-    for (var element in noPlaceholderComponents) {
-      var childOffsetMapList = getRecipeOffsetMap(element);
-      newOffsetMapList.addAll(childOffsetMapList);
+    for (var component in noPlaceholderComponents) {
+      var componentKeyMapList = getRecipeKeyMap(component);
+      keyMapList.addAll(componentKeyMapList);
     }
 
-    return newOffsetMapList;
-  }
-
-  Offset getKeyOffset(GlobalKey key) {
-    var itemBox = key.currentContext!.findRenderObject() as RenderBox;
-    var x = itemBox.localToGlobal(Offset.zero).dx + itemBox.size.width / 2;
-    var y = itemBox.localToGlobal(Offset.zero).dy + itemBox.size.height / 2;
-    var offset = Offset(x, y);
-
-    return offset;
+    return keyMapList;
   }
 
   @override
@@ -149,6 +107,8 @@ class _RecipeWidgetState extends State<RecipeWidget> {
 
     setRecipe(widget.recipe, columnChildren, 1);
 
+    var keyMap = getRecipeKeyMap(widget.recipe);
+
     var recipeWidget = Column(
       key: boxKey,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -157,8 +117,7 @@ class _RecipeWidgetState extends State<RecipeWidget> {
     );
 
     return CustomPaint(
-      painter:
-          RecipeLinesPainter2(boxOffset: boxOffset, offsetMap: offsetMapList),
+      painter: RecipeLinesPainter(boxKey: boxKey, keyMap: keyMap),
       child: recipeWidget,
     );
   }

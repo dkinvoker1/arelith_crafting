@@ -2,23 +2,47 @@
 
 import 'package:flutter/material.dart';
 
-class RecipeLinesPainter2 extends CustomPainter {
-  Offset boxOffset;
-  Map<Offset, List<Offset>> offsetMap;
+class RecipeLinesPainter extends CustomPainter {
+  GlobalKey boxKey;
+  Map<GlobalKey, List<GlobalKey>> keyMap;
 
-  RecipeLinesPainter2({required this.boxOffset, required this.offsetMap});
+  RecipeLinesPainter({required this.boxKey, required this.keyMap});
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (offsetMap.isEmpty) {
+    if (boxKey.currentContext == null || keyMap.isEmpty) {
       return;
     }
 
-    canvas.translate(-boxOffset.dx, -boxOffset.dy);
+    var boxBox = boxKey.currentContext!.findRenderObject() as RenderBox;
+    var bx = boxBox.localToGlobal(Offset.zero).dx;
+    var by = boxBox.localToGlobal(Offset.zero).dy;
 
-    for (var enrty in offsetMap.entries) {
-      paintOneMapEntry(canvas, enrty);
+    canvas.translate(-bx, -by);
+
+    for (var entry in keyMap.entries) {
+      var parentOffset = getKeyOffset(entry.key);
+
+      List<Offset> childrenOffsetList = [];
+
+      for (var element in entry.value) {
+        var childOffset = getKeyOffset(element);
+        childrenOffsetList.add(childOffset);
+      }
+
+      var mapEntry = {parentOffset: childrenOffsetList};
+
+      paintOneMapEntry(canvas, mapEntry.entries.first);
     }
+  }
+
+  Offset getKeyOffset(GlobalKey key) {
+    var itemBox = key.currentContext!.findRenderObject() as RenderBox;
+    var x = itemBox.localToGlobal(Offset.zero).dx + itemBox.size.width / 2;
+    var y = itemBox.localToGlobal(Offset.zero).dy + itemBox.size.height / 2;
+    var offset = Offset(x, y);
+
+    return offset;
   }
 
   void paintOneMapEntry(
@@ -80,7 +104,7 @@ class RecipeLinesPainter2 extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(RecipeLinesPainter2 oldDelegate) {
+  bool shouldRepaint(RecipeLinesPainter oldDelegate) {
     return true;
   }
 }
