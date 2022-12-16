@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages, use_build_context_synchronously
 
 import 'package:arelith_crafting/widgets/circular_menu/circular_menu.dart';
-import 'package:arelith_crafting/widgets/styled_elevated_button/circle_elevated_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -130,9 +129,19 @@ class _ItemListPageState extends State<ItemListPage> {
                 itemsList, state.nameFilter, state.categoryFilter);
 
             return Flexible(
-              child: ListView(
-                padding: EdgeInsets.all(8),
-                children: widgetsList,
+              child: NotificationListener(
+                child: ListView(
+                  padding: EdgeInsets.all(8),
+                  children: widgetsList,
+                ),
+                onNotification: (t) {
+                  if (t is ScrollStartNotification) {
+                    context
+                        .read<CircularMenuBloc>()
+                        .add(CircularMenuEvent.clearItem());
+                  }
+                  return true;
+                },
               ),
             );
           },

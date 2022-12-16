@@ -80,7 +80,8 @@ class _CircularMenuState extends State<CircularMenu>
 //===============================================================================================
   Future<void> onStatusChange(Offset offset, Item? newItem) async {
     if (newItem == null) {
-      if (_animationController.status == AnimationStatus.completed) {
+      if (_animationController.status == AnimationStatus.completed ||
+          _animationController.status == AnimationStatus.forward) {
         (_animationController).reverse();
       }
     } else {
