@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/log_in/bloc/log_in_bloc.dart';
+import '../bloc/log_in/log_in_bloc.dart';
 import '../widgets/form/text_field.dart';
 import '../widgets/styled_elevated_button/rounded_elevated_button.dart';
 

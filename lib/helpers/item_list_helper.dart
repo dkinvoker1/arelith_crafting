@@ -5,16 +5,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../enums/category.dart';
 import '../models/item/item.dart';
-import '../widgets/item/card.dart';
+import '../widgets/circular_menu/circular_menu_item_card.dart';
 
 part 'item_list_helper.freezed.dart';
 
 @Freezed(makeCollectionsUnmodifiable: false)
 class ItemListHelper with _$ItemListHelper {
   const ItemListHelper._();
-  factory ItemListHelper(
-      {required Future<void> Function(Offset off, Item item)
-          onItemPressed}) = _ItemListHelper;
+  factory ItemListHelper() = _ItemListHelper;
 
   final List<String> _categories = const [
     'A',
@@ -79,9 +77,8 @@ class ItemListHelper with _$ItemListHelper {
         for (var c = 0; c < itemsInRow; c++) {
           var index = r * itemsInRow + c;
           if (index < categoryItems.length) {
-            row.children.add(ItemCard(
+            row.children.add(CircularMenuItemCard(
               item: categoryItems[index],
-              onPressed: onItemPressed,
             ));
           }
         }
