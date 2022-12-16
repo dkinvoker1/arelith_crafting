@@ -52,6 +52,7 @@ class _LogInPageState extends State<LogInPage> {
                         ArelithTextFormField(
                           initialValue: 'admin123',
                           name: 'Password',
+                          isPassword: true,
                           onSaved: (newValue) {
                             context
                                 .read<LogInBloc>()
