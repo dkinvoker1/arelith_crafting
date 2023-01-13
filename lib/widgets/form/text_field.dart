@@ -8,7 +8,8 @@ class ArelithTextFormField extends StatefulWidget {
       required this.name,
       required this.onSaved,
       this.initialValue,
-      this.isPassword = false})
+      this.isPassword = false,
+      this.maxLines = 1})
       : super(key: key);
 
   final String name;
@@ -16,6 +17,7 @@ class ArelithTextFormField extends StatefulWidget {
 
   final String? initialValue;
   final bool isPassword;
+  final int maxLines;
 
   @override
   State<ArelithTextFormField> createState() => _ItemTextFieldState();
@@ -30,6 +32,7 @@ class _ItemTextFieldState extends State<ArelithTextFormField> {
         initialValue: widget.initialValue,
         onSaved: widget.onSaved,
         obscureText: widget.isPassword,
+        maxLines: widget.maxLines,
         enableSuggestions: !widget.isPassword,
         autocorrect: !widget.isPassword,
         validator: (value) {

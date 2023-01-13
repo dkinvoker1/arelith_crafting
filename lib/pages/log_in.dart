@@ -41,7 +41,7 @@ class _LogInPageState extends State<LogInPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ArelithTextFormField(
-                          initialValue: 'admin@gmail.com',
+                          // initialValue: 'admin@gmail.com',
                           name: 'Login',
                           onSaved: (newValue) {
                             context
@@ -50,7 +50,7 @@ class _LogInPageState extends State<LogInPage> {
                           },
                         ),
                         ArelithTextFormField(
-                          initialValue: 'admin123',
+                          // initialValue: 'admin123',
                           name: 'Password',
                           isPassword: true,
                           onSaved: (newValue) {

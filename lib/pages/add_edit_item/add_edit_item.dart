@@ -122,7 +122,8 @@ class _AddEditItemPageState extends State<AddEditItemPage> {
                                 AddEditItemEvent.update(
                                     'Description'.toLowerCase(), newValue));
                           },
-                          initialValue: state.item.name,
+                          initialValue: state.item.description,
+                          maxLines: 16,
                         ),
 
                         //============================================= Item categories ================================================

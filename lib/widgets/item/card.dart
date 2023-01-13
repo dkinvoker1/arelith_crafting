@@ -43,7 +43,7 @@ class _ItemCardState extends State<ItemCard> {
               Text(widget.item.name),
               ItemImage(
                 item: widget.item,
-                showTooltip: false,
+                // showTooltip: false,
               ),
             ],
           ),

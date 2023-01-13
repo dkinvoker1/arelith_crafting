@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../models/item/item.dart';
 
-
 class ItemImage extends StatefulWidget {
   const ItemImage(
       {Key? key,
@@ -42,7 +41,7 @@ class _itemImageState extends State<ItemImage> {
 
     return widget.showTooltip
         ? Tooltip(
-            message: widget.item.name,
+            message: widget.item.name + "\n" + widget.item.description,
             preferBelow: false,
             verticalOffset: height / 2,
             child: image)
