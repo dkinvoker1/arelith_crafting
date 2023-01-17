@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, depend_on_referenced_packages, prefer_const_constructors_in_immutables, implementation_imports
 
-import 'package:arelith_crafting/widgets/item/card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/src/provider.dart';
 

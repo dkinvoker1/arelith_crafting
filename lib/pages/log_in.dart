@@ -48,6 +48,9 @@ class _LogInPageState extends State<LogInPage> {
                                 .read<LogInBloc>()
                                 .add(LogInEvent.updateLogin(newValue!));
                           },
+                          onFieldSubmitted: (value) {
+                            submitMethod(context);
+                          },
                         ),
                         ArelithTextFormField(
                           // initialValue: 'admin123',
@@ -57,6 +60,9 @@ class _LogInPageState extends State<LogInPage> {
                             context
                                 .read<LogInBloc>()
                                 .add(LogInEvent.updatePassword(newValue!));
+                          },
+                          onFieldSubmitted: (value) {
+                            submitMethod(context);
                           },
                         ),
                         state.error.isEmpty
@@ -69,12 +75,7 @@ class _LogInPageState extends State<LogInPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: RoundedElevatedButton(
                             onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                _formKey.currentState?.save();
-                                context
-                                    .read<LogInBloc>()
-                                    .add(LogInEvent.logIn());
-                              }
+                              submitMethod(context);
                             },
                             child: Text('Login'),
                           ),
@@ -88,5 +89,12 @@ class _LogInPageState extends State<LogInPage> {
         },
       ),
     );
+  }
+
+  void submitMethod(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState?.save();
+      context.read<LogInBloc>().add(LogInEvent.logIn());
+    }
   }
 }

@@ -7,6 +7,7 @@ class ArelithTextFormField extends StatefulWidget {
       {Key? key,
       required this.name,
       required this.onSaved,
+      this.onFieldSubmitted,
       this.initialValue,
       this.isPassword = false,
       this.maxLines = 1})
@@ -14,6 +15,7 @@ class ArelithTextFormField extends StatefulWidget {
 
   final String name;
   final void Function(String? newValue) onSaved;
+  final void Function(String? newValue)? onFieldSubmitted;
 
   final String? initialValue;
   final bool isPassword;
@@ -31,6 +33,7 @@ class _ItemTextFieldState extends State<ArelithTextFormField> {
       child: TextFormField(
         initialValue: widget.initialValue,
         onSaved: widget.onSaved,
+        onFieldSubmitted: widget.onFieldSubmitted,
         obscureText: widget.isPassword,
         maxLines: widget.maxLines,
         enableSuggestions: !widget.isPassword,

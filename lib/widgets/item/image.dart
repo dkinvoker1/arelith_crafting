@@ -41,9 +41,18 @@ class _itemImageState extends State<ItemImage> {
 
     return widget.showTooltip
         ? Tooltip(
-            message: widget.item.name + "\n" + widget.item.description,
+            richMessage: WidgetSpan(
+                alignment: PlaceholderAlignment.baseline,
+                baseline: TextBaseline.alphabetic,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Text("${widget.item.name}\n\n${widget.item.description}",
+                      style: TextStyle(color: Colors.black)),
+                )),
             preferBelow: false,
             verticalOffset: height / 2,
+            waitDuration: Duration(milliseconds: 500),
             child: image)
         : image;
   }
