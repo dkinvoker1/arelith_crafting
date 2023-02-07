@@ -395,7 +395,7 @@ class _ComponentsFieldState extends State<ComponentsField> {
           row.children.add(ComponentPrompt(
               component: chosenComponent[index],
               onPressed: () {
-                _showMyDialog(context);
+                _showComponentsDialog(context);
               }));
         } else {
           row.children.add(Expanded(child: SizedBox()));
@@ -427,7 +427,7 @@ class _ComponentsFieldState extends State<ComponentsField> {
               ),
               child: InkWell(
                   onTap: () async {
-                    await _showMyDialog(context);
+                    await _showComponentsDialog(context);
                   },
                   child: column),
             ),
@@ -457,7 +457,7 @@ class _ComponentsFieldState extends State<ComponentsField> {
     );
   }
 
-  Future<void> _showMyDialog(BuildContext localContext) async {
+  Future<void> _showComponentsDialog(BuildContext localContext) async {
     List<ComponentCard> componentCards = [];
 
     return showDialog<void>(
@@ -467,13 +467,33 @@ class _ComponentsFieldState extends State<ComponentsField> {
         String searchText = '';
 
         return StatefulBuilder(builder: (context, setState) {
-          componentCards.clear();
-          var filteredComponentItems = widget.componentItems.where((element) =>
-              element.item.name
+          if (componentCards.isEmpty) {
+            for (var component in widget.componentItems) {
+              componentCards.add(ComponentCard(
+                component: component,
+                visible: true,
+              ));
+            }
+          } else {
+            for (var component in widget.componentItems) {
+              var isVisible = component.item.name
                   .toLowerCase()
-                  .contains(searchText.toLowerCase()));
-          for (var component in filteredComponentItems) {
-            componentCards.add(ComponentCard(component: component));
+                  .contains(searchText.toLowerCase());
+
+              var currentComponent = componentCards.firstWhere((element) =>
+                  element.component.item.name == component.item.name);
+
+              var newCard = ComponentCard(
+                component: currentComponent.component,
+                visible: isVisible,
+              );
+
+              var curreentIndex = componentCards.indexWhere((element) =>
+                  element.component.item.name == component.item.name);
+
+              componentCards
+                  .replaceRange(curreentIndex, curreentIndex + 1, [newCard]);
+            }
           }
 
           return AlertDialog(
