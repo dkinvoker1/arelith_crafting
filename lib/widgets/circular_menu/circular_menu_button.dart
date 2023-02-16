@@ -13,7 +13,7 @@ class CircularMenuButton extends StatefulWidget {
       : super(key: key);
 
   final void Function(Item item) onPressed;
-  final IconData icon;
+  final Widget icon;
   final Color? color;
 
   @override
@@ -33,6 +33,6 @@ class _CircularMenuButtonState extends State<CircularMenuButton> {
           }
         },
         color: widget.color,
-        child: Icon(widget.icon));
+        child: widget.icon);
   }
 }

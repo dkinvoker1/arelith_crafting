@@ -13,6 +13,7 @@ import '../models/item/item.dart';
 import '../routes/router.gr.dart';
 import '../widgets/circular_menu/circular_menu_button.dart';
 import '../widgets/styled_elevated_button/rounded_elevated_button_switch.dart';
+import 'dart:math' as math;
 
 class ItemListPage extends StatefulWidget {
   const ItemListPage({Key? key}) : super(key: key);
@@ -42,22 +43,28 @@ class _ItemListPageState extends State<ItemListPage> {
               context.router
                   .push(EditItemRoute(editedItemDocumentId: item.documentId));
             },
-            icon: Icons.edit,
+            icon: Icon(Icons.edit),
           ),
           CircularMenuButton(
             onPressed: (item) {
               showDeleteDialog(context, item);
             },
             color: Colors.red,
-            icon: Icons.clear,
+            icon: Icon(Icons.clear),
           ),
           CircularMenuButton(
-            onPressed: (item) {
-              context.router
-                  .push(RecipeRoute(rootItemDocumentId: item.documentId));
-            },
-            icon: Icons.home,
-          ),
+              onPressed: (item) {
+                context.router
+                    .push(RecipeRoute(rootItemDocumentId: item.documentId));
+              },
+              icon: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.rotationY(math.pi),
+                child: Transform.rotate(
+                  angle: 90 * math.pi / 180,
+                  child: Icon(Icons.account_tree_outlined),
+                ),
+              )),
         ];
         return CircularMenu(actions: actions, child: buildList(context, state));
       }),
