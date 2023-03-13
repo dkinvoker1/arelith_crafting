@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../models/item/item.dart';
 import '../../repositories/items_repository.dart';
+import '../../repositories/log_in_repository.dart';
 
 part 'item_list_event.dart';
 part 'item_list_state.dart';
@@ -14,7 +15,7 @@ part 'item_list_bloc.freezed.dart';
 
 class ItemListBloc extends Bloc<ItemListEvent, ItemListState> {
   ItemListBloc() : super(_ItemListState()) {
-    on<_Initialse>((event, emit) {
+    on<_Initialse>((event, emit) async {
       var itemsStream = ItemsRepository().getItemsStream();
 
       var initialCategoryFilter = <ItemCategory, bool>{};
@@ -22,8 +23,12 @@ class ItemListBloc extends Bloc<ItemListEvent, ItemListState> {
         initialCategoryFilter.addAll({category: true});
       }
 
+      var isLoggedIn = await LogInRepository().isLoggedIn();
+
       var newState = state.copyWith(
-          itemsStream: itemsStream, categoryFilter: initialCategoryFilter);
+          itemsStream: itemsStream,
+          categoryFilter: initialCategoryFilter,
+          isLoggedIn: isLoggedIn);
       emit.call(newState);
     });
 
@@ -33,7 +38,7 @@ class ItemListBloc extends Bloc<ItemListEvent, ItemListState> {
     });
 
     on<_UpdateCategoryFilter>((event, emit) async {
-     var newCategoryFilter = <ItemCategory, bool>{};
+      var newCategoryFilter = <ItemCategory, bool>{};
       for (var category in state.categoryFilter.entries) {
         newCategoryFilter.addAll({category.key: category.value});
       }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'recipe.dart';
 
@@ -28,7 +28,8 @@ mixin _$Recipe {
 /// @nodoc
 abstract class $RecipeCopyWith<$Res> {
   factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
-      _$RecipeCopyWithImpl<$Res>;
+      _$RecipeCopyWithImpl<$Res, Recipe>;
+  @useResult
   $Res call(
       {RecipeItem recipeItem,
       List<Recipe> components,
@@ -39,44 +40,48 @@ abstract class $RecipeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecipeCopyWithImpl<$Res> implements $RecipeCopyWith<$Res> {
+class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
+    implements $RecipeCopyWith<$Res> {
   _$RecipeCopyWithImpl(this._value, this._then);
 
-  final Recipe _value;
   // ignore: unused_field
-  final $Res Function(Recipe) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? recipeItem = freezed,
-    Object? components = freezed,
-    Object? underMe = freezed,
-    Object? isPlaceholder = freezed,
+    Object? recipeItem = null,
+    Object? components = null,
+    Object? underMe = null,
+    Object? isPlaceholder = null,
   }) {
     return _then(_value.copyWith(
-      recipeItem: recipeItem == freezed
+      recipeItem: null == recipeItem
           ? _value.recipeItem
           : recipeItem // ignore: cast_nullable_to_non_nullable
               as RecipeItem,
-      components: components == freezed
+      components: null == components
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<Recipe>,
-      underMe: underMe == freezed
+      underMe: null == underMe
           ? _value.underMe
           : underMe // ignore: cast_nullable_to_non_nullable
               as int,
-      isPlaceholder: isPlaceholder == freezed
+      isPlaceholder: null == isPlaceholder
           ? _value.isPlaceholder
           : isPlaceholder // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RecipeItemCopyWith<$Res> get recipeItem {
     return $RecipeItemCopyWith<$Res>(_value.recipeItem, (value) {
-      return _then(_value.copyWith(recipeItem: value));
+      return _then(_value.copyWith(recipeItem: value) as $Val);
     });
   }
 }
@@ -86,6 +91,7 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   factory _$$_RecipeCopyWith(_$_Recipe value, $Res Function(_$_Recipe) then) =
       __$$_RecipeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {RecipeItem recipeItem,
       List<Recipe> components,
@@ -97,35 +103,34 @@ abstract class _$$_RecipeCopyWith<$Res> implements $RecipeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RecipeCopyWithImpl<$Res> extends _$RecipeCopyWithImpl<$Res>
+class __$$_RecipeCopyWithImpl<$Res>
+    extends _$RecipeCopyWithImpl<$Res, _$_Recipe>
     implements _$$_RecipeCopyWith<$Res> {
   __$$_RecipeCopyWithImpl(_$_Recipe _value, $Res Function(_$_Recipe) _then)
-      : super(_value, (v) => _then(v as _$_Recipe));
+      : super(_value, _then);
 
-  @override
-  _$_Recipe get _value => super._value as _$_Recipe;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? recipeItem = freezed,
-    Object? components = freezed,
-    Object? underMe = freezed,
-    Object? isPlaceholder = freezed,
+    Object? recipeItem = null,
+    Object? components = null,
+    Object? underMe = null,
+    Object? isPlaceholder = null,
   }) {
     return _then(_$_Recipe(
-      recipeItem: recipeItem == freezed
+      recipeItem: null == recipeItem
           ? _value.recipeItem
           : recipeItem // ignore: cast_nullable_to_non_nullable
               as RecipeItem,
-      components: components == freezed
+      components: null == components
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<Recipe>,
-      underMe: underMe == freezed
+      underMe: null == underMe
           ? _value.underMe
           : underMe // ignore: cast_nullable_to_non_nullable
               as int,
-      isPlaceholder: isPlaceholder == freezed
+      isPlaceholder: null == isPlaceholder
           ? _value.isPlaceholder
           : isPlaceholder // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -164,25 +169,22 @@ class _$_Recipe implements _Recipe {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Recipe &&
-            const DeepCollectionEquality()
-                .equals(other.recipeItem, recipeItem) &&
+            (identical(other.recipeItem, recipeItem) ||
+                other.recipeItem == recipeItem) &&
             const DeepCollectionEquality()
                 .equals(other.components, components) &&
-            const DeepCollectionEquality().equals(other.underMe, underMe) &&
-            const DeepCollectionEquality()
-                .equals(other.isPlaceholder, isPlaceholder));
+            (identical(other.underMe, underMe) || other.underMe == underMe) &&
+            (identical(other.isPlaceholder, isPlaceholder) ||
+                other.isPlaceholder == isPlaceholder));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(recipeItem),
-      const DeepCollectionEquality().hash(components),
-      const DeepCollectionEquality().hash(underMe),
-      const DeepCollectionEquality().hash(isPlaceholder));
+  int get hashCode => Object.hash(runtimeType, recipeItem,
+      const DeepCollectionEquality().hash(components), underMe, isPlaceholder);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>
       __$$_RecipeCopyWithImpl<_$_Recipe>(this, _$identity);
 }
@@ -195,13 +197,13 @@ abstract class _Recipe implements Recipe {
       final bool isPlaceholder}) = _$_Recipe;
 
   @override
-  RecipeItem get recipeItem => throw _privateConstructorUsedError;
+  RecipeItem get recipeItem;
   @override
-  List<Recipe> get components => throw _privateConstructorUsedError;
+  List<Recipe> get components;
   @override
-  int get underMe => throw _privateConstructorUsedError;
+  int get underMe;
   @override
-  bool get isPlaceholder => throw _privateConstructorUsedError;
+  bool get isPlaceholder;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeCopyWith<_$_Recipe> get copyWith =>

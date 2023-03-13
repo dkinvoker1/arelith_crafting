@@ -8,5 +8,6 @@ class ItemListState with _$ItemListState {
     @Default(null) Stream<QuerySnapshot<Item>>? itemsStream,
     @Default('') String nameFilter,
     @Default({}) Map<ItemCategory, bool> categoryFilter,
+    @Default(false) bool isLoggedIn 
   }) = _ItemListState;
 }

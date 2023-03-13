@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'recipe_bloc.dart';
 
@@ -24,7 +24,7 @@ mixin _$RecipeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String rootItemDocumentPath)? search,
+    TResult? Function(String rootItemDocumentPath)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$RecipeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Search value)? search,
+    TResult? Function(_Search value)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,28 +59,32 @@ mixin _$RecipeEvent {
 abstract class $RecipeEventCopyWith<$Res> {
   factory $RecipeEventCopyWith(
           RecipeEvent value, $Res Function(RecipeEvent) then) =
-      _$RecipeEventCopyWithImpl<$Res>;
+      _$RecipeEventCopyWithImpl<$Res, RecipeEvent>;
+  @useResult
   $Res call({String rootItemDocumentPath});
 }
 
 /// @nodoc
-class _$RecipeEventCopyWithImpl<$Res> implements $RecipeEventCopyWith<$Res> {
+class _$RecipeEventCopyWithImpl<$Res, $Val extends RecipeEvent>
+    implements $RecipeEventCopyWith<$Res> {
   _$RecipeEventCopyWithImpl(this._value, this._then);
 
-  final RecipeEvent _value;
   // ignore: unused_field
-  final $Res Function(RecipeEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rootItemDocumentPath = freezed,
+    Object? rootItemDocumentPath = null,
   }) {
     return _then(_value.copyWith(
-      rootItemDocumentPath: rootItemDocumentPath == freezed
+      rootItemDocumentPath: null == rootItemDocumentPath
           ? _value.rootItemDocumentPath
           : rootItemDocumentPath // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -89,24 +93,24 @@ abstract class _$$_SearchCopyWith<$Res> implements $RecipeEventCopyWith<$Res> {
   factory _$$_SearchCopyWith(_$_Search value, $Res Function(_$_Search) then) =
       __$$_SearchCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String rootItemDocumentPath});
 }
 
 /// @nodoc
-class __$$_SearchCopyWithImpl<$Res> extends _$RecipeEventCopyWithImpl<$Res>
+class __$$_SearchCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$_Search>
     implements _$$_SearchCopyWith<$Res> {
   __$$_SearchCopyWithImpl(_$_Search _value, $Res Function(_$_Search) _then)
-      : super(_value, (v) => _then(v as _$_Search));
+      : super(_value, _then);
 
-  @override
-  _$_Search get _value => super._value as _$_Search;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? rootItemDocumentPath = freezed,
+    Object? rootItemDocumentPath = null,
   }) {
     return _then(_$_Search(
-      rootItemDocumentPath == freezed
+      null == rootItemDocumentPath
           ? _value.rootItemDocumentPath
           : rootItemDocumentPath // ignore: cast_nullable_to_non_nullable
               as String,
@@ -132,16 +136,16 @@ class _$_Search implements _Search {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Search &&
-            const DeepCollectionEquality()
-                .equals(other.rootItemDocumentPath, rootItemDocumentPath));
+            (identical(other.rootItemDocumentPath, rootItemDocumentPath) ||
+                other.rootItemDocumentPath == rootItemDocumentPath));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(rootItemDocumentPath));
+  int get hashCode => Object.hash(runtimeType, rootItemDocumentPath);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SearchCopyWith<_$_Search> get copyWith =>
       __$$_SearchCopyWithImpl<_$_Search>(this, _$identity);
 
@@ -156,7 +160,7 @@ class _$_Search implements _Search {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String rootItemDocumentPath)? search,
+    TResult? Function(String rootItemDocumentPath)? search,
   }) {
     return search?.call(rootItemDocumentPath);
   }
@@ -184,7 +188,7 @@ class _$_Search implements _Search {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Search value)? search,
+    TResult? Function(_Search value)? search,
   }) {
     return search?.call(this);
   }
@@ -206,7 +210,7 @@ abstract class _Search implements RecipeEvent {
   const factory _Search(final String rootItemDocumentPath) = _$_Search;
 
   @override
-  String get rootItemDocumentPath => throw _privateConstructorUsedError;
+  String get rootItemDocumentPath;
   @override
   @JsonKey(ignore: true)
   _$$_SearchCopyWith<_$_Search> get copyWith =>
@@ -226,40 +230,45 @@ mixin _$RecipeState {
 abstract class $RecipeStateCopyWith<$Res> {
   factory $RecipeStateCopyWith(
           RecipeState value, $Res Function(RecipeState) then) =
-      _$RecipeStateCopyWithImpl<$Res>;
+      _$RecipeStateCopyWithImpl<$Res, RecipeState>;
+  @useResult
   $Res call({Recipe? recipe});
 
   $RecipeCopyWith<$Res>? get recipe;
 }
 
 /// @nodoc
-class _$RecipeStateCopyWithImpl<$Res> implements $RecipeStateCopyWith<$Res> {
+class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
+    implements $RecipeStateCopyWith<$Res> {
   _$RecipeStateCopyWithImpl(this._value, this._then);
 
-  final RecipeState _value;
   // ignore: unused_field
-  final $Res Function(RecipeState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? recipe = freezed,
   }) {
     return _then(_value.copyWith(
-      recipe: recipe == freezed
+      recipe: freezed == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as Recipe?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RecipeCopyWith<$Res>? get recipe {
     if (_value.recipe == null) {
       return null;
     }
 
     return $RecipeCopyWith<$Res>(_value.recipe!, (value) {
-      return _then(_value.copyWith(recipe: value));
+      return _then(_value.copyWith(recipe: value) as $Val);
     });
   }
 }
@@ -271,6 +280,7 @@ abstract class _$$_RecipeStateCopyWith<$Res>
           _$_RecipeState value, $Res Function(_$_RecipeState) then) =
       __$$_RecipeStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Recipe? recipe});
 
   @override
@@ -278,21 +288,20 @@ abstract class _$$_RecipeStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeStateCopyWithImpl<$Res> extends _$RecipeStateCopyWithImpl<$Res>
+class __$$_RecipeStateCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$_RecipeState>
     implements _$$_RecipeStateCopyWith<$Res> {
   __$$_RecipeStateCopyWithImpl(
       _$_RecipeState _value, $Res Function(_$_RecipeState) _then)
-      : super(_value, (v) => _then(v as _$_RecipeState));
+      : super(_value, _then);
 
-  @override
-  _$_RecipeState get _value => super._value as _$_RecipeState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? recipe = freezed,
   }) {
     return _then(_$_RecipeState(
-      recipe: recipe == freezed
+      recipe: freezed == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as Recipe?,
@@ -319,15 +328,15 @@ class _$_RecipeState implements _RecipeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RecipeState &&
-            const DeepCollectionEquality().equals(other.recipe, recipe));
+            (identical(other.recipe, recipe) || other.recipe == recipe));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(recipe));
+  int get hashCode => Object.hash(runtimeType, recipe);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RecipeStateCopyWith<_$_RecipeState> get copyWith =>
       __$$_RecipeStateCopyWithImpl<_$_RecipeState>(this, _$identity);
 }
@@ -336,7 +345,7 @@ abstract class _RecipeState implements RecipeState {
   factory _RecipeState({final Recipe? recipe}) = _$_RecipeState;
 
   @override
-  Recipe? get recipe => throw _privateConstructorUsedError;
+  Recipe? get recipe;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeStateCopyWith<_$_RecipeState> get copyWith =>

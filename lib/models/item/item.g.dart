@@ -32,7 +32,7 @@ Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'width': instance.width,
       'documentId': instance.documentId,
       'categories':
-          instance.categories.map((e) => _$ItemCategoryEnumMap[e]).toList(),
+          instance.categories.map((e) => _$ItemCategoryEnumMap[e]!).toList(),
       'components': instance.components.map((e) => e.toJson()).toList(),
     };
 

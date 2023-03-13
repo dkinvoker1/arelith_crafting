@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages, prefer_const_constructors_in_immutables
 
+import 'package:arelith_crafting/hive_models/boxes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -14,6 +15,9 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  Boxes.setUpHive();
+
   runApp(App());
 }
 

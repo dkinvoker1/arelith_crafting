@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'item.dart';
 
@@ -37,7 +37,8 @@ mixin _$Item {
 /// @nodoc
 abstract class $ItemCopyWith<$Res> {
   factory $ItemCopyWith(Item value, $Res Function(Item) then) =
-      _$ItemCopyWithImpl<$Res>;
+      _$ItemCopyWithImpl<$Res, Item>;
+  @useResult
   $Res call(
       {String imageUrl,
       String name,
@@ -50,58 +51,61 @@ abstract class $ItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
+class _$ItemCopyWithImpl<$Res, $Val extends Item>
+    implements $ItemCopyWith<$Res> {
   _$ItemCopyWithImpl(this._value, this._then);
 
-  final Item _value;
   // ignore: unused_field
-  final $Res Function(Item) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = freezed,
-    Object? name = freezed,
-    Object? description = freezed,
-    Object? height = freezed,
-    Object? width = freezed,
-    Object? documentId = freezed,
-    Object? categories = freezed,
-    Object? components = freezed,
+    Object? imageUrl = null,
+    Object? name = null,
+    Object? description = null,
+    Object? height = null,
+    Object? width = null,
+    Object? documentId = null,
+    Object? categories = null,
+    Object? components = null,
   }) {
     return _then(_value.copyWith(
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      height: height == freezed
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as int,
-      width: width == freezed
+      width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
               as int,
-      documentId: documentId == freezed
+      documentId: null == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<ItemCategory>,
-      components: components == freezed
+      components: null == components
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<Component>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -110,6 +114,7 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
   factory _$$_ItemCopyWith(_$_Item value, $Res Function(_$_Item) then) =
       __$$_ItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String imageUrl,
       String name,
@@ -122,55 +127,53 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
+class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res, _$_Item>
     implements _$$_ItemCopyWith<$Res> {
   __$$_ItemCopyWithImpl(_$_Item _value, $Res Function(_$_Item) _then)
-      : super(_value, (v) => _then(v as _$_Item));
+      : super(_value, _then);
 
-  @override
-  _$_Item get _value => super._value as _$_Item;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = freezed,
-    Object? name = freezed,
-    Object? description = freezed,
-    Object? height = freezed,
-    Object? width = freezed,
-    Object? documentId = freezed,
-    Object? categories = freezed,
-    Object? components = freezed,
+    Object? imageUrl = null,
+    Object? name = null,
+    Object? description = null,
+    Object? height = null,
+    Object? width = null,
+    Object? documentId = null,
+    Object? categories = null,
+    Object? components = null,
   }) {
     return _then(_$_Item(
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      height: height == freezed
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as int,
-      width: width == freezed
+      width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
               as int,
-      documentId: documentId == freezed
+      documentId: null == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
               as String,
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<ItemCategory>,
-      components: components == freezed
+      components: null == components
           ? _value.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<Component>,
@@ -238,14 +241,15 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Item &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality()
-                .equals(other.documentId, documentId) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.documentId, documentId) ||
+                other.documentId == documentId) &&
             const DeepCollectionEquality()
                 .equals(other.categories, categories) &&
             const DeepCollectionEquality()
@@ -256,23 +260,26 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(documentId),
+      imageUrl,
+      name,
+      description,
+      height,
+      width,
+      documentId,
       const DeepCollectionEquality().hash(categories),
       const DeepCollectionEquality().hash(components));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ItemCopyWith<_$_Item> get copyWith =>
       __$$_ItemCopyWithImpl<_$_Item>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ItemToJson(this);
+    return _$$_ItemToJson(
+      this,
+    );
   }
 }
 
@@ -290,21 +297,21 @@ abstract class _Item implements Item {
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
   @override
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get imageUrl;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  int get height => throw _privateConstructorUsedError;
+  int get height;
   @override
-  int get width => throw _privateConstructorUsedError;
+  int get width;
   @override
-  String get documentId => throw _privateConstructorUsedError;
+  String get documentId;
   @override
-  List<ItemCategory> get categories => throw _privateConstructorUsedError;
+  List<ItemCategory> get categories;
   @override
-  List<Component> get components => throw _privateConstructorUsedError;
+  List<Component> get components;
   @override
   @JsonKey(ignore: true)
   _$$_ItemCopyWith<_$_Item> get copyWith => throw _privateConstructorUsedError;

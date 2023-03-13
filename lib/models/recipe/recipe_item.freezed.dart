@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'recipe_item.dart';
 
@@ -31,7 +31,8 @@ mixin _$RecipeItem {
 abstract class $RecipeItemCopyWith<$Res> {
   factory $RecipeItemCopyWith(
           RecipeItem value, $Res Function(RecipeItem) then) =
-      _$RecipeItemCopyWithImpl<$Res>;
+      _$RecipeItemCopyWithImpl<$Res, RecipeItem>;
+  @useResult
   $Res call(
       {ComponentItem? item,
       GlobalKey<State<StatefulWidget>>? key,
@@ -42,48 +43,52 @@ abstract class $RecipeItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecipeItemCopyWithImpl<$Res> implements $RecipeItemCopyWith<$Res> {
+class _$RecipeItemCopyWithImpl<$Res, $Val extends RecipeItem>
+    implements $RecipeItemCopyWith<$Res> {
   _$RecipeItemCopyWithImpl(this._value, this._then);
 
-  final RecipeItem _value;
   // ignore: unused_field
-  final $Res Function(RecipeItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? item = freezed,
     Object? key = freezed,
-    Object? level = freezed,
-    Object? flex = freezed,
+    Object? level = null,
+    Object? flex = null,
   }) {
     return _then(_value.copyWith(
-      item: item == freezed
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as ComponentItem?,
-      key: key == freezed
+      key: freezed == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as GlobalKey<State<StatefulWidget>>?,
-      level: level == freezed
+      level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
               as int,
-      flex: flex == freezed
+      flex: null == flex
           ? _value.flex
           : flex // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ComponentItemCopyWith<$Res>? get item {
     if (_value.item == null) {
       return null;
     }
 
     return $ComponentItemCopyWith<$Res>(_value.item!, (value) {
-      return _then(_value.copyWith(item: value));
+      return _then(_value.copyWith(item: value) as $Val);
     });
   }
 }
@@ -95,6 +100,7 @@ abstract class _$$_RecipeItemCopyWith<$Res>
           _$_RecipeItem value, $Res Function(_$_RecipeItem) then) =
       __$$_RecipeItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {ComponentItem? item,
       GlobalKey<State<StatefulWidget>>? key,
@@ -106,36 +112,35 @@ abstract class _$$_RecipeItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecipeItemCopyWithImpl<$Res> extends _$RecipeItemCopyWithImpl<$Res>
+class __$$_RecipeItemCopyWithImpl<$Res>
+    extends _$RecipeItemCopyWithImpl<$Res, _$_RecipeItem>
     implements _$$_RecipeItemCopyWith<$Res> {
   __$$_RecipeItemCopyWithImpl(
       _$_RecipeItem _value, $Res Function(_$_RecipeItem) _then)
-      : super(_value, (v) => _then(v as _$_RecipeItem));
+      : super(_value, _then);
 
-  @override
-  _$_RecipeItem get _value => super._value as _$_RecipeItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? item = freezed,
     Object? key = freezed,
-    Object? level = freezed,
-    Object? flex = freezed,
+    Object? level = null,
+    Object? flex = null,
   }) {
     return _then(_$_RecipeItem(
-      item: item == freezed
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as ComponentItem?,
-      key: key == freezed
+      key: freezed == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as GlobalKey<State<StatefulWidget>>?,
-      level: level == freezed
+      level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
               as int,
-      flex: flex == freezed
+      flex: null == flex
           ? _value.flex
           : flex // ignore: cast_nullable_to_non_nullable
               as double,
@@ -169,22 +174,18 @@ class _$_RecipeItem implements _RecipeItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RecipeItem &&
-            const DeepCollectionEquality().equals(other.item, item) &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.level, level) &&
-            const DeepCollectionEquality().equals(other.flex, flex));
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.level, level) || other.level == level) &&
+            (identical(other.flex, flex) || other.flex == flex));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(level),
-      const DeepCollectionEquality().hash(flex));
+  int get hashCode => Object.hash(runtimeType, item, key, level, flex);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RecipeItemCopyWith<_$_RecipeItem> get copyWith =>
       __$$_RecipeItemCopyWithImpl<_$_RecipeItem>(this, _$identity);
 }
@@ -197,14 +198,13 @@ abstract class _RecipeItem implements RecipeItem {
       final double flex}) = _$_RecipeItem;
 
   @override
-  ComponentItem? get item => throw _privateConstructorUsedError;
+  ComponentItem? get item;
   @override
-  GlobalKey<State<StatefulWidget>>? get key =>
-      throw _privateConstructorUsedError;
+  GlobalKey<State<StatefulWidget>>? get key;
   @override
-  int get level => throw _privateConstructorUsedError;
+  int get level;
   @override
-  double get flex => throw _privateConstructorUsedError;
+  double get flex;
   @override
   @JsonKey(ignore: true)
   _$$_RecipeItemCopyWith<_$_RecipeItem> get copyWith =>

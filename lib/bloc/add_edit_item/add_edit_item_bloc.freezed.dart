@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'add_edit_item_bloc.dart';
 
@@ -31,14 +31,14 @@ mixin _$AddEditItemEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,13 +67,13 @@ mixin _$AddEditItemEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,17 +94,18 @@ mixin _$AddEditItemEvent {
 abstract class $AddEditItemEventCopyWith<$Res> {
   factory $AddEditItemEventCopyWith(
           AddEditItemEvent value, $Res Function(AddEditItemEvent) then) =
-      _$AddEditItemEventCopyWithImpl<$Res>;
+      _$AddEditItemEventCopyWithImpl<$Res, AddEditItemEvent>;
 }
 
 /// @nodoc
-class _$AddEditItemEventCopyWithImpl<$Res>
+class _$AddEditItemEventCopyWithImpl<$Res, $Val extends AddEditItemEvent>
     implements $AddEditItemEventCopyWith<$Res> {
   _$AddEditItemEventCopyWithImpl(this._value, this._then);
 
-  final AddEditItemEvent _value;
   // ignore: unused_field
-  final $Res Function(AddEditItemEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -116,14 +117,11 @@ abstract class _$$_InitialiseComponentsCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialiseComponentsCopyWithImpl<$Res>
-    extends _$AddEditItemEventCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res, _$_InitialiseComponents>
     implements _$$_InitialiseComponentsCopyWith<$Res> {
   __$$_InitialiseComponentsCopyWithImpl(_$_InitialiseComponents _value,
       $Res Function(_$_InitialiseComponents) _then)
-      : super(_value, (v) => _then(v as _$_InitialiseComponents));
-
-  @override
-  _$_InitialiseComponents get _value => super._value as _$_InitialiseComponents;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -164,14 +162,14 @@ class _$_InitialiseComponents implements _InitialiseComponents {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) {
     return initialiseComponents?.call();
   }
@@ -212,13 +210,13 @@ class _$_InitialiseComponents implements _InitialiseComponents {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) {
     return initialiseComponents?.call(this);
   }
@@ -250,24 +248,24 @@ abstract class _InitialiseComponents implements AddEditItemEvent {
 abstract class _$$_LoadCopyWith<$Res> {
   factory _$$_LoadCopyWith(_$_Load value, $Res Function(_$_Load) then) =
       __$$_LoadCopyWithImpl<$Res>;
+  @useResult
   $Res call({String itemId});
 }
 
 /// @nodoc
-class __$$_LoadCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
+class __$$_LoadCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res, _$_Load>
     implements _$$_LoadCopyWith<$Res> {
   __$$_LoadCopyWithImpl(_$_Load _value, $Res Function(_$_Load) _then)
-      : super(_value, (v) => _then(v as _$_Load));
+      : super(_value, _then);
 
-  @override
-  _$_Load get _value => super._value as _$_Load;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? itemId = freezed,
+    Object? itemId = null,
   }) {
     return _then(_$_Load(
-      itemId == freezed
+      null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -293,15 +291,15 @@ class _$_Load implements _Load {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Load &&
-            const DeepCollectionEquality().equals(other.itemId, itemId));
+            (identical(other.itemId, itemId) || other.itemId == itemId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(itemId));
+  int get hashCode => Object.hash(runtimeType, itemId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoadCopyWith<_$_Load> get copyWith =>
       __$$_LoadCopyWithImpl<_$_Load>(this, _$identity);
 
@@ -324,14 +322,14 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) {
     return load?.call(itemId);
   }
@@ -372,13 +370,13 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) {
     return load?.call(this);
   }
@@ -405,7 +403,7 @@ class _$_Load implements _Load {
 abstract class _Load implements AddEditItemEvent {
   const factory _Load(final String itemId) = _$_Load;
 
-  String get itemId => throw _privateConstructorUsedError;
+  String get itemId;
   @JsonKey(ignore: true)
   _$$_LoadCopyWith<_$_Load> get copyWith => throw _privateConstructorUsedError;
 }
@@ -414,29 +412,29 @@ abstract class _Load implements AddEditItemEvent {
 abstract class _$$_UpdateCopyWith<$Res> {
   factory _$$_UpdateCopyWith(_$_Update value, $Res Function(_$_Update) then) =
       __$$_UpdateCopyWithImpl<$Res>;
+  @useResult
   $Res call({String key, dynamic value});
 }
 
 /// @nodoc
-class __$$_UpdateCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
+class __$$_UpdateCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res, _$_Update>
     implements _$$_UpdateCopyWith<$Res> {
   __$$_UpdateCopyWithImpl(_$_Update _value, $Res Function(_$_Update) _then)
-      : super(_value, (v) => _then(v as _$_Update));
+      : super(_value, _then);
 
-  @override
-  _$_Update get _value => super._value as _$_Update;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? key = freezed,
+    Object? key = null,
     Object? value = freezed,
   }) {
     return _then(_$_Update(
-      key == freezed
+      null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as String,
-      value == freezed
+      freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -464,18 +462,17 @@ class _$_Update implements _Update {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Update &&
-            const DeepCollectionEquality().equals(other.key, key) &&
+            (identical(other.key, key) || other.key == key) &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(value));
+  int get hashCode =>
+      Object.hash(runtimeType, key, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateCopyWith<_$_Update> get copyWith =>
       __$$_UpdateCopyWithImpl<_$_Update>(this, _$identity);
 
@@ -498,14 +495,14 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) {
     return update?.call(key, value);
   }
@@ -546,13 +543,13 @@ class _$_Update implements _Update {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) {
     return update?.call(this);
   }
@@ -579,8 +576,8 @@ class _$_Update implements _Update {
 abstract class _Update implements AddEditItemEvent {
   const factory _Update(final String key, final dynamic value) = _$_Update;
 
-  String get key => throw _privateConstructorUsedError;
-  dynamic get value => throw _privateConstructorUsedError;
+  String get key;
+  dynamic get value;
   @JsonKey(ignore: true)
   _$$_UpdateCopyWith<_$_Update> get copyWith =>
       throw _privateConstructorUsedError;
@@ -591,31 +588,30 @@ abstract class _$$_UpdateCategoryCopyWith<$Res> {
   factory _$$_UpdateCategoryCopyWith(
           _$_UpdateCategory value, $Res Function(_$_UpdateCategory) then) =
       __$$_UpdateCategoryCopyWithImpl<$Res>;
+  @useResult
   $Res call({ItemCategory category, bool hasThisCategory});
 }
 
 /// @nodoc
 class __$$_UpdateCategoryCopyWithImpl<$Res>
-    extends _$AddEditItemEventCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res, _$_UpdateCategory>
     implements _$$_UpdateCategoryCopyWith<$Res> {
   __$$_UpdateCategoryCopyWithImpl(
       _$_UpdateCategory _value, $Res Function(_$_UpdateCategory) _then)
-      : super(_value, (v) => _then(v as _$_UpdateCategory));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateCategory get _value => super._value as _$_UpdateCategory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = freezed,
-    Object? hasThisCategory = freezed,
+    Object? category = null,
+    Object? hasThisCategory = null,
   }) {
     return _then(_$_UpdateCategory(
-      category == freezed
+      null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ItemCategory,
-      hasThisCategory == freezed
+      null == hasThisCategory
           ? _value.hasThisCategory
           : hasThisCategory // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -643,19 +639,18 @@ class _$_UpdateCategory implements _UpdateCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateCategory &&
-            const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality()
-                .equals(other.hasThisCategory, hasThisCategory));
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.hasThisCategory, hasThisCategory) ||
+                other.hasThisCategory == hasThisCategory));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(hasThisCategory));
+  int get hashCode => Object.hash(runtimeType, category, hasThisCategory);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateCategoryCopyWith<_$_UpdateCategory> get copyWith =>
       __$$_UpdateCategoryCopyWithImpl<_$_UpdateCategory>(this, _$identity);
 
@@ -678,14 +673,14 @@ class _$_UpdateCategory implements _UpdateCategory {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) {
     return updateCategory?.call(category, hasThisCategory);
   }
@@ -726,13 +721,13 @@ class _$_UpdateCategory implements _UpdateCategory {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) {
     return updateCategory?.call(this);
   }
@@ -761,8 +756,8 @@ abstract class _UpdateCategory implements AddEditItemEvent {
           final ItemCategory category, final bool hasThisCategory) =
       _$_UpdateCategory;
 
-  ItemCategory get category => throw _privateConstructorUsedError;
-  bool get hasThisCategory => throw _privateConstructorUsedError;
+  ItemCategory get category;
+  bool get hasThisCategory;
   @JsonKey(ignore: true)
   _$$_UpdateCategoryCopyWith<_$_UpdateCategory> get copyWith =>
       throw _privateConstructorUsedError;
@@ -773,26 +768,25 @@ abstract class _$$_SetImageCopyWith<$Res> {
   factory _$$_SetImageCopyWith(
           _$_SetImage value, $Res Function(_$_SetImage) then) =
       __$$_SetImageCopyWithImpl<$Res>;
+  @useResult
   $Res call({PlatformFile file});
 }
 
 /// @nodoc
 class __$$_SetImageCopyWithImpl<$Res>
-    extends _$AddEditItemEventCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res, _$_SetImage>
     implements _$$_SetImageCopyWith<$Res> {
   __$$_SetImageCopyWithImpl(
       _$_SetImage _value, $Res Function(_$_SetImage) _then)
-      : super(_value, (v) => _then(v as _$_SetImage));
+      : super(_value, _then);
 
-  @override
-  _$_SetImage get _value => super._value as _$_SetImage;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? file = freezed,
+    Object? file = null,
   }) {
     return _then(_$_SetImage(
-      file == freezed
+      null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as PlatformFile,
@@ -818,15 +812,15 @@ class _$_SetImage implements _SetImage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SetImage &&
-            const DeepCollectionEquality().equals(other.file, file));
+            (identical(other.file, file) || other.file == file));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(file));
+  int get hashCode => Object.hash(runtimeType, file);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SetImageCopyWith<_$_SetImage> get copyWith =>
       __$$_SetImageCopyWithImpl<_$_SetImage>(this, _$identity);
 
@@ -849,14 +843,14 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) {
     return setImage?.call(file);
   }
@@ -897,13 +891,13 @@ class _$_SetImage implements _SetImage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) {
     return setImage?.call(this);
   }
@@ -930,7 +924,7 @@ class _$_SetImage implements _SetImage {
 abstract class _SetImage implements AddEditItemEvent {
   const factory _SetImage(final PlatformFile file) = _$_SetImage;
 
-  PlatformFile get file => throw _privateConstructorUsedError;
+  PlatformFile get file;
   @JsonKey(ignore: true)
   _$$_SetImageCopyWith<_$_SetImage> get copyWith =>
       throw _privateConstructorUsedError;
@@ -941,26 +935,25 @@ abstract class _$$_SetComponentsCopyWith<$Res> {
   factory _$$_SetComponentsCopyWith(
           _$_SetComponents value, $Res Function(_$_SetComponents) then) =
       __$$_SetComponentsCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<ComponentItem> componentItems});
 }
 
 /// @nodoc
 class __$$_SetComponentsCopyWithImpl<$Res>
-    extends _$AddEditItemEventCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res, _$_SetComponents>
     implements _$$_SetComponentsCopyWith<$Res> {
   __$$_SetComponentsCopyWithImpl(
       _$_SetComponents _value, $Res Function(_$_SetComponents) _then)
-      : super(_value, (v) => _then(v as _$_SetComponents));
+      : super(_value, _then);
 
-  @override
-  _$_SetComponents get _value => super._value as _$_SetComponents;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? componentItems = freezed,
+    Object? componentItems = null,
   }) {
     return _then(_$_SetComponents(
-      componentItems == freezed
+      null == componentItems
           ? _value._componentItems
           : componentItems // ignore: cast_nullable_to_non_nullable
               as List<ComponentItem>,
@@ -977,6 +970,7 @@ class _$_SetComponents implements _SetComponents {
   final List<ComponentItem> _componentItems;
   @override
   List<ComponentItem> get componentItems {
+    if (_componentItems is EqualUnmodifiableListView) return _componentItems;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_componentItems);
   }
@@ -1001,6 +995,7 @@ class _$_SetComponents implements _SetComponents {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SetComponentsCopyWith<_$_SetComponents> get copyWith =>
       __$$_SetComponentsCopyWithImpl<_$_SetComponents>(this, _$identity);
 
@@ -1023,14 +1018,14 @@ class _$_SetComponents implements _SetComponents {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) {
     return setComponentItems?.call(componentItems);
   }
@@ -1071,13 +1066,13 @@ class _$_SetComponents implements _SetComponents {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) {
     return setComponentItems?.call(this);
   }
@@ -1105,7 +1100,7 @@ abstract class _SetComponents implements AddEditItemEvent {
   const factory _SetComponents(final List<ComponentItem> componentItems) =
       _$_SetComponents;
 
-  List<ComponentItem> get componentItems => throw _privateConstructorUsedError;
+  List<ComponentItem> get componentItems;
   @JsonKey(ignore: true)
   _$$_SetComponentsCopyWith<_$_SetComponents> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1118,13 +1113,11 @@ abstract class _$$_SaveCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SaveCopyWithImpl<$Res> extends _$AddEditItemEventCopyWithImpl<$Res>
+class __$$_SaveCopyWithImpl<$Res>
+    extends _$AddEditItemEventCopyWithImpl<$Res, _$_Save>
     implements _$$_SaveCopyWith<$Res> {
   __$$_SaveCopyWithImpl(_$_Save _value, $Res Function(_$_Save) _then)
-      : super(_value, (v) => _then(v as _$_Save));
-
-  @override
-  _$_Save get _value => super._value as _$_Save;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1165,14 +1158,14 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialiseComponents,
-    TResult Function(String itemId)? load,
-    TResult Function(String key, dynamic value)? update,
-    TResult Function(ItemCategory category, bool hasThisCategory)?
+    TResult? Function()? initialiseComponents,
+    TResult? Function(String itemId)? load,
+    TResult? Function(String key, dynamic value)? update,
+    TResult? Function(ItemCategory category, bool hasThisCategory)?
         updateCategory,
-    TResult Function(PlatformFile file)? setImage,
-    TResult Function(List<ComponentItem> componentItems)? setComponentItems,
-    TResult Function()? save,
+    TResult? Function(PlatformFile file)? setImage,
+    TResult? Function(List<ComponentItem> componentItems)? setComponentItems,
+    TResult? Function()? save,
   }) {
     return save?.call();
   }
@@ -1213,13 +1206,13 @@ class _$_Save implements _Save {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_InitialiseComponents value)? initialiseComponents,
-    TResult Function(_Load value)? load,
-    TResult Function(_Update value)? update,
-    TResult Function(_UpdateCategory value)? updateCategory,
-    TResult Function(_SetImage value)? setImage,
-    TResult Function(_SetComponents value)? setComponentItems,
-    TResult Function(_Save value)? save,
+    TResult? Function(_InitialiseComponents value)? initialiseComponents,
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_UpdateCategory value)? updateCategory,
+    TResult? Function(_SetImage value)? setImage,
+    TResult? Function(_SetComponents value)? setComponentItems,
+    TResult? Function(_Save value)? save,
   }) {
     return save?.call(this);
   }
@@ -1266,7 +1259,8 @@ mixin _$AddEditItemState {
 abstract class $AddEditItemStateCopyWith<$Res> {
   factory $AddEditItemStateCopyWith(
           AddEditItemState value, $Res Function(AddEditItemState) then) =
-      _$AddEditItemStateCopyWithImpl<$Res>;
+      _$AddEditItemStateCopyWithImpl<$Res, AddEditItemState>;
+  @useResult
   $Res call(
       {bool isUploaded,
       bool loadPrevious,
@@ -1280,60 +1274,63 @@ abstract class $AddEditItemStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddEditItemStateCopyWithImpl<$Res>
+class _$AddEditItemStateCopyWithImpl<$Res, $Val extends AddEditItemState>
     implements $AddEditItemStateCopyWith<$Res> {
   _$AddEditItemStateCopyWithImpl(this._value, this._then);
 
-  final AddEditItemState _value;
   // ignore: unused_field
-  final $Res Function(AddEditItemState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isUploaded = freezed,
-    Object? loadPrevious = freezed,
+    Object? isUploaded = null,
+    Object? loadPrevious = null,
     Object? exception = freezed,
-    Object? item = freezed,
-    Object? fileName = freezed,
+    Object? item = null,
+    Object? fileName = null,
     Object? fileBytes = freezed,
     Object? componentItems = freezed,
   }) {
     return _then(_value.copyWith(
-      isUploaded: isUploaded == freezed
+      isUploaded: null == isUploaded
           ? _value.isUploaded
           : isUploaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      loadPrevious: loadPrevious == freezed
+      loadPrevious: null == loadPrevious
           ? _value.loadPrevious
           : loadPrevious // ignore: cast_nullable_to_non_nullable
               as bool,
-      exception: exception == freezed
+      exception: freezed == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
-      item: item == freezed
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item,
-      fileName: fileName == freezed
+      fileName: null == fileName
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
               as String,
-      fileBytes: fileBytes == freezed
+      fileBytes: freezed == fileBytes
           ? _value.fileBytes
           : fileBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
-      componentItems: componentItems == freezed
+      componentItems: freezed == componentItems
           ? _value.componentItems
           : componentItems // ignore: cast_nullable_to_non_nullable
               as List<ComponentItem>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ItemCopyWith<$Res> get item {
     return $ItemCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
+      return _then(_value.copyWith(item: value) as $Val);
     });
   }
 }
@@ -1345,6 +1342,7 @@ abstract class _$$_AddItemStateCopyWith<$Res>
           _$_AddItemState value, $Res Function(_$_AddItemState) then) =
       __$$_AddItemStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool isUploaded,
       bool loadPrevious,
@@ -1360,51 +1358,49 @@ abstract class _$$_AddItemStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_AddItemStateCopyWithImpl<$Res>
-    extends _$AddEditItemStateCopyWithImpl<$Res>
+    extends _$AddEditItemStateCopyWithImpl<$Res, _$_AddItemState>
     implements _$$_AddItemStateCopyWith<$Res> {
   __$$_AddItemStateCopyWithImpl(
       _$_AddItemState _value, $Res Function(_$_AddItemState) _then)
-      : super(_value, (v) => _then(v as _$_AddItemState));
+      : super(_value, _then);
 
-  @override
-  _$_AddItemState get _value => super._value as _$_AddItemState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isUploaded = freezed,
-    Object? loadPrevious = freezed,
+    Object? isUploaded = null,
+    Object? loadPrevious = null,
     Object? exception = freezed,
-    Object? item = freezed,
-    Object? fileName = freezed,
+    Object? item = null,
+    Object? fileName = null,
     Object? fileBytes = freezed,
     Object? componentItems = freezed,
   }) {
     return _then(_$_AddItemState(
-      isUploaded: isUploaded == freezed
+      isUploaded: null == isUploaded
           ? _value.isUploaded
           : isUploaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      loadPrevious: loadPrevious == freezed
+      loadPrevious: null == loadPrevious
           ? _value.loadPrevious
           : loadPrevious // ignore: cast_nullable_to_non_nullable
               as bool,
-      exception: exception == freezed
+      exception: freezed == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
               as Exception?,
-      item: item == freezed
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item,
-      fileName: fileName == freezed
+      fileName: null == fileName
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
               as String,
-      fileBytes: fileBytes == freezed
+      fileBytes: freezed == fileBytes
           ? _value.fileBytes
           : fileBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
-      componentItems: componentItems == freezed
+      componentItems: freezed == componentItems
           ? _value.componentItems
           : componentItems // ignore: cast_nullable_to_non_nullable
               as List<ComponentItem>?,
@@ -1458,13 +1454,15 @@ class _$_AddItemState extends _AddItemState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AddItemState &&
-            const DeepCollectionEquality()
-                .equals(other.isUploaded, isUploaded) &&
-            const DeepCollectionEquality()
-                .equals(other.loadPrevious, loadPrevious) &&
-            const DeepCollectionEquality().equals(other.exception, exception) &&
-            const DeepCollectionEquality().equals(other.item, item) &&
-            const DeepCollectionEquality().equals(other.fileName, fileName) &&
+            (identical(other.isUploaded, isUploaded) ||
+                other.isUploaded == isUploaded) &&
+            (identical(other.loadPrevious, loadPrevious) ||
+                other.loadPrevious == loadPrevious) &&
+            (identical(other.exception, exception) ||
+                other.exception == exception) &&
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.fileName, fileName) ||
+                other.fileName == fileName) &&
             const DeepCollectionEquality().equals(other.fileBytes, fileBytes) &&
             const DeepCollectionEquality()
                 .equals(other.componentItems, componentItems));
@@ -1473,16 +1471,17 @@ class _$_AddItemState extends _AddItemState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(isUploaded),
-      const DeepCollectionEquality().hash(loadPrevious),
-      const DeepCollectionEquality().hash(exception),
-      const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(fileName),
+      isUploaded,
+      loadPrevious,
+      exception,
+      item,
+      fileName,
       const DeepCollectionEquality().hash(fileBytes),
       const DeepCollectionEquality().hash(componentItems));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AddItemStateCopyWith<_$_AddItemState> get copyWith =>
       __$$_AddItemStateCopyWithImpl<_$_AddItemState>(this, _$identity);
 }
@@ -1499,19 +1498,19 @@ abstract class _AddItemState extends AddEditItemState {
   const _AddItemState._() : super._();
 
   @override
-  bool get isUploaded => throw _privateConstructorUsedError;
+  bool get isUploaded;
   @override
-  bool get loadPrevious => throw _privateConstructorUsedError;
+  bool get loadPrevious;
   @override
-  Exception? get exception => throw _privateConstructorUsedError;
+  Exception? get exception;
   @override
-  Item get item => throw _privateConstructorUsedError;
+  Item get item;
   @override
-  String get fileName => throw _privateConstructorUsedError;
+  String get fileName;
   @override
-  Uint8List? get fileBytes => throw _privateConstructorUsedError;
+  Uint8List? get fileBytes;
   @override
-  List<ComponentItem>? get componentItems => throw _privateConstructorUsedError;
+  List<ComponentItem>? get componentItems;
   @override
   @JsonKey(ignore: true)
   _$$_AddItemStateCopyWith<_$_AddItemState> get copyWith =>

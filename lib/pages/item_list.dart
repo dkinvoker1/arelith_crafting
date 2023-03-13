@@ -5,10 +5,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hive/hive.dart';
 
 import '../bloc/circular_menu/circular_menu_bloc.dart';
 import '../bloc/item_list/item_list_bloc.dart';
 import '../helpers/item_list_helper.dart';
+import '../hive_models/boxes.dart';
+import '../hive_models/inventory_item/inventory_item.dart';
 import '../models/item/item.dart';
 import '../routes/router.gr.dart';
 import '../widgets/circular_menu/circular_menu_button.dart';
@@ -37,35 +40,72 @@ class _ItemListPageState extends State<ItemListPage> {
       ],
       child:
           BlocBuilder<ItemListBloc, ItemListState>(builder: (context, state) {
-        List<Widget> actions = [
-          CircularMenuButton(
+        List<Widget> actions = [];
+
+        if (state.isLoggedIn) {
+          actions.add(CircularMenuButton(
             onPressed: (item) {
               context.router
                   .push(EditItemRoute(editedItemDocumentId: item.documentId));
             },
             icon: Icon(Icons.edit),
-          ),
-          CircularMenuButton(
+          ));
+
+          actions.add(CircularMenuButton(
             onPressed: (item) {
               showDeleteDialog(context, item);
             },
             color: Colors.red,
             icon: Icon(Icons.clear),
-          ),
-          CircularMenuButton(
-              onPressed: (item) {
-                context.router
-                    .push(RecipeRoute(rootItemDocumentId: item.documentId));
-              },
-              icon: Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.rotationY(math.pi),
-                child: Transform.rotate(
-                  angle: 90 * math.pi / 180,
-                  child: Icon(Icons.account_tree_outlined),
-                ),
-              )),
-        ];
+          ));
+        } else {
+          actions.add(CircularMenuButton(
+            onPressed: (item) {},
+            color: Colors.grey,
+            icon: Icon(Icons.edit),
+          ));
+
+          actions.add(CircularMenuButton(
+            onPressed: (item) {},
+            color: Colors.grey,
+            icon: Icon(Icons.clear),
+          ));
+        }
+
+        actions.add(CircularMenuButton(
+          onPressed: (item) {
+            var box = Boxes.getInventoryItems();
+
+            var inventoryItemList = box.values
+                .where((element) => element.documentId == item.documentId);
+                
+            if (inventoryItemList.isNotEmpty) {
+              inventoryItemList.first.quantity += 1;
+              inventoryItemList.first.save();
+            } else {
+              var inventoryItem = InventoryItem()
+                ..documentId = item.documentId
+                ..quantity = 1;
+              box.add(inventoryItem);
+            }
+          },
+          icon: Icon(Icons.add),
+        ));
+
+        actions.add(CircularMenuButton(
+            onPressed: (item) {
+              context.router
+                  .push(RecipeRoute(rootItemDocumentId: item.documentId));
+            },
+            icon: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationY(math.pi),
+              child: Transform.rotate(
+                angle: 90 * math.pi / 180,
+                child: Icon(Icons.account_tree_outlined),
+              ),
+            )));
+
         return CircularMenu(actions: actions, child: buildList(context, state));
       }),
     );

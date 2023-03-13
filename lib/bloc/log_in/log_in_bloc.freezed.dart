@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'log_in_bloc.dart';
 
@@ -25,9 +25,9 @@ mixin _$LogInEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String login)? updateLogin,
-    TResult Function(String password)? updatePassword,
-    TResult Function()? logIn,
+    TResult? Function(String login)? updateLogin,
+    TResult? Function(String password)? updatePassword,
+    TResult? Function()? logIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$LogInEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateLogin value)? updateLogin,
-    TResult Function(_UpdatePassword value)? updatePassword,
-    TResult Function(_LogIn value)? logIn,
+    TResult? Function(_UpdateLogin value)? updateLogin,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_LogIn value)? logIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,16 +66,18 @@ mixin _$LogInEvent {
 abstract class $LogInEventCopyWith<$Res> {
   factory $LogInEventCopyWith(
           LogInEvent value, $Res Function(LogInEvent) then) =
-      _$LogInEventCopyWithImpl<$Res>;
+      _$LogInEventCopyWithImpl<$Res, LogInEvent>;
 }
 
 /// @nodoc
-class _$LogInEventCopyWithImpl<$Res> implements $LogInEventCopyWith<$Res> {
+class _$LogInEventCopyWithImpl<$Res, $Val extends LogInEvent>
+    implements $LogInEventCopyWith<$Res> {
   _$LogInEventCopyWithImpl(this._value, this._then);
 
-  final LogInEvent _value;
   // ignore: unused_field
-  final $Res Function(LogInEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -83,25 +85,25 @@ abstract class _$$_UpdateLoginCopyWith<$Res> {
   factory _$$_UpdateLoginCopyWith(
           _$_UpdateLogin value, $Res Function(_$_UpdateLogin) then) =
       __$$_UpdateLoginCopyWithImpl<$Res>;
+  @useResult
   $Res call({String login});
 }
 
 /// @nodoc
-class __$$_UpdateLoginCopyWithImpl<$Res> extends _$LogInEventCopyWithImpl<$Res>
+class __$$_UpdateLoginCopyWithImpl<$Res>
+    extends _$LogInEventCopyWithImpl<$Res, _$_UpdateLogin>
     implements _$$_UpdateLoginCopyWith<$Res> {
   __$$_UpdateLoginCopyWithImpl(
       _$_UpdateLogin _value, $Res Function(_$_UpdateLogin) _then)
-      : super(_value, (v) => _then(v as _$_UpdateLogin));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateLogin get _value => super._value as _$_UpdateLogin;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? login = freezed,
+    Object? login = null,
   }) {
     return _then(_$_UpdateLogin(
-      login == freezed
+      null == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String,
@@ -127,15 +129,15 @@ class _$_UpdateLogin implements _UpdateLogin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateLogin &&
-            const DeepCollectionEquality().equals(other.login, login));
+            (identical(other.login, login) || other.login == login));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(login));
+  int get hashCode => Object.hash(runtimeType, login);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateLoginCopyWith<_$_UpdateLogin> get copyWith =>
       __$$_UpdateLoginCopyWithImpl<_$_UpdateLogin>(this, _$identity);
 
@@ -152,9 +154,9 @@ class _$_UpdateLogin implements _UpdateLogin {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String login)? updateLogin,
-    TResult Function(String password)? updatePassword,
-    TResult Function()? logIn,
+    TResult? Function(String login)? updateLogin,
+    TResult? Function(String password)? updatePassword,
+    TResult? Function()? logIn,
   }) {
     return updateLogin?.call(login);
   }
@@ -186,9 +188,9 @@ class _$_UpdateLogin implements _UpdateLogin {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateLogin value)? updateLogin,
-    TResult Function(_UpdatePassword value)? updatePassword,
-    TResult Function(_LogIn value)? logIn,
+    TResult? Function(_UpdateLogin value)? updateLogin,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_LogIn value)? logIn,
   }) {
     return updateLogin?.call(this);
   }
@@ -211,7 +213,7 @@ class _$_UpdateLogin implements _UpdateLogin {
 abstract class _UpdateLogin implements LogInEvent {
   const factory _UpdateLogin(final String login) = _$_UpdateLogin;
 
-  String get login => throw _privateConstructorUsedError;
+  String get login;
   @JsonKey(ignore: true)
   _$$_UpdateLoginCopyWith<_$_UpdateLogin> get copyWith =>
       throw _privateConstructorUsedError;
@@ -222,26 +224,25 @@ abstract class _$$_UpdatePasswordCopyWith<$Res> {
   factory _$$_UpdatePasswordCopyWith(
           _$_UpdatePassword value, $Res Function(_$_UpdatePassword) then) =
       __$$_UpdatePasswordCopyWithImpl<$Res>;
+  @useResult
   $Res call({String password});
 }
 
 /// @nodoc
 class __$$_UpdatePasswordCopyWithImpl<$Res>
-    extends _$LogInEventCopyWithImpl<$Res>
+    extends _$LogInEventCopyWithImpl<$Res, _$_UpdatePassword>
     implements _$$_UpdatePasswordCopyWith<$Res> {
   __$$_UpdatePasswordCopyWithImpl(
       _$_UpdatePassword _value, $Res Function(_$_UpdatePassword) _then)
-      : super(_value, (v) => _then(v as _$_UpdatePassword));
+      : super(_value, _then);
 
-  @override
-  _$_UpdatePassword get _value => super._value as _$_UpdatePassword;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? password = freezed,
+    Object? password = null,
   }) {
     return _then(_$_UpdatePassword(
-      password == freezed
+      null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
@@ -267,15 +268,16 @@ class _$_UpdatePassword implements _UpdatePassword {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdatePassword &&
-            const DeepCollectionEquality().equals(other.password, password));
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(password));
+  int get hashCode => Object.hash(runtimeType, password);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdatePasswordCopyWith<_$_UpdatePassword> get copyWith =>
       __$$_UpdatePasswordCopyWithImpl<_$_UpdatePassword>(this, _$identity);
 
@@ -292,9 +294,9 @@ class _$_UpdatePassword implements _UpdatePassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String login)? updateLogin,
-    TResult Function(String password)? updatePassword,
-    TResult Function()? logIn,
+    TResult? Function(String login)? updateLogin,
+    TResult? Function(String password)? updatePassword,
+    TResult? Function()? logIn,
   }) {
     return updatePassword?.call(password);
   }
@@ -326,9 +328,9 @@ class _$_UpdatePassword implements _UpdatePassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateLogin value)? updateLogin,
-    TResult Function(_UpdatePassword value)? updatePassword,
-    TResult Function(_LogIn value)? logIn,
+    TResult? Function(_UpdateLogin value)? updateLogin,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_LogIn value)? logIn,
   }) {
     return updatePassword?.call(this);
   }
@@ -351,7 +353,7 @@ class _$_UpdatePassword implements _UpdatePassword {
 abstract class _UpdatePassword implements LogInEvent {
   const factory _UpdatePassword(final String password) = _$_UpdatePassword;
 
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @JsonKey(ignore: true)
   _$$_UpdatePasswordCopyWith<_$_UpdatePassword> get copyWith =>
       throw _privateConstructorUsedError;
@@ -364,13 +366,11 @@ abstract class _$$_LogInCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LogInCopyWithImpl<$Res> extends _$LogInEventCopyWithImpl<$Res>
+class __$$_LogInCopyWithImpl<$Res>
+    extends _$LogInEventCopyWithImpl<$Res, _$_LogIn>
     implements _$$_LogInCopyWith<$Res> {
   __$$_LogInCopyWithImpl(_$_LogIn _value, $Res Function(_$_LogIn) _then)
-      : super(_value, (v) => _then(v as _$_LogIn));
-
-  @override
-  _$_LogIn get _value => super._value as _$_LogIn;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -405,9 +405,9 @@ class _$_LogIn implements _LogIn {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String login)? updateLogin,
-    TResult Function(String password)? updatePassword,
-    TResult Function()? logIn,
+    TResult? Function(String login)? updateLogin,
+    TResult? Function(String password)? updatePassword,
+    TResult? Function()? logIn,
   }) {
     return logIn?.call();
   }
@@ -439,9 +439,9 @@ class _$_LogIn implements _LogIn {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateLogin value)? updateLogin,
-    TResult Function(_UpdatePassword value)? updatePassword,
-    TResult Function(_LogIn value)? logIn,
+    TResult? Function(_UpdateLogin value)? updateLogin,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_LogIn value)? logIn,
   }) {
     return logIn?.call(this);
   }
@@ -480,7 +480,7 @@ mixin _$LogInState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String login, String password, String error, bool isLoggedIn)?
         initial,
   }) =>
@@ -500,7 +500,7 @@ mixin _$LogInState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LogInState value)? initial,
+    TResult? Function(_LogInState value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -519,43 +519,47 @@ mixin _$LogInState {
 abstract class $LogInStateCopyWith<$Res> {
   factory $LogInStateCopyWith(
           LogInState value, $Res Function(LogInState) then) =
-      _$LogInStateCopyWithImpl<$Res>;
+      _$LogInStateCopyWithImpl<$Res, LogInState>;
+  @useResult
   $Res call({String login, String password, String error, bool isLoggedIn});
 }
 
 /// @nodoc
-class _$LogInStateCopyWithImpl<$Res> implements $LogInStateCopyWith<$Res> {
+class _$LogInStateCopyWithImpl<$Res, $Val extends LogInState>
+    implements $LogInStateCopyWith<$Res> {
   _$LogInStateCopyWithImpl(this._value, this._then);
 
-  final LogInState _value;
   // ignore: unused_field
-  final $Res Function(LogInState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? login = freezed,
-    Object? password = freezed,
-    Object? error = freezed,
-    Object? isLoggedIn = freezed,
+    Object? login = null,
+    Object? password = null,
+    Object? error = null,
+    Object? isLoggedIn = null,
   }) {
     return _then(_value.copyWith(
-      login: login == freezed
+      login: null == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
-      isLoggedIn: isLoggedIn == freezed
+      isLoggedIn: null == isLoggedIn
           ? _value.isLoggedIn
           : isLoggedIn // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -566,40 +570,40 @@ abstract class _$$_LogInStateCopyWith<$Res>
           _$_LogInState value, $Res Function(_$_LogInState) then) =
       __$$_LogInStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String login, String password, String error, bool isLoggedIn});
 }
 
 /// @nodoc
-class __$$_LogInStateCopyWithImpl<$Res> extends _$LogInStateCopyWithImpl<$Res>
+class __$$_LogInStateCopyWithImpl<$Res>
+    extends _$LogInStateCopyWithImpl<$Res, _$_LogInState>
     implements _$$_LogInStateCopyWith<$Res> {
   __$$_LogInStateCopyWithImpl(
       _$_LogInState _value, $Res Function(_$_LogInState) _then)
-      : super(_value, (v) => _then(v as _$_LogInState));
+      : super(_value, _then);
 
-  @override
-  _$_LogInState get _value => super._value as _$_LogInState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? login = freezed,
-    Object? password = freezed,
-    Object? error = freezed,
-    Object? isLoggedIn = freezed,
+    Object? login = null,
+    Object? password = null,
+    Object? error = null,
+    Object? isLoggedIn = null,
   }) {
     return _then(_$_LogInState(
-      login: login == freezed
+      login: null == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
-      isLoggedIn: isLoggedIn == freezed
+      isLoggedIn: null == isLoggedIn
           ? _value.isLoggedIn
           : isLoggedIn // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -639,23 +643,21 @@ class _$_LogInState implements _LogInState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LogInState &&
-            const DeepCollectionEquality().equals(other.login, login) &&
-            const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.isLoggedIn, isLoggedIn));
+            (identical(other.login, login) || other.login == login) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.isLoggedIn, isLoggedIn) ||
+                other.isLoggedIn == isLoggedIn));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(login),
-      const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(isLoggedIn));
+  int get hashCode =>
+      Object.hash(runtimeType, login, password, error, isLoggedIn);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LogInStateCopyWith<_$_LogInState> get copyWith =>
       __$$_LogInStateCopyWithImpl<_$_LogInState>(this, _$identity);
 
@@ -672,7 +674,7 @@ class _$_LogInState implements _LogInState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String login, String password, String error, bool isLoggedIn)?
         initial,
   }) {
@@ -704,7 +706,7 @@ class _$_LogInState implements _LogInState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LogInState value)? initial,
+    TResult? Function(_LogInState value)? initial,
   }) {
     return initial?.call(this);
   }
@@ -730,13 +732,13 @@ abstract class _LogInState implements LogInState {
       final bool isLoggedIn}) = _$_LogInState;
 
   @override
-  String get login => throw _privateConstructorUsedError;
+  String get login;
   @override
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
-  String get error => throw _privateConstructorUsedError;
+  String get error;
   @override
-  bool get isLoggedIn => throw _privateConstructorUsedError;
+  bool get isLoggedIn;
   @override
   @JsonKey(ignore: true)
   _$$_LogInStateCopyWith<_$_LogInState> get copyWith =>

@@ -1,14 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages, use_build_context_synchronously, implementation_imports
 
 import 'dart:math' as math;
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/circular_menu/circular_menu_bloc.dart';
 import '../../models/item/item.dart';
-import '../../repositories/log_in_repository.dart';
-import '../../routes/router.gr.dart';
 
 class CircularMenu extends StatefulWidget {
   const CircularMenu({Key? key, required this.actions, required this.child})
@@ -90,13 +87,6 @@ class _CircularMenuState extends State<CircularMenu>
   }
 
   Future<void> onNewItemPressed(Item newItem) async {
-    var loggedInUser = await LogInRepository().isLoggedIn();
-
-    if (!loggedInUser) {
-      context.router.push(RecipeRoute(rootItemDocumentId: newItem.documentId));
-      return;
-    }
-
     _animationController.status == AnimationStatus.dismissed
         ? (_animationController).forward()
         : (_animationController).forward(from: 0);

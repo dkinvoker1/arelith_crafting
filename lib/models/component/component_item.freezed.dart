@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'component_item.dart';
 
@@ -33,42 +33,46 @@ mixin _$ComponentItem {
 abstract class $ComponentItemCopyWith<$Res> {
   factory $ComponentItemCopyWith(
           ComponentItem value, $Res Function(ComponentItem) then) =
-      _$ComponentItemCopyWithImpl<$Res>;
+      _$ComponentItemCopyWithImpl<$Res, ComponentItem>;
+  @useResult
   $Res call({Item item, int quantity});
 
   $ItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
-class _$ComponentItemCopyWithImpl<$Res>
+class _$ComponentItemCopyWithImpl<$Res, $Val extends ComponentItem>
     implements $ComponentItemCopyWith<$Res> {
   _$ComponentItemCopyWithImpl(this._value, this._then);
 
-  final ComponentItem _value;
   // ignore: unused_field
-  final $Res Function(ComponentItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
-    Object? quantity = freezed,
+    Object? item = null,
+    Object? quantity = null,
   }) {
     return _then(_value.copyWith(
-      item: item == freezed
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item,
-      quantity: quantity == freezed
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ItemCopyWith<$Res> get item {
     return $ItemCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
+      return _then(_value.copyWith(item: value) as $Val);
     });
   }
 }
@@ -80,6 +84,7 @@ abstract class _$$_ComponentItemCopyWith<$Res>
           _$_ComponentItem value, $Res Function(_$_ComponentItem) then) =
       __$$_ComponentItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Item item, int quantity});
 
   @override
@@ -88,26 +93,24 @@ abstract class _$$_ComponentItemCopyWith<$Res>
 
 /// @nodoc
 class __$$_ComponentItemCopyWithImpl<$Res>
-    extends _$ComponentItemCopyWithImpl<$Res>
+    extends _$ComponentItemCopyWithImpl<$Res, _$_ComponentItem>
     implements _$$_ComponentItemCopyWith<$Res> {
   __$$_ComponentItemCopyWithImpl(
       _$_ComponentItem _value, $Res Function(_$_ComponentItem) _then)
-      : super(_value, (v) => _then(v as _$_ComponentItem));
+      : super(_value, _then);
 
-  @override
-  _$_ComponentItem get _value => super._value as _$_ComponentItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
-    Object? quantity = freezed,
+    Object? item = null,
+    Object? quantity = null,
   }) {
     return _then(_$_ComponentItem(
-      item: item == freezed
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item,
-      quantity: quantity == freezed
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
@@ -139,25 +142,26 @@ class _$_ComponentItem implements _ComponentItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ComponentItem &&
-            const DeepCollectionEquality().equals(other.item, item) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity));
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(item),
-      const DeepCollectionEquality().hash(quantity));
+  int get hashCode => Object.hash(runtimeType, item, quantity);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ComponentItemCopyWith<_$_ComponentItem> get copyWith =>
       __$$_ComponentItemCopyWithImpl<_$_ComponentItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ComponentItemToJson(this);
+    return _$$_ComponentItemToJson(
+      this,
+    );
   }
 }
 
@@ -169,9 +173,9 @@ abstract class _ComponentItem implements ComponentItem {
       _$_ComponentItem.fromJson;
 
   @override
-  Item get item => throw _privateConstructorUsedError;
+  Item get item;
   @override
-  int get quantity => throw _privateConstructorUsedError;
+  int get quantity;
   @override
   @JsonKey(ignore: true)
   _$$_ComponentItemCopyWith<_$_ComponentItem> get copyWith =>

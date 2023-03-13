@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'item_list_bloc.dart';
 
@@ -27,11 +27,11 @@ mixin _$ItemListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialse,
-    TResult Function(String nameFilter)? updateNameFilter,
-    TResult Function(ItemCategory itemCategory, bool value)?
+    TResult? Function()? initialse,
+    TResult? Function(String nameFilter)? updateNameFilter,
+    TResult? Function(ItemCategory itemCategory, bool value)?
         updateCategoryFilter,
-    TResult Function(String itemId)? delete,
+    TResult? Function(String itemId)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,10 +54,10 @@ mixin _$ItemListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialse value)? initialse,
-    TResult Function(_UpdateNameFilter value)? updateNameFilter,
-    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
-    TResult Function(_Delete value)? delete,
+    TResult? Function(_Initialse value)? initialse,
+    TResult? Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult? Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(_Delete value)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,17 +75,18 @@ mixin _$ItemListEvent {
 abstract class $ItemListEventCopyWith<$Res> {
   factory $ItemListEventCopyWith(
           ItemListEvent value, $Res Function(ItemListEvent) then) =
-      _$ItemListEventCopyWithImpl<$Res>;
+      _$ItemListEventCopyWithImpl<$Res, ItemListEvent>;
 }
 
 /// @nodoc
-class _$ItemListEventCopyWithImpl<$Res>
+class _$ItemListEventCopyWithImpl<$Res, $Val extends ItemListEvent>
     implements $ItemListEventCopyWith<$Res> {
   _$ItemListEventCopyWithImpl(this._value, this._then);
 
-  final ItemListEvent _value;
   // ignore: unused_field
-  final $Res Function(ItemListEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -96,14 +97,12 @@ abstract class _$$_InitialseCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialseCopyWithImpl<$Res> extends _$ItemListEventCopyWithImpl<$Res>
+class __$$_InitialseCopyWithImpl<$Res>
+    extends _$ItemListEventCopyWithImpl<$Res, _$_Initialse>
     implements _$$_InitialseCopyWith<$Res> {
   __$$_InitialseCopyWithImpl(
       _$_Initialse _value, $Res Function(_$_Initialse) _then)
-      : super(_value, (v) => _then(v as _$_Initialse));
-
-  @override
-  _$_Initialse get _value => super._value as _$_Initialse;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -140,11 +139,11 @@ class _$_Initialse implements _Initialse {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialse,
-    TResult Function(String nameFilter)? updateNameFilter,
-    TResult Function(ItemCategory itemCategory, bool value)?
+    TResult? Function()? initialse,
+    TResult? Function(String nameFilter)? updateNameFilter,
+    TResult? Function(ItemCategory itemCategory, bool value)?
         updateCategoryFilter,
-    TResult Function(String itemId)? delete,
+    TResult? Function(String itemId)? delete,
   }) {
     return initialse?.call();
   }
@@ -179,10 +178,10 @@ class _$_Initialse implements _Initialse {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialse value)? initialse,
-    TResult Function(_UpdateNameFilter value)? updateNameFilter,
-    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
-    TResult Function(_Delete value)? delete,
+    TResult? Function(_Initialse value)? initialse,
+    TResult? Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult? Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(_Delete value)? delete,
   }) {
     return initialse?.call(this);
   }
@@ -212,26 +211,25 @@ abstract class _$$_UpdateNameFilterCopyWith<$Res> {
   factory _$$_UpdateNameFilterCopyWith(
           _$_UpdateNameFilter value, $Res Function(_$_UpdateNameFilter) then) =
       __$$_UpdateNameFilterCopyWithImpl<$Res>;
+  @useResult
   $Res call({String nameFilter});
 }
 
 /// @nodoc
 class __$$_UpdateNameFilterCopyWithImpl<$Res>
-    extends _$ItemListEventCopyWithImpl<$Res>
+    extends _$ItemListEventCopyWithImpl<$Res, _$_UpdateNameFilter>
     implements _$$_UpdateNameFilterCopyWith<$Res> {
   __$$_UpdateNameFilterCopyWithImpl(
       _$_UpdateNameFilter _value, $Res Function(_$_UpdateNameFilter) _then)
-      : super(_value, (v) => _then(v as _$_UpdateNameFilter));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateNameFilter get _value => super._value as _$_UpdateNameFilter;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? nameFilter = freezed,
+    Object? nameFilter = null,
   }) {
     return _then(_$_UpdateNameFilter(
-      nameFilter == freezed
+      null == nameFilter
           ? _value.nameFilter
           : nameFilter // ignore: cast_nullable_to_non_nullable
               as String,
@@ -257,16 +255,16 @@ class _$_UpdateNameFilter implements _UpdateNameFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateNameFilter &&
-            const DeepCollectionEquality()
-                .equals(other.nameFilter, nameFilter));
+            (identical(other.nameFilter, nameFilter) ||
+                other.nameFilter == nameFilter));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(nameFilter));
+  int get hashCode => Object.hash(runtimeType, nameFilter);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateNameFilterCopyWith<_$_UpdateNameFilter> get copyWith =>
       __$$_UpdateNameFilterCopyWithImpl<_$_UpdateNameFilter>(this, _$identity);
 
@@ -285,11 +283,11 @@ class _$_UpdateNameFilter implements _UpdateNameFilter {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialse,
-    TResult Function(String nameFilter)? updateNameFilter,
-    TResult Function(ItemCategory itemCategory, bool value)?
+    TResult? Function()? initialse,
+    TResult? Function(String nameFilter)? updateNameFilter,
+    TResult? Function(ItemCategory itemCategory, bool value)?
         updateCategoryFilter,
-    TResult Function(String itemId)? delete,
+    TResult? Function(String itemId)? delete,
   }) {
     return updateNameFilter?.call(nameFilter);
   }
@@ -324,10 +322,10 @@ class _$_UpdateNameFilter implements _UpdateNameFilter {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialse value)? initialse,
-    TResult Function(_UpdateNameFilter value)? updateNameFilter,
-    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
-    TResult Function(_Delete value)? delete,
+    TResult? Function(_Initialse value)? initialse,
+    TResult? Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult? Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(_Delete value)? delete,
   }) {
     return updateNameFilter?.call(this);
   }
@@ -352,7 +350,7 @@ abstract class _UpdateNameFilter implements ItemListEvent {
   const factory _UpdateNameFilter(final String nameFilter) =
       _$_UpdateNameFilter;
 
-  String get nameFilter => throw _privateConstructorUsedError;
+  String get nameFilter;
   @JsonKey(ignore: true)
   _$$_UpdateNameFilterCopyWith<_$_UpdateNameFilter> get copyWith =>
       throw _privateConstructorUsedError;
@@ -363,31 +361,30 @@ abstract class _$$_UpdateCategoryFilterCopyWith<$Res> {
   factory _$$_UpdateCategoryFilterCopyWith(_$_UpdateCategoryFilter value,
           $Res Function(_$_UpdateCategoryFilter) then) =
       __$$_UpdateCategoryFilterCopyWithImpl<$Res>;
+  @useResult
   $Res call({ItemCategory itemCategory, bool value});
 }
 
 /// @nodoc
 class __$$_UpdateCategoryFilterCopyWithImpl<$Res>
-    extends _$ItemListEventCopyWithImpl<$Res>
+    extends _$ItemListEventCopyWithImpl<$Res, _$_UpdateCategoryFilter>
     implements _$$_UpdateCategoryFilterCopyWith<$Res> {
   __$$_UpdateCategoryFilterCopyWithImpl(_$_UpdateCategoryFilter _value,
       $Res Function(_$_UpdateCategoryFilter) _then)
-      : super(_value, (v) => _then(v as _$_UpdateCategoryFilter));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateCategoryFilter get _value => super._value as _$_UpdateCategoryFilter;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? itemCategory = freezed,
-    Object? value = freezed,
+    Object? itemCategory = null,
+    Object? value = null,
   }) {
     return _then(_$_UpdateCategoryFilter(
-      itemCategory == freezed
+      null == itemCategory
           ? _value.itemCategory
           : itemCategory // ignore: cast_nullable_to_non_nullable
               as ItemCategory,
-      value == freezed
+      null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -415,19 +412,17 @@ class _$_UpdateCategoryFilter implements _UpdateCategoryFilter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateCategoryFilter &&
-            const DeepCollectionEquality()
-                .equals(other.itemCategory, itemCategory) &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.itemCategory, itemCategory) ||
+                other.itemCategory == itemCategory) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(itemCategory),
-      const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, itemCategory, value);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateCategoryFilterCopyWith<_$_UpdateCategoryFilter> get copyWith =>
       __$$_UpdateCategoryFilterCopyWithImpl<_$_UpdateCategoryFilter>(
           this, _$identity);
@@ -447,11 +442,11 @@ class _$_UpdateCategoryFilter implements _UpdateCategoryFilter {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialse,
-    TResult Function(String nameFilter)? updateNameFilter,
-    TResult Function(ItemCategory itemCategory, bool value)?
+    TResult? Function()? initialse,
+    TResult? Function(String nameFilter)? updateNameFilter,
+    TResult? Function(ItemCategory itemCategory, bool value)?
         updateCategoryFilter,
-    TResult Function(String itemId)? delete,
+    TResult? Function(String itemId)? delete,
   }) {
     return updateCategoryFilter?.call(itemCategory, value);
   }
@@ -486,10 +481,10 @@ class _$_UpdateCategoryFilter implements _UpdateCategoryFilter {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialse value)? initialse,
-    TResult Function(_UpdateNameFilter value)? updateNameFilter,
-    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
-    TResult Function(_Delete value)? delete,
+    TResult? Function(_Initialse value)? initialse,
+    TResult? Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult? Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(_Delete value)? delete,
   }) {
     return updateCategoryFilter?.call(this);
   }
@@ -515,8 +510,8 @@ abstract class _UpdateCategoryFilter implements ItemListEvent {
           final ItemCategory itemCategory, final bool value) =
       _$_UpdateCategoryFilter;
 
-  ItemCategory get itemCategory => throw _privateConstructorUsedError;
-  bool get value => throw _privateConstructorUsedError;
+  ItemCategory get itemCategory;
+  bool get value;
   @JsonKey(ignore: true)
   _$$_UpdateCategoryFilterCopyWith<_$_UpdateCategoryFilter> get copyWith =>
       throw _privateConstructorUsedError;
@@ -526,24 +521,24 @@ abstract class _UpdateCategoryFilter implements ItemListEvent {
 abstract class _$$_DeleteCopyWith<$Res> {
   factory _$$_DeleteCopyWith(_$_Delete value, $Res Function(_$_Delete) then) =
       __$$_DeleteCopyWithImpl<$Res>;
+  @useResult
   $Res call({String itemId});
 }
 
 /// @nodoc
-class __$$_DeleteCopyWithImpl<$Res> extends _$ItemListEventCopyWithImpl<$Res>
+class __$$_DeleteCopyWithImpl<$Res>
+    extends _$ItemListEventCopyWithImpl<$Res, _$_Delete>
     implements _$$_DeleteCopyWith<$Res> {
   __$$_DeleteCopyWithImpl(_$_Delete _value, $Res Function(_$_Delete) _then)
-      : super(_value, (v) => _then(v as _$_Delete));
+      : super(_value, _then);
 
-  @override
-  _$_Delete get _value => super._value as _$_Delete;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? itemId = freezed,
+    Object? itemId = null,
   }) {
     return _then(_$_Delete(
-      itemId == freezed
+      null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -569,15 +564,15 @@ class _$_Delete implements _Delete {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Delete &&
-            const DeepCollectionEquality().equals(other.itemId, itemId));
+            (identical(other.itemId, itemId) || other.itemId == itemId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(itemId));
+  int get hashCode => Object.hash(runtimeType, itemId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DeleteCopyWith<_$_Delete> get copyWith =>
       __$$_DeleteCopyWithImpl<_$_Delete>(this, _$identity);
 
@@ -596,11 +591,11 @@ class _$_Delete implements _Delete {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initialse,
-    TResult Function(String nameFilter)? updateNameFilter,
-    TResult Function(ItemCategory itemCategory, bool value)?
+    TResult? Function()? initialse,
+    TResult? Function(String nameFilter)? updateNameFilter,
+    TResult? Function(ItemCategory itemCategory, bool value)?
         updateCategoryFilter,
-    TResult Function(String itemId)? delete,
+    TResult? Function(String itemId)? delete,
   }) {
     return delete?.call(itemId);
   }
@@ -635,10 +630,10 @@ class _$_Delete implements _Delete {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialse value)? initialse,
-    TResult Function(_UpdateNameFilter value)? updateNameFilter,
-    TResult Function(_UpdateCategoryFilter value)? updateCategoryFilter,
-    TResult Function(_Delete value)? delete,
+    TResult? Function(_Initialse value)? initialse,
+    TResult? Function(_UpdateNameFilter value)? updateNameFilter,
+    TResult? Function(_UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(_Delete value)? delete,
   }) {
     return delete?.call(this);
   }
@@ -662,7 +657,7 @@ class _$_Delete implements _Delete {
 abstract class _Delete implements ItemListEvent {
   const factory _Delete(final String itemId) = _$_Delete;
 
-  String get itemId => throw _privateConstructorUsedError;
+  String get itemId;
   @JsonKey(ignore: true)
   _$$_DeleteCopyWith<_$_Delete> get copyWith =>
       throw _privateConstructorUsedError;
@@ -675,6 +670,7 @@ mixin _$ItemListState {
   String get nameFilter => throw _privateConstructorUsedError;
   Map<ItemCategory, bool> get categoryFilter =>
       throw _privateConstructorUsedError;
+  bool get isLoggedIn => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ItemListStateCopyWith<ItemListState> get copyWith =>
@@ -685,42 +681,51 @@ mixin _$ItemListState {
 abstract class $ItemListStateCopyWith<$Res> {
   factory $ItemListStateCopyWith(
           ItemListState value, $Res Function(ItemListState) then) =
-      _$ItemListStateCopyWithImpl<$Res>;
+      _$ItemListStateCopyWithImpl<$Res, ItemListState>;
+  @useResult
   $Res call(
       {Stream<QuerySnapshot<Item>>? itemsStream,
       String nameFilter,
-      Map<ItemCategory, bool> categoryFilter});
+      Map<ItemCategory, bool> categoryFilter,
+      bool isLoggedIn});
 }
 
 /// @nodoc
-class _$ItemListStateCopyWithImpl<$Res>
+class _$ItemListStateCopyWithImpl<$Res, $Val extends ItemListState>
     implements $ItemListStateCopyWith<$Res> {
   _$ItemListStateCopyWithImpl(this._value, this._then);
 
-  final ItemListState _value;
   // ignore: unused_field
-  final $Res Function(ItemListState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? itemsStream = freezed,
-    Object? nameFilter = freezed,
-    Object? categoryFilter = freezed,
+    Object? nameFilter = null,
+    Object? categoryFilter = null,
+    Object? isLoggedIn = null,
   }) {
     return _then(_value.copyWith(
-      itemsStream: itemsStream == freezed
+      itemsStream: freezed == itemsStream
           ? _value.itemsStream
           : itemsStream // ignore: cast_nullable_to_non_nullable
               as Stream<QuerySnapshot<Item>>?,
-      nameFilter: nameFilter == freezed
+      nameFilter: null == nameFilter
           ? _value.nameFilter
           : nameFilter // ignore: cast_nullable_to_non_nullable
               as String,
-      categoryFilter: categoryFilter == freezed
+      categoryFilter: null == categoryFilter
           ? _value.categoryFilter
           : categoryFilter // ignore: cast_nullable_to_non_nullable
               as Map<ItemCategory, bool>,
-    ));
+      isLoggedIn: null == isLoggedIn
+          ? _value.isLoggedIn
+          : isLoggedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
@@ -731,42 +736,47 @@ abstract class _$$_ItemListStateCopyWith<$Res>
           _$_ItemListState value, $Res Function(_$_ItemListState) then) =
       __$$_ItemListStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Stream<QuerySnapshot<Item>>? itemsStream,
       String nameFilter,
-      Map<ItemCategory, bool> categoryFilter});
+      Map<ItemCategory, bool> categoryFilter,
+      bool isLoggedIn});
 }
 
 /// @nodoc
 class __$$_ItemListStateCopyWithImpl<$Res>
-    extends _$ItemListStateCopyWithImpl<$Res>
+    extends _$ItemListStateCopyWithImpl<$Res, _$_ItemListState>
     implements _$$_ItemListStateCopyWith<$Res> {
   __$$_ItemListStateCopyWithImpl(
       _$_ItemListState _value, $Res Function(_$_ItemListState) _then)
-      : super(_value, (v) => _then(v as _$_ItemListState));
+      : super(_value, _then);
 
-  @override
-  _$_ItemListState get _value => super._value as _$_ItemListState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? itemsStream = freezed,
-    Object? nameFilter = freezed,
-    Object? categoryFilter = freezed,
+    Object? nameFilter = null,
+    Object? categoryFilter = null,
+    Object? isLoggedIn = null,
   }) {
     return _then(_$_ItemListState(
-      itemsStream: itemsStream == freezed
+      itemsStream: freezed == itemsStream
           ? _value.itemsStream
           : itemsStream // ignore: cast_nullable_to_non_nullable
               as Stream<QuerySnapshot<Item>>?,
-      nameFilter: nameFilter == freezed
+      nameFilter: null == nameFilter
           ? _value.nameFilter
           : nameFilter // ignore: cast_nullable_to_non_nullable
               as String,
-      categoryFilter: categoryFilter == freezed
+      categoryFilter: null == categoryFilter
           ? _value.categoryFilter
           : categoryFilter // ignore: cast_nullable_to_non_nullable
               as Map<ItemCategory, bool>,
+      isLoggedIn: null == isLoggedIn
+          ? _value.isLoggedIn
+          : isLoggedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -777,7 +787,8 @@ class _$_ItemListState extends _ItemListState {
   const _$_ItemListState(
       {this.itemsStream = null,
       this.nameFilter = '',
-      this.categoryFilter = const {}})
+      this.categoryFilter = const {},
+      this.isLoggedIn = false})
       : super._();
 
   @override
@@ -789,10 +800,13 @@ class _$_ItemListState extends _ItemListState {
   @override
   @JsonKey()
   final Map<ItemCategory, bool> categoryFilter;
+  @override
+  @JsonKey()
+  final bool isLoggedIn;
 
   @override
   String toString() {
-    return 'ItemListState(itemsStream: $itemsStream, nameFilter: $nameFilter, categoryFilter: $categoryFilter)';
+    return 'ItemListState(itemsStream: $itemsStream, nameFilter: $nameFilter, categoryFilter: $categoryFilter, isLoggedIn: $isLoggedIn)';
   }
 
   @override
@@ -800,23 +814,23 @@ class _$_ItemListState extends _ItemListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ItemListState &&
+            (identical(other.itemsStream, itemsStream) ||
+                other.itemsStream == itemsStream) &&
+            (identical(other.nameFilter, nameFilter) ||
+                other.nameFilter == nameFilter) &&
             const DeepCollectionEquality()
-                .equals(other.itemsStream, itemsStream) &&
-            const DeepCollectionEquality()
-                .equals(other.nameFilter, nameFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.categoryFilter, categoryFilter));
+                .equals(other.categoryFilter, categoryFilter) &&
+            (identical(other.isLoggedIn, isLoggedIn) ||
+                other.isLoggedIn == isLoggedIn));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(itemsStream),
-      const DeepCollectionEquality().hash(nameFilter),
-      const DeepCollectionEquality().hash(categoryFilter));
+  int get hashCode => Object.hash(runtimeType, itemsStream, nameFilter,
+      const DeepCollectionEquality().hash(categoryFilter), isLoggedIn);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ItemListStateCopyWith<_$_ItemListState> get copyWith =>
       __$$_ItemListStateCopyWithImpl<_$_ItemListState>(this, _$identity);
 }
@@ -825,17 +839,18 @@ abstract class _ItemListState extends ItemListState {
   const factory _ItemListState(
       {final Stream<QuerySnapshot<Item>>? itemsStream,
       final String nameFilter,
-      final Map<ItemCategory, bool> categoryFilter}) = _$_ItemListState;
+      final Map<ItemCategory, bool> categoryFilter,
+      final bool isLoggedIn}) = _$_ItemListState;
   const _ItemListState._() : super._();
 
   @override
-  Stream<QuerySnapshot<Item>>? get itemsStream =>
-      throw _privateConstructorUsedError;
+  Stream<QuerySnapshot<Item>>? get itemsStream;
   @override
-  String get nameFilter => throw _privateConstructorUsedError;
+  String get nameFilter;
   @override
-  Map<ItemCategory, bool> get categoryFilter =>
-      throw _privateConstructorUsedError;
+  Map<ItemCategory, bool> get categoryFilter;
+  @override
+  bool get isLoggedIn;
   @override
   @JsonKey(ignore: true)
   _$$_ItemListStateCopyWith<_$_ItemListState> get copyWith =>

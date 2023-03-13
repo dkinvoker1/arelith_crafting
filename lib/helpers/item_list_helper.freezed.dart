@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'item_list_helper.dart';
 
@@ -21,17 +21,18 @@ mixin _$ItemListHelper {}
 abstract class $ItemListHelperCopyWith<$Res> {
   factory $ItemListHelperCopyWith(
           ItemListHelper value, $Res Function(ItemListHelper) then) =
-      _$ItemListHelperCopyWithImpl<$Res>;
+      _$ItemListHelperCopyWithImpl<$Res, ItemListHelper>;
 }
 
 /// @nodoc
-class _$ItemListHelperCopyWithImpl<$Res>
+class _$ItemListHelperCopyWithImpl<$Res, $Val extends ItemListHelper>
     implements $ItemListHelperCopyWith<$Res> {
   _$ItemListHelperCopyWithImpl(this._value, this._then);
 
-  final ItemListHelper _value;
   // ignore: unused_field
-  final $Res Function(ItemListHelper) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -43,14 +44,11 @@ abstract class _$$_ItemListHelperCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ItemListHelperCopyWithImpl<$Res>
-    extends _$ItemListHelperCopyWithImpl<$Res>
+    extends _$ItemListHelperCopyWithImpl<$Res, _$_ItemListHelper>
     implements _$$_ItemListHelperCopyWith<$Res> {
   __$$_ItemListHelperCopyWithImpl(
       _$_ItemListHelper _value, $Res Function(_$_ItemListHelper) _then)
-      : super(_value, (v) => _then(v as _$_ItemListHelper));
-
-  @override
-  _$_ItemListHelper get _value => super._value as _$_ItemListHelper;
+      : super(_value, _then);
 }
 
 /// @nodoc

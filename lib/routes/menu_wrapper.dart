@@ -24,35 +24,40 @@ class MenuWrapper extends StatelessWidget {
                     context.router.push(ItemListRoute());
                   },
                   style: TextButton.styleFrom(
-                    primary: Colors.white,
+                    foregroundColor: Colors.white,
                   ),
                   child: Text('Arelith Crafting'),
                 ),
-                actions: snapshot.data == null
-                    ? [
-                        IconButton(
-                            onPressed: () {
-                              context.router.push(LogInRoute(
-                                onLoginCallback: (_) {
-                                  context.router.push(ItemListRoute());
-                                },
-                              ));
-                            },
-                            icon: Icon(Icons.person))
-                      ]
-                    : [
-                        IconButton(
-                            onPressed: () {
-                              context.router.push(AddItemRoute());
-                            },
-                            icon: Icon(Icons.add)),
-                        IconButton(
-                            onPressed: () async {
-                              await LogInRepository().logOut();
-                              context.router.push(ItemListRoute());
-                            },
-                            icon: Icon(Icons.logout))
-                      ]),
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        context.router.push(EquipmentRoute());
+                      },
+                      icon: Icon(Icons.app_registration_sharp)),
+                  snapshot.data == null
+                      ? IconButton(
+                          onPressed: () {
+                            context.router.push(LogInRoute(
+                              onLoginCallback: (_) {
+                                context.router.push(ItemListRoute());
+                              },
+                            ));
+                          },
+                          icon: Icon(Icons.person))
+                      : IconButton(
+                          onPressed: () {
+                            context.router.push(AddItemRoute());
+                          },
+                          icon: Icon(Icons.add)),
+                  snapshot.data == null
+                      ? SizedBox()
+                      : IconButton(
+                          onPressed: () async {
+                            await LogInRepository().logOut();
+                            context.router.push(ItemListRoute());
+                          },
+                          icon: Icon(Icons.logout))
+                ]),
             body: const AutoRouter(),
           );
         });
